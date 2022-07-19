@@ -1,5 +1,21 @@
 mongoLink: mongodb+srv://max:mongofasion@cluster0.whtaqlx.mongodb.net/max-fashion?retryWrites=true&w=majority
 
+techStack:
+next.js
+node.js
+express.js
+mongoose
+mongodb
+jwt
+redux
+bootstrap
+tailwind
+gitHub
+redis
+dependance:
+cors
+
+
 *pages
 1)homepage
 2)product landing
