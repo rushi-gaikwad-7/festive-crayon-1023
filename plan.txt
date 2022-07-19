@@ -1,0 +1,83 @@
+mongoLink: mongodb+srv://max:mongofasion@cluster0.whtaqlx.mongodb.net/max-fashion?retryWrites=true&w=majority
+
+*pages
+1)homepage
+2)product landing
+3)product details
+4)single product
+5)cart
+6)address and checkout pages
+7)wishlist
+*components
+1)navbar
+2)footer
+3)slider
+4) Signup / Signin
+5)otp
+6)dropDown 
+
+1]Akshay:
+   -navbar
+   -footer
+   -signup/Signin
+   -otp
+   -dropDown
+
+2] Surya:
+     -cart
+     -address and checkout pages
+     -wishlist
+
+3]Mayur :
+
+    -Product landing
+    -single product pages
+
+4]rushi :
+    -product detail
+    -slider
+    -searchBar
+****backend****
+
+1]users
+2]products
+3]pages
+4]categories
+
+users{
+    name:
+    mail:
+    number:
+    hash:
+    address:[{}]
+    cart:[]
+    type:
+    wishlist:[]
+    orders:[]
+}
+
+products{
+    img:[]
+    price:
+    discountPrice:
+    seller:
+    country:
+    color:
+    title:
+    categories:[]
+    size:[]
+}
+
+categories{
+    name:
+    type:
+}
+
+pages{
+
+}
+
+    
+     
+    
+
