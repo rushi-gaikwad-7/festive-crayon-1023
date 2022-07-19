@@ -24,6 +24,7 @@ cors
 5)cart
 6)address and checkout pages
 7)wishlist
+
 *components
 1)navbar
 2)footer
@@ -34,10 +35,7 @@ cors
 
 1]Akshay:
    -navbar
-   -footer
    -signup/Signin
-   -otp
-   -dropDown
 
 2] Surya:
      -cart
@@ -53,6 +51,26 @@ cors
     -product detail
     -slider
     -searchBar
+
+5)Ahmed :
+    -homepage (small)
+    -footer
+    -My account
+
+
+****** Responsive size ************
+    mobile- below 780px
+
+*********Library**********
+FE :
+axios
+bootstrap
+next-redux-wrapper
+react-redux
+redux
+redux-devtools-extension
+redux-thunk
+
 ****backend****
 
 1]users
