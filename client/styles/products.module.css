@@ -1,0 +1,41 @@
+.mainDiv>div:first-child{
+    width: 90%;
+    margin: auto;
+}
+.categoryDiv {
+    display: flex;
+    gap:20px 0px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.categoryDiv>div img{
+    width: 50px;
+    height: 50px;
+    align-items: center;
+}
+.categoryDiv>div{
+    border: 1px solid;
+    margin-left: 2%;
+    display: flex;
+    gap:5px;
+    align-items: center;
+    padding: 5px 10px;
+    justify-content: space-between;
+}
+.filterDiv{
+    margin-top: 10px;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    padding: 2%;
+}
+.filterDiv>div{
+   width: 90%;
+   margin: auto;
+   
+}
+.filterDiv>div>div{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    
+ }

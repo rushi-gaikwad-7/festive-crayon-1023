@@ -1,7 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+
+const ProductRouter = require('./routes/Products.routes');
+
 const homeRouter = require("./routes/home.route");
+
 
 require('dotenv').config();
 require('./config/database');
@@ -27,6 +31,8 @@ app.use("/home",homeRouter);
 app.get('/', (req, res) => {
     res.send('Hello');
 });
+
+app.use('/products',ProductRouter)
 
 app.use(async (req, res, next) => {
 const error = new Error('Not found');
