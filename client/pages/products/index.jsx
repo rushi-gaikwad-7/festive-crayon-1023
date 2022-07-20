@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../../styles/products.module.css";
+import { Product } from "../../components/product";
 var arr = [
   { img: "https://dummyimage.com/300/09f/fff.png", category: "Young" },
   {
@@ -77,18 +78,24 @@ const index = () => {
           <div>
             {category.map((el, i) => {
               return (
-                <>
+                <div key={i}>
                   {/* <Form.Select aria-label="Default select example">
                     <option>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </Form.Select> */}
-                </>
+                </div>
               );
             })}
           </div>
         </div>
+      </div>
+      <div className={styles.productsDiv}>
+        <div></div>
+        {<div>
+          <Product />
+          </div>}
       </div>
     </div>
   );
