@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const homeRouter = require("./routes/home.route");
+
 require('dotenv').config();
 require('./config/database');
 
@@ -19,6 +21,8 @@ origin: [
 credentials: true,
 })
 );
+
+app.use("/home",homeRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello');
