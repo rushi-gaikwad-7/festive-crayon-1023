@@ -1,11 +1,11 @@
 
-
-
 import styles from '../styles/Home.module.css'
+
 
 export default function Home() {
   return (
     <div className={styles.container}>
+    
        <div className={styles.imgContainer}>
           <div class="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner1">
             <div className={styles.btnContainer}>
@@ -51,6 +51,7 @@ export default function Home() {
           </div>
 
        </div>
+
     </div>
   )
 }
