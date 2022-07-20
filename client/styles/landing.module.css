@@ -16,7 +16,9 @@
     border-bottom: 1px solid #ecedeb;
     padding-bottom: 50px;
 }
+
 .landtitles{
+    color: #000000;
     font-size: 36px;
     font-family: ProximaNova-Regular,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     font-weight: normal;
@@ -37,12 +39,12 @@ gap: 20px;
     padding-bottom: 80px;
 }
 .catcontain{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: auto;
     gap: 10px;
 }
-.catelem{
-width : 20%;
-}
+
 .cattitle{
     margin: auto;
     width: 80%;
