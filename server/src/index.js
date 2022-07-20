@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const ProductRouter = require('./routes/Products.routes');
 require('dotenv').config();
 require('./config/database');
 
@@ -23,6 +24,8 @@ credentials: true,
 app.get('/', (req, res) => {
     res.send('Hello');
 });
+
+app.use('/products',ProductRouter)
 
 app.use(async (req, res, next) => {
 const error = new Error('Not found');
