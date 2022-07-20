@@ -1,34 +1,95 @@
 import React from "react";
-import Image from 'next/image'
-import styles from "../../styles/products.module.css"
-var arr = [{img:"https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/MAX_SubCatImg/maxwomen-young.jpg",category:"Young"}];
+import Image from "next/image";
+import styles from "../../styles/products.module.css";
+var arr = [
+  { img: "https://dummyimage.com/300/09f/fff.png", category: "Young" },
+  {
+    img: "https://dummyimage.com/300/09f/fff.png",
+    category: "Young",
+  },
+  {
+    img: "https://dummyimage.com/300/09f/fff.png",
+    category: "Young",
+  },
+  {
+    img: "https://dummyimage.com/300/09f/fff.png",
+    category: "Young",
+  },
+  {
+    img: "https://dummyimage.com/300/09f/fff.png",
+    category: "Young",
+  },
+  {
+    img: "https://dummyimage.com/300/09f/fff.png",
+    category: "Young",
+  },
+  {
+    img: "https://images.unsplash.com/file-1635990775102-c9800842e1cdimage",
+    category: "Young",
+  },
+  {
+    img: "https://images.unsplash.com/file-1635990775102-c9800842e1cdimage",
+    category: "Young",
+  },
+  {
+    img: "https://images.unsplash.com/file-1635990775102-c9800842e1cdimage",
+    category: "Young",
+  },
+  {
+    img: "https://images.unsplash.com/file-1635990775102-c9800842e1cdimage",
+    category: "Young",
+  },
+];
 
-let cat="men"
+var category = [1, 2, 3, 4, 5];
+
+let cat = "men";
 const myLoader = ({ src, width, quality }) => {
-  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
-}
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
 const index = () => {
   return (
     <div className={styles.mainDiv}>
-    <div className={styles.categoryDiv}>
-      <h1>You searched for “{cat}”</h1>
       <div>
-        <p>Shop For</p>
-        {arr.map((el, i) => {
-          return(
-          <div key={i}>
-            <Image
-              loader={myLoader}
-              src={el.img}
-              alt="Picture of the author"
-              width={50}
-              height={50}
-            />
-            <p>{el.category}</p>
-          </div>)
-        })}
+        <div>
+          <h1>You searched for “{cat}”</h1>
+        </div>
+        <div className={styles.categoryDiv}>
+          <p>Shop For</p>
+          {arr.map((el, i) => {
+            return (
+              <div key={i}>
+                <Image
+                  loader={myLoader}
+                  src={el.img}
+                  alt="Picture of the author"
+                  width={50}
+                  height={50}
+                />
+                <p>{el.category}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <div className={styles.filterDiv}>
+        <div>
+          <div>
+            {category.map((el, i) => {
+              return (
+                <>
+                  {/* <Form.Select aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select> */}
+                </>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
