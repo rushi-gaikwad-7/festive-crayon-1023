@@ -24,7 +24,82 @@
 }
 .spot{
 display: flex;
+gap: 20px;
 }
 .cusfav{
+    border-bottom: 1px solid #ecedeb;
+    padding-bottom: 80px;
     margin-top: 50px;
 }
+.bycats{
+    margin-top: 60px;
+    border-bottom: 1px solid #ecedeb;
+    padding-bottom: 80px;
+}
+.catcontain{
+    display: flex;
+    gap: 10px;
+}
+.catelem{
+width : 20%;
+}
+.cattitle{
+    margin: auto;
+    width: 80%;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 550;
+    text-align: center;
+    font-family: ProximaNova-Semibold,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    line-height: 1.2;
+    padding-top: 8px;
+}
+.budget{
+    margin-top: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ecedeb;
+}
+.buds{
+    display: flex;
+    gap: 20px;
+}
+
+.youthstore{
+    margin-top: 50px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ecedeb;
+}
+.trends{
+    margin-top: 80px;
+    padding-bottom: 50px;
+    border-bottom:1px solid #ecedeb;
+}
+.trendgrid{
+    display: grid;
+    grid-template-columns: repeat(2,600px);
+    grid-template-rows: repeat(2,600px);
+    gap: 30px;
+    row-gap: 100px;
+}
+.topstore{
+    margin-top: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ecedeb;
+}
+.tops{
+    display: flex;
+    gap: 20px;
+}
+.view ,.giftzone{
+    margin-top: 60px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #ecedeb;
+}
+.connect{
+    margin-top: 60px;
+    padding-bottom: 50px;   
+}
+
+
+
+
