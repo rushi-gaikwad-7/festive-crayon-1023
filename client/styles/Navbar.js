@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 
 export const NavDiv = styled.nav`
@@ -40,8 +39,6 @@ export const NavDiv = styled.nav`
       }
     }
     & :hover {
-      /* display: flex;
-       */
       background: #fff;
     }
   }
@@ -51,7 +48,6 @@ export const NavDiv = styled.nav`
   }
 
   .serachDiv {
-    /* border: 1px solid; */
     border-radius: 25px;
     background: #ecedeb;
     flex: 0.4;

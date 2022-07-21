@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import { LinkA, NavDiv } from "./Navbar";
 import Search from "./search";
 import Menu from "./Menu";
 import Link from "next/link";
 import Category from "./Ctegories";
+import  {NavDiv}  from "../../styles/Navbar";
 
 const Navbar = () => {
   return (
