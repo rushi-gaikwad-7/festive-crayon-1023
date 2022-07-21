@@ -19,13 +19,11 @@ export default function Landing({ data }) {
             height={150}
           />
         </div>
-        {data.map((el) => {
-          return (
             <div>
               <div className={styles.spotlight}>
-                <h2 className={styles.landtitles}>{el.stylespot.title}</h2>
+                <h2 className={styles.landtitles}>{data.stylespot.title}</h2>
                 <div className={styles.spot}>
-                  {el.stylespot.spot.map((el) => {
+                  {data.stylespot.spot.map((el) => {
                     return (
                       <Image
                         className={styles.imagespot}
@@ -40,22 +38,22 @@ export default function Landing({ data }) {
               </div>
               <div className={styles.cusfav}>
                 <h2 className={styles.landtitles}>
-                  {el.CustomerFav.title}
+                  {data.CustomerFav.title}
                 </h2>
                 <div>
                 <Image
                         className={styles.cusimg}
                         loader={myLoader}
-                        src={el.CustomerFav.url}
+                        src={data.CustomerFav.url}
                         width={1232}
                         height={485}
                       />
               </div>
               </div>
               <div className={styles.bycats}>
-                <h2 className={styles.landtitles}>{el.shopbycat.title}</h2>
+                <h2 className={styles.landtitles}>{data.shopbycat.title}</h2>
                 <div className={styles.catcontain}>
-                 {el.shopbycat.catarr.map((el)=>{
+                 {data.shopbycat.catarr.map((el)=>{
                   return <div className={styles.catelem}>
                      <Image
                         className={styles.catimgs}
@@ -71,10 +69,10 @@ export default function Landing({ data }) {
               </div>
               <div className={styles.budget}>
                 <h2 className={styles.landtitles}>
-                  {el.budget.title}
+                  {data.budget.title}
                 </h2>
                 <div className={styles.buds}>
-                {el.budget.budgt.map((el)=>{
+                {data.budget.budgt.map((el)=>{
                   return  <Image
                     className={styles.budimgs}
                     loader={myLoader}
@@ -86,20 +84,20 @@ export default function Landing({ data }) {
                 })}</div>
                 </div>
               <div className={styles.youthstore}>
-              <h2 className={styles.landtitles} >{el.youthstore.title}</h2>
+              <h2 className={styles.landtitles} >{data.youthstore.title}</h2>
               <Image
                     className={styles.youthimg}
                     loader={myLoader}
-                    src={el.youthstore.youth}
+                    src={data.youthstore.youth}
                     alt="budgetimgs"
                     width={1232}
                     height={485}
                   />
               </div>
               <div className={styles.trends}>
-              <h2 className={styles.landtitles}>{el.trends.title}</h2>
+              <h2 className={styles.landtitles}>{data.trends.title}</h2>
               <div className={styles.trendgrid}>
-               {el.trends.trendimgs.map((el)=>{
+               {data.trends.trendimgs.map((el)=>{
                return <Image
                 className={styles.trendimg}
                 loader={myLoader}
@@ -112,9 +110,9 @@ export default function Landing({ data }) {
               </div>
               </div>
               <div className={styles.topstore}>
-                <h2 className={styles.landtitles}>{el.topstores.title}</h2>
+                <h2 className={styles.landtitles}>{data.topstores.title}</h2>
                 <div className={styles.tops}>
-                {el.topstores.top.map((el)=>{
+                {data.topstores.top.map((el)=>{
                return <Image
                 className={styles.storeimg}
                 loader={myLoader}
@@ -130,15 +128,13 @@ export default function Landing({ data }) {
               <Image
                 className={styles.viewimg}
                 loader={myLoader}
-                src={el.viewall}
+                src={data.viewall}
                 alt="topimgs"
                 width={1232}
                 height={160}
               />
               </div>
             </div>
-          );
-        })}
         <div className={styles.giftzone}>
           <h2 className={styles.landtitles}>Gifting Zone</h2>
           <Image
