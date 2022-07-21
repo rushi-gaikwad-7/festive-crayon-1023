@@ -11,6 +11,10 @@ let homeSchema = new Schema({
     title : String,
     url : String
   },
+  shopage : {
+    title : String,
+    imgs : [String]
+  },
    shopbycat : {
     title : String,
     catarr : [

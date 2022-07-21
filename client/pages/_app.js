@@ -1,15 +1,14 @@
+
 import '../styles/globals.css'
-import Navbar from '../components/Header/Navbar';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 function MyApp({ Component, pageProps }) {
-
-  return( 
+  return (
     <>
-     <Navbar/>
-  <Component {...pageProps} />
+      <Component {...pageProps} />;
     </>
- 
-  )
+  );
 }
-export default MyApp
+export default MyApp;
