@@ -34,13 +34,16 @@ gap: 20px;
 .bycats{
     margin-top: 60px;
     border-bottom: 1px solid #ecedeb;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 .catcontain{
     display: flex;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: auto;
-    gap: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.catelem{
+    width: 15%;
 }
 
 .cattitle{
@@ -100,6 +103,13 @@ gap: 20px;
     padding-bottom: 50px;   
 }
 
+.slimain{
+    width: 100%;
+    margin-bottom: 80px;
 
+}
+.slimain>div{
+    margin:auto;
+}
 
 
