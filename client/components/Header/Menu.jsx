@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { LinkA } from "../../styles/Navbar";
+import { LinkA } from "./Navbar";
 import { FiSearch, FiHeart } from "react-icons/fi";
 import { BsHandbag } from "react-icons/bs";
 
