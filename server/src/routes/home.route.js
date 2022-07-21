@@ -10,7 +10,7 @@ homeRouter.get('/get/:type', async (req,res)=>{
   if(data=="error"){
  res.send({message:"error"})
   }
-   res.send({data})
+   res.send(data)
 })
 
 module.exports = homeRouter;

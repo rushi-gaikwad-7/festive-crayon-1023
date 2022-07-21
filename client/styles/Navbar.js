@@ -8,7 +8,6 @@ export const NavDiv = styled.nav`
   align-items: center;
   position: sticky;
   z-index: 100;
-
   .navbarCategory {
     flex: 0.2;
   }
