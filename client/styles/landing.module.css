@@ -38,11 +38,11 @@ gap: 20px;
 }
 .catcontain{
     display: flex;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: auto;
     gap: 10px;
 }
-.catelem{
-width : 20%;
-}
+
 .cattitle{
     margin: auto;
     width: 80%;
