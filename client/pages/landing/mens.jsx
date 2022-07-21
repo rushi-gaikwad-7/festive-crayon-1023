@@ -88,6 +88,7 @@ export default function Landing({ data }) {
                 );
               })}
             </div>
+            </div>
             <div className={styles.cusfav}>
               <h2 className={styles.landtitles}>{data.CustomerFav.title}</h2>
               <div>
@@ -195,7 +196,7 @@ export default function Landing({ data }) {
                 height={160}
               />
             </div>
-          </div>
+          
           <div className={styles.giftzone}>
             <h2 className={styles.landtitles}>Gifting Zone</h2>
             <Image
