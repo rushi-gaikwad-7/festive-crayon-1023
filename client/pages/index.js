@@ -1,4 +1,5 @@
 import styles from '../styles/Home.module.css'
+import Link from "next/Link"
 
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     <div className={styles.container}>
     
        <div className={styles.imgContainer}>
-          <div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner1">
+       <Link href={"/landing/womens"}><div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner1">
             <div className={styles.btnContainer}>
                 <img width="100%" src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/pre-landing-Women-18July2022.jpg" alt="Shop Women" />
                 
@@ -15,9 +16,9 @@ export default function Home() {
                   </button>
               
             </div>
-          </div>
+          </div></Link>
 
-          <div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner2">
+          <Link href={"landing/mens"}><div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner2">
             <div className={styles.btnContainer}>
               <img width="100%" src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/pre-landing-Men-18July2022.jpg" alt="Shop Men" />
               
@@ -26,9 +27,9 @@ export default function Home() {
                 </button>
               
             </div>
-          </div>
+          </div></Link>
 
-          <div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner3">
+          <Link href={"landing/girls"}><div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner3">
             <div className={styles.btnContainer}>
               <img width="100%" src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/pre-landing-Girls-18July2022.jpg" alt="Shop Girls" />
               
@@ -36,9 +37,9 @@ export default function Home() {
                   <span className="MuiButton-label">SHOP GIRLS</span>
                 </button>
             </div>
-          </div>
+          </div></Link>
           
-          <div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner4">
+          <Link href={"landing/boys"}><div className="MuiGrid-root jss396 MuiGrid-item MuiGrid-grid-xs-true" id="maxin-DesktopPrelandingBanner4">
             <div className={styles.btnContainer}>
               <img width="100%" src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/pre-landing-Boys-18July2022.jpg" alt="Shop Boys" />
              
@@ -47,7 +48,7 @@ export default function Home() {
                 </button>
     
             </div>
-          </div>
+          </div></Link>
 
        </div>
 

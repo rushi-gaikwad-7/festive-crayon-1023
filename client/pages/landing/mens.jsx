@@ -232,5 +232,5 @@ export default function Landing({ data }) {
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:8080/home/get/mens`);
   let data = await res.json();
-  return { props: { data } }
+  return { props: { data } };
 }
