@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../../styles/products.module.css";
 import { Product } from "../../components/product";
@@ -9,10 +9,9 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import axios from "axios";
 
-
-
-var category = [1, 2, 3, 4, 5];
+var cateGory = [1, 2, 3, 4, 5];
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
@@ -49,12 +48,18 @@ const index = () => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setPersonName(typeof value === "string" ? value.split(",") : value);
   };
 
+  const [category, setCategory] = useState([]);
+  const getCategoryS = async () => {
+    const res =await axios.get("http://localhost:8080/products")
+    
+    setCategory(res.data)
+  };
+  useEffect(() => {
+    getCategoryS();
+  }, []);
   return (
     <div className={styles.mainDiv}>
       <div>
@@ -63,9 +68,9 @@ const index = () => {
         </div>
         <div className={styles.categoryDiv}>
           <p>Shop For</p>
-          {arr.map((el, i) => {
+          {category.map((el, i) => {
             return (
-              <div key={i}>
+              <div onClick={()=>handleCats(el._id)} key={i}>
                 <Image
                   loader={myLoader}
                   src={el.img}
@@ -73,7 +78,7 @@ const index = () => {
                   width={50}
                   height={50}
                 />
-                <p>{el.category}</p>
+                <p>{el.name}</p>
               </div>
             );
           })}
@@ -82,7 +87,7 @@ const index = () => {
       <div className={styles.filterDiv}>
         <div>
           <div>
-            {category.map((el, i) => {
+            {cateGory.map((el, i) => {
               return (
                 <div key={i}>
                   <div>
@@ -133,7 +138,7 @@ const index = () => {
             </Select>
           </FormControl>
         </div>
-        {arr.map((el, i) => {
+        {category.map((el, i) => {
           return (
             <div key={i}>
               <Product />

@@ -1,11 +1,21 @@
 
 const {Router}=require("express");
+const Category = require("../model/category");
 const Product = require("../model/products");
 
 const ProductRouter =Router();
 
-ProductRouter.get("/",(req,res)=>{
-    res.status(201).send("products")
+ProductRouter.get('/',async(req,res)=>{
+
+    try{  
+     const [{_id}]=await Category.find({name:"products"})
+     const cats =await Category.find({Parent_id:_id});
+     res.status(201).send(cats)
+    }
+    catch(err){
+        res.status(401).send(err)
+    }
+
 })
 
 ProductRouter.post('/new',async(req,res)=>{
@@ -21,6 +31,7 @@ ProductRouter.post('/new',async(req,res)=>{
         } 
     })
 })
+
 
 
 module.exports=ProductRouter;
