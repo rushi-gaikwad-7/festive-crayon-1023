@@ -1,4 +1,4 @@
-
+import styles from "../../styles/Cart.module.css";
 import Link from "next/link"
 
 const Cart = () => {
@@ -10,10 +10,10 @@ const Cart = () => {
                 <div id="left-inner-div" style={{ margin: "10px" }}>
                     <div id="cart-div" style={{ display: "flex" }}>
                         <div><img style={{ width: "100px", margin: "auto", border: "1px solid red" }} src="https://lmsin.net/cdn-cgi/image/h=294,w=196,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011358126-Blue-NAVY-1000011358126-27062022_01-2100.jpg" alt="" /></div>
-                        <div style={{ height: "60px", marginTop: "-15px", marginLeft: "20px", fontFamily: "Arial,sans-serif" }}>
+                        <div style={{ height: "60px", marginTop: "", marginLeft: "20px", fontFamily: "Arial,sans-serif" }}>
                             <h4 style={{ fontSize: "14px", fontFamily: "Arial,sans-serif" }}>Name</h4>
                             <h4 style={{ fontSize: "14px", fontFamily: "Arial,sans-serif" }}>Price</h4>
-                            <div style={{ display: "flex", height: "20px", marginTop: "-20px", fontSize: "12px", fontFamily: "Arial,sans-serif" }}><p style={{ color: "grey" }}>Color:</p><p>&nbsp;&nbsp;Blue</p></div>
+                            <div style={{ display: "flex", height: "20px", marginTop: "", fontSize: "12px", fontFamily: "Arial,sans-serif" }}><p style={{ color: "grey" }}>Color:</p><p>&nbsp;&nbsp;Blue</p></div>
                             <div style={{ display: "flex", fontFamily: "Arial,sans-serif", marginTop: "0px", fontSize: "12px", fontFamily: "Arial,sans-serif" }}><p style={{ color: "grey" }}>Size:</p><p>&nbsp;&nbsp;&nbsp; L</p></div>
                         </div>
                     </div>
