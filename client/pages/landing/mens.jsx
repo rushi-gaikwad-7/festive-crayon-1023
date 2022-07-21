@@ -59,8 +59,7 @@ export default function Landing({ data }) {
             );
           })}
         </Slider>
-
-        <div className={styles.off}>
+      <div className={styles.off}>
           <Image
             className={styles.imageoff}
             loader={myLoader}
