@@ -8,6 +8,8 @@ export const NavDiv = styled.nav`
   align-items: center;
   position: sticky;
   z-index: 100;
+  position: relative;
+
   .navbarCategory {
     flex: 0.2;
   }
@@ -23,10 +25,29 @@ export const NavDiv = styled.nav`
       padding: 1rem 0;
       width: 100%;
       font-weight: 600;
+      cursor: pointer;
+
+      .dropdown {
+        position: absolute;
+        top: 90%;
+        left: 0;
+        display: none;
+        justify-content: center;
+        flex-direction: column;
+        background: #fff;
+        width: 100%;
+        align-items: flex-start;
+      }
     }
     & :hover {
+      /* display: flex;
+       */
       background: #fff;
     }
+  }
+
+  .link:hover .dropdown {
+    display: flex;
   }
 
   .serachDiv {

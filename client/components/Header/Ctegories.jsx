@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import { LinkA } from "../../styles/Navbar";
+import { LinkA } from "./Navbar";
 // import "./subNavbar.css";
 
 const Category = () => {
@@ -39,16 +39,16 @@ const Category = () => {
 
   return (
     <div className="navbarCategory">
-      <ul>
-        {data.map((item) => {
-          return (
-            <>
-              <LinkA href="#" className="link">
-                <div>Women</div>
-                {/* <div>Hello</div> */}
-                <Box className={`dropdown-menu`}>
-                  {item.cate &&
-                    item.cate.map((sub, index) => (
+      {data.map((item) => {
+        return (
+          <>
+            <div className="link">
+              <LinkA href="#">{item.title}</LinkA>
+              {/* <div>Hello</div> */}
+              <Box className={`dropdown`}>
+                {item.cate &&
+                  item.cate.map((sub) => (
+                    <div>
                       <Link
                         key={`${sub}-${Math.random()}`}
                         href={`#`}
@@ -56,13 +56,13 @@ const Category = () => {
                       >
                         {sub}
                       </Link>
-                    ))}
-                </Box>
-              </LinkA>
-            </>
-          );
-        })}
-      </ul>
+                    </div>
+                  ))}
+              </Box>
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { LinkA, NavDiv } from "../../styles/Navbar";
+import { LinkA, NavDiv } from "./Navbar";
 import Search from "./search";
 import Menu from "./Menu";
 import Link from "next/link";
@@ -19,26 +19,26 @@ const Navbar = () => {
         ></Image>
       </Link>
 
-      {/* <Category /> */}
+      <Category />
 
-      <div className={`navbarCategory`}>
+      {/* <div className={`navbarCategory`}>
+        <div className="link">
+          <LinkA href="#">Women</LinkA>
+          <div className="dropdown">Hello</div>
+        </div>
         <LinkA href="#" className="link">
-          <div>Women</div>
-          {/* <div>Hello</div> */}
-        </LinkA>
-        <LinkA href="#" className="link">
-          <div>Men</div>
-          {/* <div>Hello</div> */}
+          <div className="dropdown">Men</div>
+          <div>Hello</div>
         </LinkA>
         <LinkA href="#" className="link">
           <div>Girls</div>
-          {/* <div>Hello</div> */}
+          <div>Hello</div>
         </LinkA>
         <LinkA href="#" className="link">
           <div>Boys</div>
-          {/* <div>Hello</div> */}
+          <div>Hello</div>
         </LinkA>
-      </div>
+      </div> */}
 
       <Search />
 
