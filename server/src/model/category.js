@@ -3,7 +3,8 @@ const {model,Schema}=require("mongoose")
 
 
 const categorySchema= new Schema({
-    Category:String,
+    name:String,
+    Parent_id:Array,
     img:String
 })
 

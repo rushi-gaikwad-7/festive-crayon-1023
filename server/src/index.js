@@ -5,6 +5,8 @@ const cors = require('cors');
 const ProductRouter = require('./routes/Products.routes');
 
 const homeRouter = require("./routes/home.route");
+const Category = require('./model/category');
+const Product = require('./model/products');
 
 
 require('dotenv').config();
@@ -31,6 +33,22 @@ app.use("/home",homeRouter);
 app.get('/', (req, res) => {
     res.send('Hello');
 });
+
+app.post('/category',async(req,res)=>{
+
+    const {name,Parent_id,img}=req.body
+    const Cat = new Category({name,Parent_id,img})
+    Cat.save((err,success)=>{
+        if(success){
+            res.status(201).send({massage:"new category created",Cat})
+        }
+        else{
+            res.status(401).send({massage:"error occurred",err})
+        }
+    })
+})
+
+
 
 app.use('/products',ProductRouter)
 
