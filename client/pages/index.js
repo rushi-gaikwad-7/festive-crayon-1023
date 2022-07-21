@@ -22,7 +22,7 @@ export default function Home() {
             <div className={styles.btnContainer}>
               <img width="100%" src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/MAX-Friday/MAX2.O/pre-landing-Men-18July2022.jpg" alt="Shop Men" />
               
-                <button className="MuiButtonBase-root MuiButton-root MuiButton-contained jss395 MuiButton-containedSecondary" I="0" type="button" id="shopmen">
+                <button className="MuiButtonBase-root MuiButton-root MuiButton-contained jss395 MuiButton-containedSecondary"  type="button" id="shopmen">
                   <span className="MuiButton-label">SHOP MEN</span>
                 </button>
               
