@@ -12,7 +12,7 @@ const Search = () => {
         placeholder="What are you looking for?"
         aria-label="Search"
         value={search}
-        onChange={(e) => setSearch(search)}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </form>
   );
