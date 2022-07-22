@@ -1,77 +1,41 @@
-.mainDiv {
-    width: 350px;
-    padding: 2%;
+ .mainDiv {
     box-sizing: border-box;
+    padding: 5%;
     background-color: transparent;
-    position: absolute;
+    position:relative;
 }
-.Product{
-    border: 1px solid;
+.productDiv{
+    width: 90%;
+    margin: auto;
 }
 .mainDiv:hover  { 
-    background-color: white;
+    background-color: lightgray;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: block;
 }
 .mainDiv:hover .hiddenDiv {
-    visibility: visible;
-    background-color: white;
+    display:inline-block;
+    background-color: lightgray;
 }
 .hiddenDiv{
-    visibility: hidden;
+    width: 100%;
+    display:none;
     margin-top: 10px;
     box-sizing: border-box;
-    padding: 1%;
 }
-#filterDiv{
+.hiddenDiv>div{
     box-sizing: border-box;
-    margin-top: 1%;
-    display: flex;
-    justify-content: space-around;
-}
-.btn{
-    margin-top: 3%;
-    width: 100%;
-}
 
-.imgDiv {
-    box-sizing: border-box;
-    padding: 2%;
-    background-image: url("https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011328997-Green-DARKGREEN-1000011328997-27062022_01-2100.jpg");
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
-   
-}
-
-#wishList {
-    background-color: white;
-    border-radius: 50px;
-    display: flex;
+    padding:1%;
+    display:flex;
     align-items: center;
-    margin-left: 80%;
-    width: 40px;
-    height: 40px;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-#status {
-    background-color: white;
-    width: 40px;
-    box-sizing: border-box;
-    padding: 1%;
-    margin-top: 75%;
-}
-
-#wishList>img {
-    width: 25px;
-}
-
-#wishList>img:hover {
+#wishList>img{
     width: 30px;
 }
-
-.infoDiv {
-    box-sizing: border-box;
-    padding: 1%;
-    font-size: 14px;
+#wishList>img:hover{
+    width: 40px;
+    transition: width 100ms;
 }
