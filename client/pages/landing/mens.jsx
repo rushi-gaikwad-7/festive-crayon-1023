@@ -88,78 +88,96 @@ export default function Landing({ data }) {
                 );
               })}
             </div>
+          </div>
+          <div className={styles.cusfav}>
+            <h2 className={styles.landtitles}>{data.CustomerFav.title}</h2>
+            <div>
+              <Image
+                className={styles.cusimg}
+                loader={myLoader}
+                src={data.CustomerFav.url}
+                width={1232}
+                height={485}
+              />
             </div>
-            <div className={styles.cusfav}>
-              <h2 className={styles.landtitles}>{data.CustomerFav.title}</h2>
-              <div>
-                <Image
-                  className={styles.cusimg}
-                  loader={myLoader}
-                  src={data.CustomerFav.url}
-                  width={1232}
-                  height={485}
-                />
-              </div>
-            </div>
-            <div className={styles.bycats}>
-              <h2 className={styles.landtitles}>{data.shopbycat.title}</h2>
-              <div className={styles.catcontain}>
-                {data.shopbycat.catarr.map((el) => {
-                  return (
-                    <div className={styles.catelem}>
-                      <Image
-                        className={styles.catimgs}
-                        loader={myLoader}
-                        src={el.img}
-                        width={288}
-                        height={288}
-                      />
-                      <h2 className={styles.cattitle}>{el.title}</h2>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.budget}>
-              <h2 className={styles.landtitles}>{data.budget.title}</h2>
-              <div className={styles.buds}>
-                {data.budget.budgt.map((el) => {
-                  return (
+          </div>
+          <div className={styles.bycats}>
+            <h2 className={styles.landtitles}>{data.shopbycat.title}</h2>
+            <div className={styles.catcontain}>
+              {data.shopbycat.catarr.map((el) => {
+                return (
+                  <div className={styles.catelem}>
                     <Image
-                      className={styles.budimgs}
+                      className={styles.catimgs}
                       loader={myLoader}
-                      src={el}
-                      alt="budgetimgs"
-                      width={400}
-                      height={200}
+                      src={el.img}
+                      width={288}
+                      height={288}
                     />
-                  );
-                })}
-              </div>
+                    <h2 className={styles.cattitle}>{el.title}</h2>
+                  </div>
+                );
+              })}
             </div>
-            {data.youthstore && (
-              <div className={styles.youthstore}>
-                <h2 className={styles.landtitles}>{data.youthstore.title}</h2>
-                <Image
-                  className={styles.youthimg}
-                  loader={myLoader}
-                  src={data.youthstore.youth}
-                  alt="budgetimgs"
-                  width={1232}
-                  height={485}
-                />
-              </div>
-            )}
-            <div className={styles.trends}>
-              <h2 className={styles.landtitles}>{data.trends.title}</h2>
-              <div className={styles.trendgrid}>
-                {data.trends.trendimgs.map((el) => {
+          </div>
+          <div className={styles.budget}>
+            <h2 className={styles.landtitles}>{data.budget.title}</h2>
+            <div className={styles.buds}>
+              {data.budget.budgt.map((el) => {
+                return (
+                  <Image
+                    className={styles.budimgs}
+                    loader={myLoader}
+                    src={el}
+                    alt="budgetimgs"
+                    width={400}
+                    height={200}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          {data.youthstore && (
+            <div className={styles.youthstore}>
+              <h2 className={styles.landtitles}>{data.youthstore.title}</h2>
+              <Image
+                className={styles.youthimg}
+                loader={myLoader}
+                src={data.youthstore.youth}
+                alt="budgetimgs"
+                width={1232}
+                height={485}
+              />
+            </div>
+          )}
+          <div className={styles.trends}>
+            <h2 className={styles.landtitles}>{data.trends.title}</h2>
+            <div className={styles.trendgrid}>
+              {data.trends.trendimgs.map((el) => {
+                return (
+                  <Image
+                    className={styles.trendimg}
+                    loader={myLoader}
+                    src={el}
+                    alt="trendimgs"
+                    width={600}
+                    height={600}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          {data.topstores && (
+            <div className={styles.topstore}>
+              <h2 className={styles.landtitles}>{data.topstores.title}</h2>
+              <div className={styles.tops}>
+                {data.topstores.top.map((el) => {
                   return (
                     <Image
-                      className={styles.trendimg}
+                      className={styles.storeimg}
                       loader={myLoader}
                       src={el}
-                      alt="trendimgs"
+                      alt="topimgs"
                       width={600}
                       height={600}
                     />
@@ -167,36 +185,18 @@ export default function Landing({ data }) {
                 })}
               </div>
             </div>
-            {data.topstores && (
-              <div className={styles.topstore}>
-                <h2 className={styles.landtitles}>{data.topstores.title}</h2>
-                <div className={styles.tops}>
-                  {data.topstores.top.map((el) => {
-                    return (
-                      <Image
-                        className={styles.storeimg}
-                        loader={myLoader}
-                        src={el}
-                        alt="topimgs"
-                        width={600}
-                        height={600}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-            <div className={styles.view}>
-              <Image
-                className={styles.viewimg}
-                loader={myLoader}
-                src={data.viewall}
-                alt="topimgs"
-                width={1232}
-                height={160}
-              />
-            </div>
-          
+          )}
+          <div className={styles.view}>
+            <Image
+              className={styles.viewimg}
+              loader={myLoader}
+              src={data.viewall}
+              alt="topimgs"
+              width={1232}
+              height={160}
+            />
+          </div>
+
           <div className={styles.giftzone}>
             <h2 className={styles.landtitles}>Gifting Zone</h2>
             <Image
