@@ -52,13 +52,13 @@ const index = () => {
   };
 
   const [category, setCategory] = useState([]);
-  const getCategoryS = async () => {
-    const res =await axios.get("http://localhost:8080/products")
+  const getCategoryS = async (_id) => {
+    const res =await axios.get(`http://localhost:8080/products/:${_id}`)
     
     setCategory(res.data)
   };
   useEffect(() => {
-    getCategoryS();
+    getCategoryS(all);
   }, []);
   return (
     <div className={styles.mainDiv}>
@@ -70,7 +70,7 @@ const index = () => {
           <p>Shop For</p>
           {category.map((el, i) => {
             return (
-              <div onClick={()=>handleCats(el._id)} key={i}>
+              <div onClick={()=>getCategoryS(el._id)} key={i}>
                 <Image
                   loader={myLoader}
                   src={el.img}
