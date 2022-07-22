@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    domains: ["www.landmarkgroup.com"],
-  },
 };
 
 module.exports = nextConfig;
