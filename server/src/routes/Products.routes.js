@@ -8,24 +8,14 @@ const ProductRouter = Router();
 
 ProductRouter.get('/:id', async (req, res) => {
 
-    const {
-        id
-    } = req.params;
+    const {id} = req.params;
     try {
         if (id == 'all') {
-            const [{
-                _id
-            }] = await Category.find({
-                name: "products"
-            })
-           const cats = await Category.find({
-                Parent_id: _id
-            });
+            const [{_id}] = await Category.find({ name: "products" })
+           const cats = await Category.find({ Parent_id: _id });
             res.status(201).send(cats)
         } else {
-           const cats = await Category.find({
-                Parent_id:id
-            });
+           const cats = await Category.find({   Parent_id:id  });
             res.status(201).send(cats)
         }
         

@@ -58,7 +58,7 @@ const index = () => {
     setCategory(res.data)
   };
   useEffect(() => {
-    getCategoryS(all);
+    getCategoryS("all");
   }, []);
   return (
     <div className={styles.mainDiv}>
