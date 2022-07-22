@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import styles from "../styles/product.module.css";
-import SimpleSlider from "./ImageSlider";
+import styles from "../../styles/product.module.css";
+import SimpleSlider from "../Products/ImageSlider";
 
 export const Product = ({ Title, Price, Images}) => {
   const handleChange = () => {};

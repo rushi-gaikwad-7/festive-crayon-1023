@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from 'next/link'
 import axios from "axios";
-import styles from "../../styles/products.module.css";
+import { useRouter } from 'next/router'
+import styles from "../../../styles/products.module.css";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -10,8 +11,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import filterdata from "./db.json";
-import { ProductsContainer } from "../../components/Products/ProductsContainer";
+import filterdata from "../db.json";
+import { ProductsContainer } from "../../../components/Products/ProductsContainer";
 
 const filterData = filterdata.filterData;
 
@@ -25,13 +26,17 @@ const MenuProps = {
     },
   },
 };
-let search = "Products";
+
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
-const ProductsPage = () => {
-  const [personName, setPersonName] = React.useState([]);
 
+const ProductsPage = () => {
+
+  const {query} = useRouter()
+
+  let search = query.category;
+  const [personName, setPersonName] = React.useState([]);
   console.log(personName)
   const handleChange = (event) => {
     const {
@@ -43,8 +48,7 @@ const ProductsPage = () => {
   const [category, setCategory] = useState([]);
   const [filterS,SetFilter]=useState({})
   const getCategoryS = async (_id) => {
-    const res = await axios.get(`http://localhost:8080/products/${_id}`, { params: { sort:filterS.sort } });
-
+    const res = await axios.get(`http://localhost:8080/products/${query.category}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
@@ -53,9 +57,8 @@ const handleSort=(e)=>{
   SetFilter({...filterS,Sort:e.target.value})
 }
 
-
   useEffect(() => {
-    getCategoryS("products");
+    getCategoryS("all");
   }, []);
   return (
     <div className={styles.mainDiv}>

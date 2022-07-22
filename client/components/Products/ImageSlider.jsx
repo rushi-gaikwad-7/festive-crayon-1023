@@ -1,6 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "../styles/product.module.css"
+import styles from "../../styles/product.module.css"
 import React from "react";
 import Slider from "react-slick";
 
@@ -13,7 +13,7 @@ export default function SimpleSlider({ data }) {
     autoplaySpeed: 3000,
     slidesToShow: 1,
     focusOnSelect: true,
-    pauseOnHover: false,
+    pauseOnHover: true,
     slidesToScroll: 1,
   };
   return (
@@ -21,7 +21,7 @@ export default function SimpleSlider({ data }) {
       {data.map((el, i) => {
         return (
           <div key={i}>
-            <img style={{position:"relative"}} width="100%" src={el.image} alt="" />
+            <img style={{position:"relative"}} width="100%" src={el} alt="" />
           </div>
         );
       })}
