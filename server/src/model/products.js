@@ -10,10 +10,8 @@ const productSchema= new Schema({
     Country:String,
     Category:Array,
     Color:Array,
-    Type:String,
     Status:String,
     Stock:Number,
-    Gender:String,
 })
 
 const Product=model("Product",productSchema)
