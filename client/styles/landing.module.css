@@ -104,7 +104,9 @@ gap: 20px;
 }
 
 .slimain{
+
     margin-top: 40px;
+
     width: 100%;
     margin-bottom: 80px;
 
@@ -112,6 +114,7 @@ gap: 20px;
 .slimain>div{
     margin:auto;
 }
+
 .blue{
     width: 100%;
     display: flex;
