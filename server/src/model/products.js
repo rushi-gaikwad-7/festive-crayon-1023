@@ -5,13 +5,12 @@ const {model,Schema}=require("mongoose")
 const productSchema= new Schema({
     Title:String,
     Price:Number,
-    Images:Array,
+    Images:[{image:String}],
     Sizes:Array,
     Country:String,
     Category:Array,
-    Color:Array,
-    Status:String,
-    Stock:Number,
+    Color:String,
+    Type:String
 })
 
 const Product=model("Product",productSchema)

@@ -1,0 +1,18 @@
+
+
+{
+    "filterData":[
+        {
+            "title":"Price",
+            "subOption":["₹ 0-₹ 499","₹ 500-₹ 999","₹ 1000-₹ 1499","₹ 1500-₹ 1999","₹ 2000-& Above"]
+        },
+        {
+            "title":"Color",
+            "subOption":["Red","Black","White","Yellow","Green","Pink"]
+        },
+        {
+            "title":"Sizes",
+            "subOption":["X","M","L","XL","S","XXL"]
+        }
+    ]
+}

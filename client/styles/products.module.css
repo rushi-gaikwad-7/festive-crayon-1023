@@ -33,25 +33,30 @@
 .filterDiv>div{
    width: 90%;
    margin: auto;
-   
 }
 .filterDiv>div>div{
-    width: 60%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
-    
  }
  .productsDiv{
     width: 90%;
     margin: auto;
-    margin-bottom: 100px;
-    box-sizing: border-box;
-    padding: 1%;
  }
- .productsDiv>div:first-child{
-    box-sizing: border-box;
-    padding: 1%;
+.productsDiv>div:first-child{
     display: flex;
     align-items: center;
     justify-content: space-between;
- }
+}
+.ProductContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,24%);
+    grid-template-rows: repeat(auto);
+    justify-content: space-between;
+    margin-top: 1%;
+}
+.btn{
+    width: 50%;
+}
+
