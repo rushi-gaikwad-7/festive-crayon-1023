@@ -31,6 +31,9 @@ app.get("/", (req, res) => {
 });
 
 
+app.use("/products", ProductRouter);
+
+
 app.post('/category',async(req,res)=>{
 
     const {name,Parent_id,img}=req.body
@@ -44,11 +47,6 @@ app.post('/category',async(req,res)=>{
         }
     })
 })
-
-
-
-
-app.use("/products", ProductRouter);
 
 
 app.use(async (req, res, next) => {
