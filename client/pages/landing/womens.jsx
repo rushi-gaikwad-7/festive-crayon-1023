@@ -41,7 +41,11 @@ export default function Landing({ data }) {
   };
   return (
     <>
-    <div className={styles.blue}><h2 className={styles.bluestrip}>Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200</h2></div>
+      <div className={styles.blue}>
+        <h2 className={styles.bluestrip}>
+          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200
+        </h2>
+      </div>
       <div className={styles.mainland}>
         <Slider {...settings} className={styles.slimain}>
           {data.sliderimages.map((el) => {
@@ -213,7 +217,5 @@ export default function Landing({ data }) {
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:8080/home/get/womens`);
   let data = await res.json();
-  console.log(data);
   return { props: { data } };
 }
-
