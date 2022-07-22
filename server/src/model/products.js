@@ -5,7 +5,7 @@ const {model,Schema}=require("mongoose")
 const productSchema= new Schema({
     Title:String,
     Price:Number,
-    Images:[{image:String}],
+    Images:Array,
     Sizes:Array,
     Country:String,
     Category:Array,

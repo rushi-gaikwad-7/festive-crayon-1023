@@ -6,14 +6,14 @@ import Slider from "react-slick";
 
 export default function SimpleSlider({ data }) {
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     slidesToShow: 1,
     focusOnSelect: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     slidesToScroll: 1,
   };
   return (
