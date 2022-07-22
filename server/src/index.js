@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const ProductRouter = require("./routes/Products.routes");
 
-const homeRouter = require("./routes/home.route");
+const homeRouter = require("./routes/home.routes");
 const Category = require('./model/category');
 const Product = require('./model/products');
 
