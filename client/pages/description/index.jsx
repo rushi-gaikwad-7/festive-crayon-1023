@@ -10,10 +10,10 @@ export default function Description({ data }) {
   return (
     <>
       <div className={styles.descontain}>
-        <div className={styles.destitle}>{data[0].title}</div>
+        <div className={styles.destitle}>{data[1].Title}</div>
         <div className={styles.desmain}>
           <div className={styles.desimgs}>
-            {data[0].imgs.map((el) => {
+            {data[1].images.map((el) => {
               return (
                 <div className={styles.zoomeffectcontainer}>
                   <div className={styles.desout}>
@@ -34,7 +34,7 @@ export default function Description({ data }) {
             <div className={styles.price}>
               <div>
                 <h5>₹</h5>
-                <h2>899</h2>
+                <h2>{data[1].Price}</h2>
               </div>
               <p>Inclusive of all taxes</p>
             </div>
@@ -50,17 +50,17 @@ export default function Description({ data }) {
               </div>
             </div>
             <div className={styles.smallimg}>
-              <img src={data[0].imgs[0]} />
+              <img src={data[1].images[0]} />
             </div>
             <p className={styles.color}>
-              Color: <span>{data[0].color}</span>
+              Color: <span>{data[1].Color}</span>
             </p>
             <div className={styles.size}>
               <p>Size:</p>
               <p>Size Guide</p>
             </div>
             <div className={styles.sizelist}>
-              {sizearr.map((el) => {
+              {data[1].Sizes.map((el) => {
                 return <button>{el}</button>;
               })}
             </div>
