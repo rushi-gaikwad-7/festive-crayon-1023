@@ -11,14 +11,16 @@ ProductRouter.get('/:category', async (req, res) => {
     const { category  } = req.params;
     console.log(category)
     try {
-        const [{_id}] = await Category.find({ name: category })
-        const data = await Product.find({Category:{$in:[_id]}})
+        const [{_id}] = await Category.find({ name:category })
+        let id=_id.toString();
+        const data = await Product.find({Category:{$in:[id]}})
         const cats = await Category.find({ Parent_id:_id });
         res.status(201).send({cats,data})
     } catch (err) {
         res.status(401).send(err)
     }
 })
+
 
 
 ProductRouter.get('/', async (req, res) => {

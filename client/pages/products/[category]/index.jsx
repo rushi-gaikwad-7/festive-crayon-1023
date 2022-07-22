@@ -71,7 +71,7 @@ const handleSort=(e)=>{
           <p>Shop For</p>
           {category.map((el, i) => {
             return (
-           <Link href={`products/${el.name}`}>
+           <Link href={`${query.category}/${el.name}`}>
               <div onClick={() => getCategoryS(el._id)} key={i}>
                 <Image
                   loader={myLoader}
