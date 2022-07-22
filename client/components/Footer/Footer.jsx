@@ -121,7 +121,14 @@ const Footer = () => {
 
       <div className={styles.copyright}>
 
-        
+        <div className={styles.talkToUs}>
+          <div className={styles.callLogo}>
+            <img src="https://vectorified.com/image/phone-call-vector-35.png" alt="noor" />
+          </div>
+        </div>
+        <div className={styles.helpCentre}></div>
+        <div className={styles.writeToUs}></div>
+        <div className={styles.socialNetwork}></div>
 
       </div>
     </div>
