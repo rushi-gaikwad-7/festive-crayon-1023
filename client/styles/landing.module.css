@@ -34,15 +34,18 @@ gap: 20px;
 .bycats{
     margin-top: 60px;
     border-bottom: 1px solid #ecedeb;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 .catcontain{
     display: flex;
-    gap: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 .catelem{
-width : 20%;
+    width: 15%;
 }
+
 .cattitle{
     margin: auto;
     width: 80%;
@@ -90,7 +93,7 @@ width : 20%;
     display: flex;
     gap: 20px;
 }
-.view ,.giftzone{
+.view ,.giftzone, .bgspotlight, .bgtrends{
     margin-top: 60px;
     padding-bottom: 50px;
     border-bottom: 1px solid #ecedeb;
@@ -100,6 +103,31 @@ width : 20%;
     padding-bottom: 50px;   
 }
 
+.slimain{
 
+    margin-top: 40px;
 
+    width: 100%;
+    margin-bottom: 80px;
+
+}
+.slimain>div{
+    margin:auto;
+}
+
+.blue{
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+    background-color: #303ab2;
+}
+.bluestrip{
+    color: #ffffff;
+    margin: 0;
+    font-size: 16px;
+    font-family: ProximaNova-Semibold,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-weight: 600;
+}
 
