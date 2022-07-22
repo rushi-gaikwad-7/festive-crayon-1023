@@ -79,9 +79,3 @@ export const NavDiv = styled.nav`
     }
   }
 `;
-
-export const LinkA = styled.a`
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-`;
