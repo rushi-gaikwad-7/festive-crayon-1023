@@ -1,9 +1,31 @@
-
-const {Router}=require("express");
+const {
+    Router
+} = require("express");
 const Category = require("../model/category");
 const Product = require("../model/products");
 
-const ProductRouter =Router();
+
+const ProductRouter = Router();
+
+ProductRouter.get('/:id', async (req, res) => {
+
+    const {id} = req.params;
+    try {
+        if (id == 'all') {
+            const [{_id}] = await Category.find({ name: "products" })
+           const cats = await Category.find({ Parent_id: _id });
+            res.status(201).send(cats)
+        } else {
+           const cats = await Category.find({   Parent_id:id  });
+            res.status(201).send(cats)
+        }
+        
+    } catch (err) {
+        res.status(401).send(err)
+    }
+
+})
+
 
 ProductRouter.get('/',async(req,res)=>{
 
@@ -29,9 +51,9 @@ ProductRouter.post('/new',async(req,res)=>{
         else{
             res.status(401).send({massage:"error occurred",err})
         } 
+
     })
 })
 
 
-
-module.exports=ProductRouter;
+module.exports = ProductRouter

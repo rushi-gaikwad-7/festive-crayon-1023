@@ -52,13 +52,19 @@ const index = () => {
   };
 
   const [category, setCategory] = useState([]);
-  const getCategoryS = async () => {
-    const res =await axios.get("http://localhost:8080/products")
+
+  const getCategoryS = async (_id) => {
+    const res =await axios.get(`http://localhost:8080/products/:${_id}`)
+
     
     setCategory(res.data)
   };
   useEffect(() => {
+
+    getCategoryS("all");
+
     getCategoryS();
+
   }, []);
   return (
     <div className={styles.mainDiv}>
@@ -70,7 +76,9 @@ const index = () => {
           <p>Shop For</p>
           {category.map((el, i) => {
             return (
-              <div onClick={()=>handleCats(el._id)} key={i}>
+
+              <div onClick={()=>getCategoryS(el._id)} key={i}>
+
                 <Image
                   loader={myLoader}
                   src={el.img}
@@ -102,7 +110,9 @@ const index = () => {
                         value={personName}
                         onChange={handleChange}
                         input={<OutlinedInput label="Tag" />}
-                        renderValue={(selected) => selected.join(", ")}
+
+                        renderValue={(selected) => selected.join(",")}
+
                         MenuProps={MenuProps}
                       >
                         {names.map((name) => (
@@ -122,9 +132,11 @@ const index = () => {
       </div>
       <div className={styles.productsDiv}>
         <div>
-          <p>92 product</p>
+
+          <p>92 Product</p>
           <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -132,9 +144,11 @@ const index = () => {
               label="Age"
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+
+              <MenuItem value={10}>New Arrivals</MenuItem>
+              <MenuItem value={20}>Price-Low to High</MenuItem>
+              <MenuItem value={30}>Price-High to Low</MenuItem>
+
             </Select>
           </FormControl>
         </div>

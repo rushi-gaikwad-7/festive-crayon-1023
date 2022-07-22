@@ -41,6 +41,11 @@ export default function Landing({ data }) {
   };
   return (
     <>
+      <div className={styles.blue}>
+        <h2 className={styles.bluestrip}>
+          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200
+        </h2>
+      </div>
       <div className={styles.mainland}>
         <Slider {...settings} className={styles.slimain}>
           {data.sliderimages.map((el) => {
@@ -69,23 +74,23 @@ export default function Landing({ data }) {
           />
         </div>
         <div>
-          <div className={styles.spotlight}>
+          <div className={styles.bgspotlight}>
             <h2 className={styles.landtitles}>{data.stylespot.title}</h2>
-            <div className={styles.spot}>
+            <div className={styles.bgspot}>
               {data.stylespot.spot.map((el) => {
                 return (
                   <Image
                     className={styles.imagespot}
                     loader={myLoader}
                     src={el}
-                    width={600}
-                    height={600}
+                    width={1232}
+                    height={485}
                   />
                 );
               })}
             </div>
           </div>
-          {data.shopage&&<div className={styles.budget}>
+          <div className={styles.budget}>
             <h2 className={styles.landtitles}>{data.shopage.title}</h2>
             <div className={styles.buds}>
               {data.shopage.imgs.map((el) => {
@@ -101,21 +106,19 @@ export default function Landing({ data }) {
                 );
               })}
             </div>
-          </div>}
-          {data.CustomerFav && (
-            <div className={styles.cusfav}>
-              <h2 className={styles.landtitles}>{data.CustomerFav.title}</h2>
-              <div>
-                <Image
-                  className={styles.cusimg}
-                  loader={myLoader}
-                  src={data.CustomerFav.url}
-                  width={1232}
-                  height={485}
-                />
-              </div>
+          </div>
+          <div className={styles.cusfav}>
+            <h2 className={styles.landtitles}>{data.CustomerFav.title}</h2>
+            <div>
+              <Image
+                className={styles.cusimg}
+                loader={myLoader}
+                src={data.CustomerFav.url}
+                width={1232}
+                height={485}
+              />
             </div>
-          )}
+          </div>
           <div className={styles.bycats}>
             <h2 className={styles.landtitles}>{data.shopbycat.title}</h2>
             <div className={styles.catcontain}>
@@ -152,20 +155,9 @@ export default function Landing({ data }) {
               })}
             </div>
           </div>
-         {data.youthstore&&<div className={styles.youthstore}>
-            <h2 className={styles.landtitles}>{data.youthstore.title}</h2>
-            <Image
-              className={styles.youthimg}
-              loader={myLoader}
-              src={data.youthstore.youth}
-              alt="budgetimgs"
-              width={1232}
-              height={485}
-            />
-          </div>}
-          <div className={styles.trends}>
+          <div className={styles.bgtrends}>
             <h2 className={styles.landtitles}>{data.trends.title}</h2>
-            <div className={styles.trendgrid}>
+            <div className={styles.bgtrendgrid}>
               {data.trends.trendimgs.map((el) => {
                 return (
                   <Image
@@ -173,30 +165,14 @@ export default function Landing({ data }) {
                     loader={myLoader}
                     src={el}
                     alt="trendimgs"
-                    width={600}
-                    height={600}
+                    width={1232}
+                    height={485}
                   />
                 );
               })}
             </div>
           </div>
-          {data.topstores&&<div className={styles.topstore}>
-            <h2 className={styles.landtitles}>{data.topstores.title}</h2>
-            <div className={styles.tops}>
-              {data.topstores.top.map((el) => {
-                return (
-                  <Image
-                    className={styles.storeimg}
-                    loader={myLoader}
-                    src={el}
-                    alt="topimgs"
-                    width={600}
-                    height={600}
-                  />
-                );
-              })}
-            </div>
-          </div>}
+
           <div className={styles.view}>
             <Image
               className={styles.viewimg}
@@ -240,25 +216,8 @@ export default function Landing({ data }) {
   );
 }
 
-// export async function getServerSideProps() {
-//   const res = await fetch(`http://localhost:8080/home/get/womens`);
-//   let data = await res.json();
-//   console.log(data);
-//   return { props: { data } };
-// }
-
-export async function getStaticPaths() {
-  const res = await fetch("http://localhost:8080/home/get");
-  const posts = await res.json();
-  const paths = posts.map((post) => ({
-    params: { gender: post.gender.toString() },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:8080/home/get/${params.gender}`);
-  const data = await res.json();
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:8080/home/get/boys`);
+  let data = await res.json();
   return { props: { data } };
 }
