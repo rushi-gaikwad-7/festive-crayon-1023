@@ -4,7 +4,7 @@ import Link from "next/link"
 const Cart = () => {
 
     return <>
-        <div id="container" style={{ border: "1px solid", display: "flex", width: "95%", margin: "auto",gap:"20px" }}>
+        <div id="container" style={{ border: "1px solid", display: "flex", width: "96%", margin: "auto",gap:"20px" }}>
 
             <div id="left" style={{ border: "1px solid red", width: "820px" }}>
                 <div id="left-inner-div" style={{ margin: "10px" }}>
