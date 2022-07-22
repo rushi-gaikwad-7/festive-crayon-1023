@@ -12,6 +12,10 @@ const Category = require("./model/category");
 const Product = require("./model/products");
 const authRouter = require("./routes/auth.route");
 
+require("dotenv").config();
+require("./config/database");
+
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));

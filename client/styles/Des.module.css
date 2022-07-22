@@ -1,0 +1,202 @@
+.descontain {
+  width: 80%;
+  margin: auto;
+}
+.destitle {
+  line-height: 18px;
+  font-size: 15px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.desmain {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  gap: 30px;
+}
+
+/* zoom effects */
+
+.zoomeffectcontainer {
+  float: left;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.desout {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.desout .deselem {
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.zoomeffectcontainer:hover .desout .deselem {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+.desimgs {
+  width: 65%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin: 0 auto;
+}
+
+.desout {
+  box-sizing: content-box;
+  cursor: zoom-in;
+  width: 100%;
+}
+.desparas {
+  width: 35%;
+  /* border: 1px solid red; */
+}
+.price {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.price > p {
+  margin: 0;
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 400;
+  line-height: 1.43;
+  color: grey;
+}
+.price > div {
+  display: flex;
+}
+.price > div > h2 {
+  font-size: 28px;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 550;
+  line-height: 30px;
+  padding-left: 2px;
+  margin-top: 0px;
+}
+
+.inclu {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inclu > p {
+  color: #303ab2;
+  padding: 0;
+  font-size: 14px;
+  text-align: left;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: normal;
+  text-transform: none;
+  text-decoration: underline;
+}
+.incluimg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 400;
+  line-height: 1.43;
+  color: grey;
+}
+.smallimg {
+  margin-top: 30px;
+  height: 50px;
+  width: 50px;
+  border: 2px solid #303ab2;
+  border-radius: 5px;
+  padding: 5px;
+}
+.smallimg > img {
+  width: 100%;
+  height: 100%;
+}
+.color {
+  margin-top: 10px;
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 400;
+  line-height: 1.43;
+  color: grey;
+}
+.color > span {
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 600;
+  line-height: 1.43;
+  color: black;
+}
+
+.size {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-between;
+  font-size: 14px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+.size > p:last-child {
+  text-decoration: underline;
+}
+.sizelist {
+  margin-top: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.sizelist > button {
+  cursor: pointer;
+  width: 15%;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background-color: white;
+  border-radius: 2px;
+  border: 3px solid #f0f0f9;
+}
+.sizelist > button:hover {
+  border: 3px solid #303ab2;
+}
+
+.addbasket {
+  margin-top: 20px;
+}
+.addbasket > button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 56px;
+  background-color: #303ab2;
+  color: white;
+  padding: 6px 16px;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 600;
+  line-height: 1.75;
+}
