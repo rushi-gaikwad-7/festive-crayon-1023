@@ -175,9 +175,7 @@ export default function Description({ data }) {
             <img src="https://i1.lmsin.net/website_images/static-pages/brand_exp/brand2images/icons/write-review.svg" />
             <div>What do you think about this product ?</div>
             <button>WRITE A REVIEW</button>
-            <div></div>
-
-          </div>
+            </div>
         </div>
       </div>
     </>
