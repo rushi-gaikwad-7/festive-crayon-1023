@@ -191,8 +191,8 @@
   margin-top: 20px;
 }
 
-.addbasket > button {
-
+.addbasket > button,
+.pin > button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -206,6 +206,7 @@
   font-weight: 600;
   line-height: 1.75;
 }
+
 
 .promotion {
   margin-top: 20px;
