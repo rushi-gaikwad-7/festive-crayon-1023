@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 
-// app.use("/home", homeRouter);
+app.use("/home", homeRouter);
 
 app.use("/products", ProductRouter);
 
