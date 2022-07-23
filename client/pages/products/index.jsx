@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from 'next/link'
+
 import axios from "axios";
 import styles from "../../styles/products.module.css";
-import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import filterdata from "./db.json";
 import { ProductsContainer } from "../../components/Products/ProductsContainer";
+import { Filters } from "../../components/Products/Filters";
+import { CategoryS } from "../../components/Products/CategoryS";
+
+let search = "Products";
+
+const ProductsPage = () => {
+  const [data, setData] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [filterS, SetFilter] = useState({});
+  const getCategoryS = async () => {
+    const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
+
+
 
 const filterData = filterdata.filterData;
 
@@ -45,83 +49,36 @@ const ProductsPage = () => {
   const getCategoryS = async (_id) => {
     const res = await axios.get(`http://localhost:8080/products/${_id}`, { params: { sort:filterS.sort } });
 
+
     setCategory(res.data.cats);
     setData(res.data.data);
   };
 
-const handleSort=(e)=>{
-  SetFilter({...filterS,Sort:e.target.value})
-}
+
+  const handleSort = (e) => {
+    SetFilter({ ...filterS, Sort: e.target.value });
+    getCategoryS()
+  };
+
+
 
 
   useEffect(() => {
     getCategoryS("products");
   }, []);
+ 
   return (
     <div className={styles.mainDiv}>
       <div>
         <div>
           <h1>You searched for “{search}”</h1>
         </div>
-
-        <div className={styles.categoryDiv}>
-          <p>Shop For</p>
-          {category.map((el, i) => {
-            return (
-           <Link href={`products/${el.name}`}>
-              <div onClick={() => getCategoryS(el._id)} key={i}>
-                <Image
-                  loader={myLoader}
-                  src={el.img}
-                  alt="Picture of the author"
-                  width={50}
-                  height={50}
-                />
-                <p>{el.name}</p>
-              </div>
-           </Link>
-            );
-          })}
-        </div>
+        <CategoryS category={category}  />
       </div>
-
-      <div className={styles.filterDiv}>
-        <div>
-          <div>
-            {filterData.map((el, i) => {
-              return (
-                <div key={i}>
-                  <div>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                      <InputLabel id="demo-multiple-checkbox-label">
-                        {el.title}
-                      </InputLabel>
-                      <Select
-                        labelId="demo-multiple-checkbox-label"
-                        id="demo-multiple-checkbox"
-                        multiple
-                        value={personName}
-                        onChange={handleChange}
-                        input={<OutlinedInput label={el.title} />}
-                        renderValue={(selected) => selected.join(", ")}
-                        MenuProps={MenuProps}
-                      >
-                        {el.subOption.map((name) => (
-                          <MenuItem key={name} value={name}>
-                            <Checkbox checked={personName.indexOf(name) > -1} />
-                            <ListItemText primary={name} />
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+      <Filters  />
+      <ProductsContainer data={data} sort={handleSort} />
         </div>
-      </div>
-      <ProductsContainer data={data}/>
+      </div>          
     </div>
   );
 };

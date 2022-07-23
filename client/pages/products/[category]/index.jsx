@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+
+import axios from "axios";
+import { useRouter } from 'next/router'
+import styles from "../../../styles/products.module.css";
+import { ProductsContainer } from "../../../components/Products/ProductsContainer";
+import { Filters } from "../../../components/Products/Filters";
+import { CategoryS } from "../../../components/Products/CategoryS";
+
 import Image from "next/image";
 import Link from 'next/link'
 import axios from "axios";
@@ -31,11 +39,20 @@ const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 
+
 const ProductsPage = () => {
 
   const {query} = useRouter()
 
   let search = query.category;
+
+  
+  const [data, setData] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [filterS,SetFilter]=useState({})
+  const getCategoryS = async () => {
+    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${filterS.Sort}`);
+
   const [personName, setPersonName] = React.useState([]);
   console.log(personName)
   const handleChange = (event) => {
@@ -49,6 +66,7 @@ const ProductsPage = () => {
   const [filterS,SetFilter]=useState({})
   const getCategoryS = async (_id) => {
     const res = await axios.get(`http://localhost:8080/products/${query.category}`);
+
     setCategory(res.data.cats);
     setData(res.data.data);
   };
@@ -58,75 +76,20 @@ const handleSort=(e)=>{
 }
 
   useEffect(() => {
-    getCategoryS("all");
-  }, []);
+    getCategoryS();
+  }, [query]);
   return (
     <div className={styles.mainDiv}>
+    <div>
       <div>
-        <div>
-          <h1>You searched for “{search}”</h1>
-        </div>
-
-        <div className={styles.categoryDiv}>
-          <p>Shop For</p>
-          {category.map((el, i) => {
-            return (
-           <Link href={`${query.category}/${el.name}`}>
-              <div onClick={() => getCategoryS(el._id)} key={i}>
-                <Image
-                  loader={myLoader}
-                  src={el.img}
-                  alt="Picture of the author"
-                  width={50}
-                  height={50}
-                />
-                <p>{el.name}</p>
-              </div>
-           </Link>
-            );
-          })}
-        </div>
+        <h1>You searched for “{search}”</h1>
       </div>
-
-      <div className={styles.filterDiv}>
-        <div>
-          <div>
-            {filterData.map((el, i) => {
-              return (
-                <div key={i}>
-                  <div>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                      <InputLabel id="demo-multiple-checkbox-label">
-                        {el.title}
-                      </InputLabel>
-                      <Select
-                        labelId="demo-multiple-checkbox-label"
-                        id="demo-multiple-checkbox"
-                        multiple
-                        value={personName}
-                        onChange={handleChange}
-                        input={<OutlinedInput label={el.title} />}
-                        renderValue={(selected) => selected.join(", ")}
-                        MenuProps={MenuProps}
-                      >
-                        {el.subOption.map((name) => (
-                          <MenuItem key={name} value={name}>
-                            <Checkbox checked={personName.indexOf(name) > -1} />
-                            <ListItemText primary={name} />
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <ProductsContainer data={data}/>
+      <CategoryS category={category} />
     </div>
-  );
+    <Filters />
+    <ProductsContainer data={data} />
+  </div>       
+  )
 };
 
 export default ProductsPage;

@@ -11,8 +11,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const { auth } = useSelector((state) => state);
-    console.log("auth: ", auth);
-
+    
     return (
         <nav className={styles.navDiv}>
             <Link href="/">
