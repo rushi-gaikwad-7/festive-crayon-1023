@@ -125,10 +125,38 @@ const Footer = () => {
           <div className={styles.callLogo}>
             <img src="https://vectorified.com/image/phone-call-vector-35.png" alt="noor" />
           </div>
+          <div className={styles.tts}>
+            <p>Talk to us</p>
+            <h4>1800-123-1444</h4>
+          </div>
         </div>
-        <div className={styles.helpCentre}></div>
-        <div className={styles.writeToUs}></div>
-        <div className={styles.socialNetwork}></div>
+        
+        <div className={styles.talkToUs}>
+          <div className={styles.callLogo}>
+            <img src="https://tse1.mm.bing.net/th?id=OIP.0rJsKZqSjyrTYaMJHNREXwHaHa&pid=Api&P=0" alt="noor" />
+          </div>
+          <div className={styles.tts}>
+            <p>Helpcentre</p>
+            <h4>help.maxfashion.com</h4>
+          </div>
+        </div>
+
+        <div className={styles.talkToUs}>
+          <div className={styles.callLogo}>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.uxi9u-9Dey1QUY21qCkslAHaFS&pid=Api&P=0" alt="noor" />
+          </div>
+          <div className={styles.tts}>
+            <p>Write to us</p>
+            <h4>help.in@maxfashion.com</h4>
+          </div>
+        </div>
+
+        
+        <div className={styles.socialNetwork}>
+          <div className={styles.fb}><img src="https://tse2.mm.bing.net/th?id=OIP.i60Qb5xgvBgPTy_fg8RMogHaNS&pid=Api&P=0" alt="fb" /></div>
+          <div className={styles.fb}><img src="https://tse3.mm.bing.net/th?id=OIP.8sCwTY2Uo02qXMFGn8g3xwHaGl&pid=Api&P=0" alt="twitter" /></div>
+          <div className={styles.fb}><img src="https://tse4.mm.bing.net/th?id=OIP.HiyfIgzWDDSZdUPj47g6EQHaHa&pid=Api&P=0" alt="insta" /></div>
+        </div>
 
       </div>
     </div>
