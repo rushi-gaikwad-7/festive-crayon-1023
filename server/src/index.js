@@ -2,12 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
 const dotenv = require("dotenv");
 
 const ProductRouter = require("./routes/Products.routes");
 
-const homeRouter = require("./routes/home.route");
+// const homeRouter = require("./routes/home.route");
 const Category = require("./model/category");
 const Product = require("./model/products");
 const authRouter = require("./routes/auth.route");
@@ -21,7 +20,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(session({ secret: "cats" }));
 app.use(cookieParser());
 dotenv.config();
 app.use(
@@ -41,7 +39,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 
-app.use("/home", homeRouter);
+// app.use("/home", homeRouter);
 
 app.use("/products", ProductRouter);
 

@@ -14,55 +14,52 @@ import Router, { useRouter } from "next/router";
 const theme = createTheme();
 
 const Login = () => {
-    const { auth } = useSelector((state) => state);
-    // console.log("auth: ", auth);
+  const { auth, alert } = useSelector((state) => state);
+  // console.log("auth: ", auth);
+  console.log("alert: ", alert);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    React.useEffect(() => {
-        if (auth.access_token) {
-            router.push("/");
-        }
-    }, [auth, router]);
+  React.useEffect(() => {
+    if (auth.access_token) {
+      router.push("/");
+    }
+  }, [auth, router]);
 
-    return (
-        <ThemeProvider theme={theme}>
-            <Container
-                component="main"
-                maxWidth="xs"
-                sx={{ minHeight: "100vh" }}
-            >
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <Avatar
-                        sx={{
-                            background: "#fff",
-                            width: "200px",
-                            height: "100px",
-                        }}
-                    >
-                        <Image
-                            src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png"
-                            loader={ImgLoader}
-                            alt="logo"
-                            layout="fill"
-                        />
-                    </Avatar>
-                    <Typography component="h1" variant="h4">
-                        Sign in
-                    </Typography>
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs" sx={{ minHeight: "100vh" }}>
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            sx={{
+              background: "#fff",
+              width: "200px",
+              height: "100px",
+            }}
+          >
+            <Image
+              src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png"
+              loader={ImgLoader}
+              alt="logo"
+              layout="fill"
+            />
+          </Avatar>
+          <Typography component="h1" variant="h4">
+            Sign in
+          </Typography>
 
-                    <LoginForm />
-                </Box>
-            </Container>
-        </ThemeProvider>
-    );
+          <LoginForm />
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
 };
 export default Login;
