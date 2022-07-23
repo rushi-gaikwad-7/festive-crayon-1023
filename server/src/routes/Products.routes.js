@@ -7,9 +7,9 @@ const Product = require("../model/products");
 
 const ProductRouter = Router();
 
+
 ProductRouter.get('/', async (req, res) => {
     const { category } = req.query;
-   console.log(req.query)
     try {
         const [{_id}] = await Category.find({ name:category })
         let id=_id.toString();

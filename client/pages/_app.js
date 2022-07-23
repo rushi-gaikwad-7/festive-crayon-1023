@@ -28,5 +28,7 @@ function MyApp({ Component, pageProps }) {
             </Provider>
         </>
     );
+
     }
+
 export default wrapper.withRedux(MyApp);

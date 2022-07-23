@@ -9,6 +9,8 @@ import { Product } from "../../components/Products/product";
 
 
 export const ProductsContainer = ({data,sort}) => {
+
+
   return (
     <div className={styles.mainDiv}>
       <div className={styles.productsDiv}>
