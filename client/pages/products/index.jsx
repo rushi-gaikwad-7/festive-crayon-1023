@@ -12,24 +12,31 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const [currentSort, setSort] = React.useState("");
+  const [Color, setColors] = React.useState([]);
 
   const handleSort = (event) => {
     setSort(event.target.value);
   };
 
+  const handleColors = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setColors(typeof value === "string" ? value.split(",") : value);
+  };
+
   const getCategoryS = async () => {
     const res = await axios.get(
-      `http://localhost:8080/products/?category=products&sortBy=${currentSort}`
+      `http://localhost:8080/products/?category=products&sortBy=${currentSort}&Color=${Color}`
     );
     setData(res.data.data);
     setCategory(res.data.cats);
   };
 
-  let search = "Products";
 
   useEffect(() => {
     getCategoryS();
-  }, [currentSort]);
+  }, [currentSort,Color]);
 
   return (
     <div className={styles.mainDiv}>
@@ -39,7 +46,7 @@ const ProductsPage = () => {
         </div>
         <CategoryS category={category} />
       </div>
-      <Filters />
+      <Filters handleColors={handleColors} Color={Color} />
       <ProductsContainer
         data={data}
         handleChange={handleSort}
