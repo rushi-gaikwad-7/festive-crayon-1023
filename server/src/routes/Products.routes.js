@@ -8,8 +8,8 @@ const Product = require("../model/products");
 const ProductRouter = Router();
 
 ProductRouter.get('/:category', async (req, res) => {
-    const { category  } = req.params;
-    console.log(category)
+    const { category,sortBy } = req.params;
+    console.log(req.params,req.header)
     try {
         const [{_id}] = await Category.find({ name:category })
         let id=_id.toString();

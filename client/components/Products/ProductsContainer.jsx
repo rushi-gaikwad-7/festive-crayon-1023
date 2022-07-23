@@ -8,12 +8,12 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 
 
-export const ProductsContainer = ({data}) => {
+export const ProductsContainer = ({data,sort}) => {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.productsDiv}>
         <div>
-          <p>92 Product</p>
+          <p>Total Products:{' '}{data.length}</p>
           <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-simple-select-label">Sort</InputLabel>
             <Select
@@ -21,7 +21,7 @@ export const ProductsContainer = ({data}) => {
               id="demo-simple-select"
               value=""
               label="Age"
-              onChange={(e) => handleSort(e)}
+              onChange={(e) => sort(e)}
             >
               <MenuItem value="random">New Arrivals</MenuItem>
               <MenuItem value="Low">Price-Low to High</MenuItem>

@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { refreshToken } from "../redux/action/auth.action";
 import Alert from "../components/alert/Alert";
 import "../interceptors/axios";
-import "bootstrap/dist/css/bootstrap.css";
 
 function MyApp({ Component, pageProps }) {
 
@@ -29,5 +28,5 @@ function MyApp({ Component, pageProps }) {
             </Provider>
         </>
     );
-
+    }
 export default wrapper.withRedux(MyApp);
