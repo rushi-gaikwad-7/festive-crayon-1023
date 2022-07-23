@@ -9,7 +9,6 @@ import { Product } from "../../components/Products/product";
 
 export const ProductsContainer = ({ data,currentSort,handleChange }) => {
  
-
   return (
     <div  className={styles.mainDiv}>
       <div className={styles.productsDiv}>

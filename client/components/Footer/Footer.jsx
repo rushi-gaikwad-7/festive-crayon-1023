@@ -4,6 +4,25 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <div className={styles.container}>
+
+      <div className={styles.uprD}>
+        <div className={styles.subscribe}>
+          <h4>Subscribe to our awesome emails.</h4>
+          <p>Get our latest offers and news straight in your inbox.</p>
+          <div className={styles.search}>
+            <input type="text" placeholder="Please enter an email address" />
+            <button>Subscribe</button>
+          </div>
+        </div>
+        <div className={styles.download}>
+         <h4>Download our apps</h4>
+          <p>Shop our products and offers on-the-go.</p>
+          <div className={styles.gpay}>
+            <img src="https://www.freepnglogos.com/uploads/app-store-logo-png/google-play-and-apple-app-store-logos-22.png" alt="gp" />
+          </div>
+        </div>
+      </div>
+
       <div className={styles.footerInfo}>
         <div className={styles.infoItems}>
           <p>Women</p>
@@ -117,6 +136,7 @@ const Footer = () => {
             Magazine
           </a>
         </div>
+
       </div>
 
       <div className={styles.copyright}>
@@ -158,6 +178,14 @@ const Footer = () => {
           <div className={styles.fb}><img src="https://tse4.mm.bing.net/th?id=OIP.HiyfIgzWDDSZdUPj47g6EQHaHa&pid=Api&P=0" alt="insta" /></div>
         </div>
 
+      </div>
+
+      <div className={styles.lowerLogo}>
+        <div className={styles.max}><img src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png?w=128&q=75" alt="max" /></div>
+        <div className={styles.cpy}>
+          <p>© 2022 Retail World Limited.</p>
+          <p>Terms & Conditions - Privacy Policy</p>
+        </div>
       </div>
     </div>
   );

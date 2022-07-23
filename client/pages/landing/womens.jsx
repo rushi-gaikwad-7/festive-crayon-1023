@@ -43,8 +43,7 @@ export default function Landing({ data }) {
     <>
       <div className={styles.blue}>
         <h2 className={styles.bluestrip}>
-          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200
-        </h2>
+          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200 </h2> <span></span>
       </div>
       <div className={styles.mainland}>
         <Slider {...settings} className={styles.slimain}>

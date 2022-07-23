@@ -119,6 +119,7 @@ width : 100%;
 }
 
 .blue {
+  margin-top: -45px;
   width: 100%;
   display: flex;
   padding: 10px 0;
@@ -133,4 +134,9 @@ width : 100%;
   font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   font-weight: 600;
+}
+.blue>span{
+  width: 16px;
+    height: 16px;
+    background: url(https://i1.lmsin.net/website_images/static-pages/brand_exp/brand2images/prod/Sprite_icons.svg) -28px -108px no-repeat;
 }

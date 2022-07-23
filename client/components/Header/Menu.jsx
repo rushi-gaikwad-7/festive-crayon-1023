@@ -7,7 +7,8 @@ import styles from "../../styles/navbar.module.css";
 import { useSelector } from "react-redux";
 
 const Menu = () => {
-    const { auth } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
+
 
     return (
         <div className={styles.navbarRegister}>
@@ -28,13 +29,14 @@ const Menu = () => {
                     <FiHeart />
                 </a>
             </Link>
-            <Link href={"#"}>
+            <Link href={"/Cart"}>
                 <a className={styles.link}>
                     <BsHandbag />
                 </a>
             </Link>
         </div>
     );
+
 };
 
 export default Menu;
