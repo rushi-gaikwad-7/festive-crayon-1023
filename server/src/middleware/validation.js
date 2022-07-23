@@ -96,9 +96,10 @@ const validateRegister = async (req, res, next) => {
     // ? email
     if (!email) {
         return res.status(400).json({ msg: "Please add your email." });
-    } else if (validateEmail(email)) {
-        return res.status(400).json({ msg: "Your email format is incorrect." });
     }
+    //  else if (validateEmail(email)) {
+    //     return res.status(400).json({ msg: "Your email format is incorrect." });
+    // }
 
     // ? password
     if (password.length < 6) {
@@ -114,7 +115,7 @@ const validateRegister = async (req, res, next) => {
     return re.test(phone);
 };
 
- const validateEmail = () => {
+ const validateEmail = (email) => {
     return String(email)
         .toLowerCase()
         .match(

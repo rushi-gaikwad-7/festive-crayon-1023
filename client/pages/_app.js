@@ -11,24 +11,23 @@ import Alert from "../components/alert/Alert";
 import "../interceptors/axios";
 
 function MyApp({ Component, pageProps }) {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshToken());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(refreshToken());
-    }, [dispatch]);
-
-    return (
-        <>
-            <Provider store={store}>
-                <Alert />
-                <Navbar />
-                <Component {...pageProps} />
-                <Footer />
-            </Provider>
-        </>
-    );
-
+  return (
+    <>
+      <Provider store={store}>
+        <Alert />
+        <Navbar />
+        <Component {...pageProps} />
+        <Footer />
+      </Provider>
+    </>
+  );
+}
     }
 
 export default wrapper.withRedux(MyApp);
