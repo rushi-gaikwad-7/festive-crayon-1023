@@ -8,9 +8,11 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 
 export const ProductsContainer = ({ data,currentSort,handleChange }) => {
+
  
   return (
-    <div  className={styles.mainDiv}>
+  
+     <div  className={styles.mainDiv}>
       <div className={styles.productsDiv}>
         <div>
           <h2>Total Products: {data.length}</h2>

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 5%;
     background-color: transparent;
-    position:relative;
+  
 }
 .productDiv{
     width: 90%;
@@ -14,11 +14,13 @@
     display: block;
 }
 .mainDiv:hover .hiddenDiv {
-    display:inline-block;
+    display: block;
     background-color: lightgray;
+    margin: auto;
 }
 .hiddenDiv{
-    width: 100%;
+    width: 80%;
+    margin: auto;
     display:none;
     margin-top: 10px;
     box-sizing: border-box;

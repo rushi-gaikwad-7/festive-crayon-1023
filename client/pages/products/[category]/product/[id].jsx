@@ -15,7 +15,6 @@ import axios from "axios";
 export default ProductPage;
 
 export const getServerSideProps = async (context) => {
-  console.log(context.query)
     let res = await axios.get(`http://localhost:8080/products/product/${context.query.id}`);
     let data = res.data;
     return {

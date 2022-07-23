@@ -6,8 +6,7 @@ import styles from "../../../styles/products.module.css";
 import { ProductsContainer } from "../../../components/Products/ProductsContainer";
 import { Filters } from "../../../components/Products/Filters";
 import { CategoryS } from "../../../components/Products/CategoryS";
-
-
+import {useSelector} from "react-redux"
 
 
 
@@ -17,6 +16,7 @@ const ProductsPage = () => {
 
   let search = query.category;
 
+  const {Range}=useSelector((state)=>state.ProductReducer)
   
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
@@ -25,7 +25,7 @@ const ProductsPage = () => {
   const [Size, setSizes] = React.useState([]);
 
   const getCategoryS = async () => {
-    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}`);
+    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
@@ -50,7 +50,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     getCategoryS();
-  }, [query,currentSort,Color,Size]);
+  }, [query,currentSort,Color,Size,Range]);
 
   return (
     <div className={styles.mainDiv}>
