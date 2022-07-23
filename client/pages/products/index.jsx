@@ -8,45 +8,50 @@ import { CategoryS } from "../../components/Products/CategoryS";
 
 let search = "Products";
 
- const ProductsPage = () => {
+const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
-  const [filterS, SetFilter] = useState({});
-  const getCategoryS = async () => {
-  const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
-     setData(res.data.data)
-     setCategory(res.data.cats)
-  }
+  const [currentSort, setSort] = React.useState("");
 
-let search = "Products";
-  const handleSort = (e) => {
-    SetFilter({ ...filterS, Sort: e.target.value });
-    getCategoryS()
+  const handleSort = (event) => {
+    setSort(event.target.value);
   };
 
+  const getCategoryS = async () => {
+    const res = await axios.get(
+      `http://localhost:8080/products/?category=products&sortBy=${currentSort}`
+    );
+    setData(res.data.data);
+    setCategory(res.data.cats);
+  };
+
+  let search = "Products";
+
   useEffect(() => {
-    getCategoryS("products");
-  }, []);
- 
+    getCategoryS();
+  }, [currentSort]);
+
   return (
     <div className={styles.mainDiv}>
       <div>
         <div>
           <h1>You searched for “{search}”</h1>
         </div>
-        <CategoryS category={category}  />
+        <CategoryS category={category} />
       </div>
-      <Filters  />
-      <ProductsContainer data={data} sort={handleSort} />
-        </div>
+      <Filters />
+      <ProductsContainer
+        data={data}
+        handleChange={handleSort}
+        currentSort={currentSort}
+      />
+    </div>
   );
 };
 
-export default ProductsPage
+export default ProductsPage;
 
 // export async function getServerSideProps(context) {
- 
-
 
 //   const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
 //   let data=res.data;
