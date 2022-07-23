@@ -1,5 +1,5 @@
 import styles from "../../styles/Payment.module.css";
-import {data} from "../../pages/Cart/data"
+import {data} from "../description/data"
 
 export default function Payment() {
   return (

@@ -1,7 +1,27 @@
 import styles from "../../styles/Cart.module.css";
-import { data } from "./data";
+import axios from "axios"
+import { useRouter } from 'next/router'
+// import { data } from "../description/data";
 
-export default function Cart() {
+export async function getServerSideProps(){
+  let res = await fetch("http://localhost:8080/home/cart")
+    let cart = await res.json()
+    console.log(cart)
+    return {
+      props : {cart},
+    }
+  }
+
+export default function Cart({cart}) {
+  console.log(cart[0].carts)
+  let data = cart[0].carts
+  let router  = useRouter()
+  let handledelete = async (id)=>{
+    console.log(id)
+    let res = await axios.delete(`http://localhost:8080/home/cart/${id}`)
+    router.push('/Cart')
+    console.log(res)
+  }
   return (
     <>
       <div className={styles.shop}>Your Shopping Basket</div>
@@ -46,7 +66,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className={styles.cartremove}>
-                  <button>Remove</button>
+                  <button onClick={()=>handledelete(el._id)}>Remove</button>
                   <button>Move to favourites</button>
                 </div>
               </div>
@@ -106,3 +126,4 @@ export default function Cart() {
     </>
   );
 }
+
