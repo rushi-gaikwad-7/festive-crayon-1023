@@ -45,11 +45,9 @@
     display: flex;
     justify-content: space-between;
     padding: 1% 5%;
-    border: 1px solid black;
 }
 .copyright > div {
     width: 22vw;
-    border: 1px solid red;
 }
 .callLogo {
     margin-top: 5px;
@@ -80,6 +78,22 @@
 }
 .tts > h4 {
     font-weight: 400;
+}
+
+.socialNetwork {
+    display: flex;
+}
+
+.fb {
+    margin-left: 10px;
+    margin-top: 12px;
+    width: 2.5vw;
+    height: 3.5vh;
+}
+
+.fb > img {
+    width: 40%;
+    height: 60%;
 }
 
 

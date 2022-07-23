@@ -152,7 +152,11 @@ const Footer = () => {
         </div>
 
         
-        <div className={styles.socialNetwork}></div>
+        <div className={styles.socialNetwork}>
+          <div className={styles.fb}><img src="https://tse2.mm.bing.net/th?id=OIP.i60Qb5xgvBgPTy_fg8RMogHaNS&pid=Api&P=0" alt="fb" /></div>
+          <div className={styles.fb}><img src="https://tse3.mm.bing.net/th?id=OIP.8sCwTY2Uo02qXMFGn8g3xwHaGl&pid=Api&P=0" alt="twitter" /></div>
+          <div className={styles.fb}><img src="https://tse4.mm.bing.net/th?id=OIP.HiyfIgzWDDSZdUPj47g6EQHaHa&pid=Api&P=0" alt="insta" /></div>
+        </div>
 
       </div>
     </div>
