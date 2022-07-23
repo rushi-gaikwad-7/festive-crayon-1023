@@ -1,34 +1,33 @@
+
+
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 import { useRouter } from 'next/router'
-import styles from "../../../styles/products.module.css";
-import { ProductsContainer } from "../../../components/Products/ProductsContainer";
-import { Filters } from "../../../components/Products/Filters";
-import { CategoryS } from "../../../components/Products/CategoryS";
+import styles from "../../../../styles/products.module.css";
 
-
-
+import { ProductsContainer } from "../../../../components/Products/ProductsContainer";
+import { Filters } from "../../../../components/Products/Filters";
+import { CategoryS } from "../../../../components/Products/CategoryS";
 
 
 const ProductsPage = () => {
 
   const {query} = useRouter()
-
-  let search = query.category;
-
-  
+  let search = query.subCategory;
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
+  const [filterS,SetFilter]=useState({})
   const [currentSort, setSort] = React.useState("");
   const [Color, setColors] = React.useState([]);
   const [Size, setSizes] = React.useState([]);
 
   const getCategoryS = async () => {
-    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}`);
+    const res = await axios.get(`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
+
 
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -47,11 +46,9 @@ const ProductsPage = () => {
     } = event;
     setSizes(typeof value === "string" ? value.split(",") : value);
   };
-
   useEffect(() => {
     getCategoryS();
   }, [query,currentSort,Color,Size]);
-
   return (
     <div className={styles.mainDiv}>
     <div>
@@ -64,8 +61,8 @@ const ProductsPage = () => {
     <ProductsContainer data={data}
         handleChange={handleSort}
         currentSort={currentSort} />
-  </div>       
-  )
+  </div>
+  );
 };
 
-export default ProductsPage
+export default ProductsPage;

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/you.module.css";
 import Image from "next/image";
+import axios from "axios";
 import Slider from "react-slick";
-export default function Youlike() {
+export default function Youlike({Type}) {
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
-  let [data, setdata] = useState([]);
+  let [data, setData] = useState([]);
+  
   useEffect(() => {
     let getData = async () => {
-      let res = await fetch("http://localhost:3004/des");
-      let data = await res.json();
-      setdata(data);
+      let res = await axios.get(`http://localhost:8080/products/Slider/${Type}`);
+      let Data = res.data;
+      setData(Data);
     };
     getData();
   }, []);
