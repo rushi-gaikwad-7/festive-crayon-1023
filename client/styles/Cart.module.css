@@ -1,29 +1,30 @@
 .shop {
-  width: 79%;
+  width: 80%;
   display: flex;
   margin: auto;
   font-size: 24px;
   font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   border-bottom: 1px solid #ecedeb;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
 }
 .len {
-  width: 79%;
+  width: 80%;
   display: flex;
   margin: auto;
-  margin-top: 5px;
+  margin-top: 10px;
   font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .cartcontainer {
   display: flex;
   width: 80%;
   margin: auto;
-  height: 500px;
+  height: auto;
   justify-content: space-between;
   font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
@@ -31,12 +32,10 @@
 
 .cartitem {
   width: 65%;
-  height: 500px;
 }
 
 .cartcontain {
   margin: auto;
-  width: 95%;
   margin-top: 5px;
   padding: 8px;
   border: 1px solid #ecedeb;
@@ -50,18 +49,17 @@
 
 .cartup {
   display: flex;
-  align-items: center;
 }
 
 .carttitle,
 .cartprice {
-  margin-top: -5px;
+  margin-top: 8px;
   font-weight: 600;
   font-size: 14px;
 }
 
 .cartcolor {
-  margin-top: -5px;
+  margin-top: 10px;
   color: #929391;
   font-weight: 400;
   font-size: 12px;
@@ -112,8 +110,8 @@
   background-color: white;
   color: #303ab2;
   font-weight: 600;
-  font-size: 13px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 5px;
 }
 .cartremove > button:first-child {
   border-right: 1px solid #ecedeb;
@@ -129,11 +127,11 @@
 
 .delivery {
   width: 30%;
-  height: 500px;
 }
 .delito {
   border: 1px solid #ecedeb;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   margin-bottom: 8px;
   padding: 18px 16px;
@@ -245,14 +243,17 @@
   width: 90%;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .pr {
+  padding-bottom: 5px;
   border-bottom: 1px solid #ecedeb;
 }
 
 .total {
   margin: auto;
   width: 90%;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   font-size: 18px;
@@ -272,6 +273,7 @@
   border-radius: 2px;
   text-transform: none;
   width: 90%;
+  margin-top: 10px;
 }
 .ship {
   margin: auto;
@@ -320,12 +322,14 @@
   background-color: #ffffff;
 }
 .para {
+  margin-top: 5px;
   color: #5d5e5c;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
 .learn {
+  margin-top: 5px;
   text-decoration: underline;
   color: #303ab2;
   cursor: pointer;
