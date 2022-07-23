@@ -15,8 +15,11 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.download}>
-        <h4>Download our apps</h4>
+         <h4>Download our apps</h4>
           <p>Shop our products and offers on-the-go.</p>
+          <div className={styles.gpay}>
+            <img src="https://www.freepnglogos.com/uploads/app-store-logo-png/google-play-and-apple-app-store-logos-22.png" alt="gp" />
+          </div>
         </div>
       </div>
 

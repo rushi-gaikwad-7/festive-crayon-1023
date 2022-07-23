@@ -2,16 +2,18 @@
     display:grid;
     grid-template-rows: repeat(1,1fr);
     justify-content: center;
+    padding-top: 4rem;
 }
 
 .uprD {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid rgb(223, 214, 214);
+    padding-bottom: 2rem;
 }
 
 .subscribe {
     width: 48vw;
-    border: 1px solid red;
 }
 
 .subscribe > h4 {
@@ -37,6 +39,15 @@
     height: 8vh;
     width: 25vw;
 }
+.gpay {
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.gpay >img {
+    width: 70%;
+}
 
 .search > button {
     height: 8vh;
@@ -44,12 +55,11 @@
     background-color: black;
     border-radius: 2px;
     color: white;
-    font-size: large;
+    font-size: larger;
 }
 
 .download {
-    width: 30vw;
-    border: 1px solid red;
+    width: 32vw;
 }
 
 .download > h4 {
