@@ -1,11 +1,9 @@
 import styles from "../../styles/Des.module.css";
 import Image from "next/image";
 import axios from "axios";
-import Youlike from "../../components/descom/Youlike"
-
+import Youlike from "../../components/descom/Youlike";
 
 export default function Description({ data }) {
-
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
@@ -154,7 +152,14 @@ export default function Description({ data }) {
           </div>
         </div>
       </div>
-      <Youlike/>
+      <div className={styles.youlike}>
+        <h2>You may also like</h2>
+        <Youlike />
+      </div>
+      <div className={styles.youlike}>
+        <h2>Customers Also Viewed</h2>
+        <Youlike />
+      </div>
       <div className={styles.reviews}>
         <div className={styles.re}>
           <div>Reviews</div>
