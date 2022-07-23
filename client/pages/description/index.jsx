@@ -176,7 +176,7 @@ export default function Description({ data }) {
 }
 
 export const getServerSideProps = async () => {
-  let res = await axios.get(" http://localhost:3004/des");
+let res = await axios.get("http://localhost:3004/des");
   let data = res.data;
   return {
     props: { data },
