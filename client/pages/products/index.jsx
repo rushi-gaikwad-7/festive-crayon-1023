@@ -11,10 +11,8 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const [filterS, SetFilter] = useState({});
-  const getCategoryS = async (_id) => {
-    const res = await axios.get(`http://localhost:8080/products/${_id}`,{
-      params:{sortBy:filterS.Sort},headers: {'X-Requested-With': 'XMLHttpRequest'}
-    });
+  const getCategoryS = async () => {
+    const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
