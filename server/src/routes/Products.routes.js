@@ -3,10 +3,7 @@ const {
 } = require("express");
 const Category = require("../model/category");
 const Product = require("../model/products");
-
-
 const ProductRouter = Router();
-
 
 ProductRouter.get('/', async (req, res) => {
     const {
