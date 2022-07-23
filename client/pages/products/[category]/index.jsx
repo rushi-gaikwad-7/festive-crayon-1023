@@ -20,22 +20,38 @@ const ProductsPage = () => {
   
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
-  const [filterS,SetFilter]=useState({})
-
+  const [currentSort, setSort] = React.useState("");
+  const [Color, setColors] = React.useState([]);
+  const [Size, setSizes] = React.useState([]);
 
   const getCategoryS = async () => {
-    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${filterS.Sort}`);
+    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
 
-const handleSort=(e)=>{
-  SetFilter({...filterS,Sort:e.target.value})
-}
+  const handleSort = (event) => {
+    setSort(event.target.value);
+  };
+
+  const handleColors = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setColors(typeof value === "string" ? value.split(",") : value);
+  };
+
+  const handleSizes = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSizes(typeof value === "string" ? value.split(",") : value);
+  };
 
   useEffect(() => {
     getCategoryS();
-  }, [query]);
+  }, [query,currentSort,Color,Size]);
+
   return (
     <div className={styles.mainDiv}>
     <div>
@@ -44,8 +60,10 @@ const handleSort=(e)=>{
       </div>
       <CategoryS category={category} />
     </div>
-    <Filters />
-    <ProductsContainer data={data} />
+    <Filters handleColors={handleColors} Color={Color} Size={Size} handleSizes={handleSizes} />
+    <ProductsContainer data={data}
+        handleChange={handleSort}
+        currentSort={currentSort} />
   </div>       
   )
 };
