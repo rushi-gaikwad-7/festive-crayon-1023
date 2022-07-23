@@ -13,7 +13,7 @@ ProductRouter.get('/', async (req, res) => {
         category,
         sortBy,
         Color,
-        Size
+        Size,MinPrice,MaxPrice
     } = req.query;
 
     let color = Color.split(',')
@@ -64,7 +64,7 @@ ProductRouter.get('/', async (req, res) => {
                 Sizes: {
                     $in: [...size]
                 }
-            }]
+            },{Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}]
         }).sort({
             ...sort
         })
@@ -85,6 +85,17 @@ ProductRouter.get('/product/:_id',async(req,res)=>{
     try{
     const data = await Product.findById(_id)
     res.status(201).send(data)
+    }
+    catch(e){
+        res.status(401).send(e)
+    }
+})
+
+ProductRouter.get('/products/Slider/:Type',async(req,res)=>{
+    const {Type}  = req.params;
+    try{
+     const data = await Product.find()
+     res.status(201).send(data)
     }
     catch(e){
         res.status(401).send(e)

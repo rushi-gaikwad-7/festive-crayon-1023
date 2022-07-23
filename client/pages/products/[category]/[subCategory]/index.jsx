@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 import { useRouter } from 'next/router'
-import styles from "../../../styles/products.module.css";
+import styles from "../../../../styles/products.module.css";
 
-import { ProductsContainer } from "../../../components/Products/ProductsContainer";
-import { Filters } from "../../../components/Products/Filters";
-import { CategoryS } from "../../../components/Products/CategoryS";
+import { ProductsContainer } from "../../../../components/Products/ProductsContainer";
+import { Filters } from "../../../../components/Products/Filters";
+import { CategoryS } from "../../../../components/Products/CategoryS";
 
 
 const ProductsPage = () => {

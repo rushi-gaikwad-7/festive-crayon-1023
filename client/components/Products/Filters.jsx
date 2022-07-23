@@ -9,6 +9,9 @@ import Checkbox from "@mui/material/Checkbox";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import styles from "../../styles/products.module.css";
+import { SetRange } from "../../redux/action/products.actions";
+import {useDispatch} from "react-redux"
+
 
 const Prices = [
   "₹ 0-₹ 499",
@@ -60,11 +63,15 @@ function valuetext(value) {
 
 export const Filters = ({ handleColors, handleSizes, Color, Size }) => {
  
-  const [value, setValue] = React.useState([0, 2000]);
+  const dispatch = useDispatch();
 
+  const [value, setValue] = React.useState([0, 2000]);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    dispatch(SetRange(value));
   };
+
 
   return (
     <div className={styles.filterDiv}>

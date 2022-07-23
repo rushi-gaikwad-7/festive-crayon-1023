@@ -161,11 +161,11 @@ console.log(data)
       </div>
       <div className={styles.youlike}>
         <h2>You may also like</h2>
-        <Youlike />
+        <Youlike Type={data.Type} />
       </div>
       <div className={styles.youlike}>
         <h2>Customers Also Viewed</h2>
-        <Youlike />
+        <Youlike Type={data.Type} />
       </div>
       <div className={styles.reviews}>
         <div className={styles.re}>
