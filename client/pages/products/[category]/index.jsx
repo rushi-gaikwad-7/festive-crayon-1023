@@ -7,20 +7,10 @@ import { ProductsContainer } from "../../../components/Products/ProductsContaine
 import { Filters } from "../../../components/Products/Filters";
 import { CategoryS } from "../../../components/Products/CategoryS";
 
-import Image from "next/image";
-import Link from 'next/link'
-import axios from "axios";
-import { useRouter } from 'next/router'
-import styles from "../../../styles/products.module.css";
-import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
+
+
 import filterdata from "../db.json";
-import { ProductsContainer } from "../../../components/Products/ProductsContainer";
+
 
 const filterData = filterdata.filterData;
 
@@ -92,4 +82,4 @@ const handleSort=(e)=>{
   )
 };
 
-export default ProductsPage;
+export default ProductsPage
