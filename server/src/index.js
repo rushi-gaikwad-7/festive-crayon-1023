@@ -6,9 +6,12 @@ const session = require("express-session");
 const dotenv = require("dotenv");
 
 const ProductRouter = require("./routes/Products.routes");
+
 const homeRouter = require("./routes/home.routes");
-const Category = require("./model/category");
+const Category = require('./model/category');
+const Product = require('./model/products');
 const authRouter = require("./routes/auth.route");
+
 
 require("dotenv").config();
 require("./config/database");
