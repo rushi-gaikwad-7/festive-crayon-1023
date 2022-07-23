@@ -119,6 +119,7 @@ width : 100%;
 }
 
 .blue {
+  margin-top: -45px;
   width: 100%;
   display: flex;
   padding: 10px 0;
