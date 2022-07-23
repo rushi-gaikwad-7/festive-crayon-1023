@@ -1,0 +1,47 @@
+.upper {
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgb(223, 214, 214);
+}
+.txt {
+    text-align: center;
+    padding-top: 4rem;
+}
+.txt > h1 {
+    font-size: 7vh;
+    font-weight:400
+}
+.txt > p {
+    padding-top: 0.5rem;
+    color: rgb(169, 165, 165);
+    font-size: 1.4vw;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.lifestyle {
+    padding-top: 1.5rem;
+}
+
+.lifestyle > img{
+    width: 107px;
+    height: 36px;
+}
+
+.max {
+    margin-left: 25px;
+    padding-top: 2rem;
+}
+.max > img {
+    width: 80px;
+}
+
+.homecentre {
+    padding-top: 2rem;
+    margin-left: 25px;
+}
+.homecentre .img {
+    width: 170px;
+}

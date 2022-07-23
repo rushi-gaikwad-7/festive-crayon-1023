@@ -1,30 +1,25 @@
+
+
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 import { useRouter } from 'next/router'
 import styles from "../../../styles/products.module.css";
+
 import { ProductsContainer } from "../../../components/Products/ProductsContainer";
 import { Filters } from "../../../components/Products/Filters";
 import { CategoryS } from "../../../components/Products/CategoryS";
 
 
-
-
-
 const ProductsPage = () => {
 
   const {query} = useRouter()
-
-  let search = query.category;
-
-  
+  let search = query.subCategory;
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const [filterS,SetFilter]=useState({})
-
-
   const getCategoryS = async () => {
-    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${filterS.Sort}`);
+    const res = await axios.get(`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${filterS.Sort}`);
     setCategory(res.data.cats);
     setData(res.data.data);
   };
@@ -32,7 +27,6 @@ const ProductsPage = () => {
 const handleSort=(e)=>{
   SetFilter({...filterS,Sort:e.target.value})
 }
-
   useEffect(() => {
     getCategoryS();
   }, [query]);
@@ -46,8 +40,8 @@ const handleSort=(e)=>{
     </div>
     <Filters />
     <ProductsContainer data={data} />
-  </div>       
-  )
+  </div>
+  );
 };
 
-export default ProductsPage
+export default ProductsPage;

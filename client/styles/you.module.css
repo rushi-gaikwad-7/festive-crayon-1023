@@ -1,0 +1,30 @@
+.you {
+  margin: auto;
+  width: 100%;
+}
+.slimain {
+  width: 100%;
+}
+.slider {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.pri > span {
+  padding-right: 5px;
+  font-size: 12px;
+}
+.pri {
+  font-size: 20px;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 22px;
+  font-weight: 500;
+}
+.Ti {
+  margin-top: 10px;
+  font-size: 13px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 400;
+}
