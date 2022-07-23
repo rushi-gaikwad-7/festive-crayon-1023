@@ -10,14 +10,17 @@ const Category = () => {
     const data = [
         {
             title: "Women",
+            link: "womens",
             cate: ["lips", "face", "eyes"],
         },
         {
             title: "Men",
+            link: "mens",
             cate: ["face brushes", "eyes brushes"],
         },
         {
             title: "Girls",
+            link: "girls",
             cate: [
                 "moisturizer",
                 "sunscreen",
@@ -29,6 +32,7 @@ const Category = () => {
         },
         {
             title: "Boys",
+            link: "boys",
             cate: [
                 "sugar merch station",
                 "makeup kits",
@@ -44,13 +48,18 @@ const Category = () => {
             {data.map((item) => {
                 return (
                     <>
-                        <div className={styles.link}>
-                            <Link href="#">{item.title}</Link>
+                        <div
+                            key={`${item.title}-${Math.random()}`}
+                            className={styles.link}
+                        >
+                            <Link href={`/landing/${item.link}`}>
+                                {item.title}
+                            </Link>
                             {/* <div>Hello</div> */}
                             <Box className={`${styles.dropdown}`}>
                                 {item.cate &&
                                     item.cate.map((sub) => (
-                                        <div>
+                                        <div key={`${Math.random()}-${sub}`}>
                                             <Link
                                                 key={`${sub}-${Math.random()}`}
                                                 href={`#`}

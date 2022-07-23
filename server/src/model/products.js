@@ -9,9 +9,8 @@ const productSchema= new Schema({
     Sizes:Array,
     Country:String,
     Category:Array,
-    Color:Array,
-    Status:String,
-    Stock:Number,
+    Color:String,
+    Type:String
 })
 
 const Product=model("Product",productSchema)

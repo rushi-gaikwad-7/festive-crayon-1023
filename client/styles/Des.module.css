@@ -63,7 +63,9 @@
 }
 .desparas {
   width: 35%;
+
   border-bottom: 1px solid #ecedeb;
+
 }
 .price {
   display: flex;
@@ -188,8 +190,9 @@
 .addbasket {
   margin-top: 20px;
 }
-.addbasket > button,
-.pin > button {
+
+.addbasket > button {
+
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -403,3 +406,4 @@
   font-weight: 400;
   line-height: 1.43;
 }
+

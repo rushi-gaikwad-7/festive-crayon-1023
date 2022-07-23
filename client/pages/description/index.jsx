@@ -1,9 +1,11 @@
 import styles from "../../styles/Des.module.css";
 import Image from "next/image";
 import axios from "axios";
+
 import Youlike from "../../components/descom/Youlike";
 
 export default function Description({ data }) {
+
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
@@ -13,7 +15,9 @@ export default function Description({ data }) {
         <div className={styles.destitle}>{data[1].Title}</div>
         <div className={styles.desmain}>
           <div className={styles.desimgs}>
+
             {data[1].Images.map((el) => {
+
               return (
                 <div className={styles.zoomeffectcontainer}>
                   <div className={styles.desout}>
@@ -50,7 +54,9 @@ export default function Description({ data }) {
               </div>
             </div>
             <div className={styles.smallimg}>
+
               <img src={data[1].Images[0]} />
+
             </div>
             <p className={styles.color}>
               Color: <span>{data[1].Color}</span>
@@ -67,6 +73,7 @@ export default function Description({ data }) {
             <div className={styles.addbasket}>
               <button>ADD TO BASKET</button>
             </div>
+
             <div className={styles.favshare}>
               <div>
                 <span></span>Add to Favourites
@@ -168,6 +175,8 @@ export default function Description({ data }) {
             <img src="https://i1.lmsin.net/website_images/static-pages/brand_exp/brand2images/icons/write-review.svg" />
             <div>What do you think about this product ?</div>
             <button>WRITE A REVIEW</button>
+            <div></div>
+
           </div>
         </div>
       </div>
@@ -177,6 +186,7 @@ export default function Description({ data }) {
 
 export const getServerSideProps = async () => {
 let res = await axios.get("http://localhost:3004/des");
+
   let data = res.data;
   return {
     props: { data },
