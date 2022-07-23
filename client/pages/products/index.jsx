@@ -8,13 +8,14 @@ import { CategoryS } from "../../components/Products/CategoryS";
 
 let search = "Products";
 
-export const ProductsPage = () => {
+ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   const [filterS, SetFilter] = useState({});
   const getCategoryS = async () => {
   const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
-
+     setData(res.data.data)
+     setCategory(res.data.cats)
   }
 
 let search = "Products";
@@ -41,4 +42,13 @@ let search = "Products";
   );
 };
 
+export default ProductsPage
 
+// export async function getServerSideProps(context) {
+ 
+
+
+//   const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
+//   let data=res.data;
+//   return { props: { data } };
+// }
