@@ -14,7 +14,7 @@ let getData = async ()=>{
     setdata(data)
 }
   getData()  },[])
-    console.log(data)
+  
     const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
         <img
           src={
