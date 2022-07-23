@@ -28,7 +28,7 @@ const Menu = () => {
                     <FiHeart />
                 </a>
             </Link>
-            <Link href={"#"}>
+            <Link href={"/Cart"}>
                 <a className={styles.link}>
                     <BsHandbag />
                 </a>

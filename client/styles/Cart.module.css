@@ -1,117 +1,334 @@
-
-.sidbx{
-    position: absolute;
-    right: -40px;
-    /* top: 140px; */
-    min-height: 50vh;
-    width: 37%;
-
-    /*border: 1px solid black;*/
+.shop {
+  width: 79%;
+  display: flex;
+  margin: auto;
+  font-size: 24px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  border-bottom: 1px solid #ecedeb;
+  padding-bottom: 15px;
 }
-.sidbx .inputBx{
-    position: relative;
-    min-height: 100px;
-    width: 90%;
-    padding: 0 20px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2)
-}
-.sidbx .inputBx:first-child button{
-    color: #ccc;
-    cursor: pointer;
-}
-.sidbx .inputBx:first-child button,
-.sidbx .inputBx input{
-    position: relative;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-    background: none;
-    border: 1px solid #cccc;
-}
-.sidbx .inputBx .imgBx{
-    position: relative;
-    height: 120px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*border: 1px solid black;*/
-}
-.sidbx .inputBx .imgBx img{
-    position: relative;
-    height: 90%;
-    width: 100%;
-    object-fit: cover;
-}
-.sidbx .inputBx .details{
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-.sidbx .inputBx .details h2{
-    position: relative;
-    font-size: 20px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.details button{
-    border: none;
-    font-size: 12px;
-    color: blue;
-    background-color: white;
-    font-weight: 600;
-    font-family: sans-serif;
-
-}
-.sidbx .inputBx .details p{
-    position: relative;
-    font-size: 15px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.len {
+  width: 79%;
+  display: flex;
+  margin: auto;
+  margin-top: 5px;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.sidbx .inputBx:last-child{
-    display: block;
+.cartcontainer {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  height: 500px;
+  justify-content: space-between;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
 }
-.sidbx .inputBx .in1{
-    position: relative;
-    height: auto;
-    width: 100%;
-    padding: 5px 0;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+
+.cartitem {
+  width: 65%;
+  height: 500px;
 }
-.sidbx .inputBx .in1:first-child{
-    border-bottom: 1px solid rgba(0,0,0,0.2)
+
+.cartcontain {
+  margin: auto;
+  width: 95%;
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ecedeb;
 }
-.sidbx .inputBx .in1 .in2{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    margin: 10px 0;
-    padding: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    /*border: 1px solid black;*/
+.cartimg {
+  padding-top: 10px;
 }
-.sidbx .inputBx .in1 .in2 span:last-child{
-    font-weight: 700;
+.cartimg > img {
+  height: 120px;
 }
-.sidbx .inputBx .in1 button{
-    position: relative;
-    margin: 5px 0;
-    border: none;
-    background: #1b00c9;
-    color: white;
-    padding: 15px 10px;
-    width: 100%;
+
+.cartup {
+  display: flex;
+  align-items: center;
+}
+
+.carttitle,
+.cartprice {
+  margin-top: -5px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cartcolor {
+  margin-top: -5px;
+  color: #929391;
+  font-weight: 400;
+  font-size: 12px;
+}
+.cartcolor > span {
+  color: #000000;
+}
+.cartdes {
+  margin-left: 10px;
+}
+
+.cartdate {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ecedeb;
+}
+
+.calen {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: url(https://www.maxfashion.in/static/icons/sprite-icons-v1.svg)
+    no-repeat -625px -110px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.cartdate > div > p {
+  color: #929391;
+  font-weight: 400;
+  font-size: 14px;
+}
+.days {
+  color: #000000;
+}
+
+.cartremove {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.cartremove > button {
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: none;
+  width: 100%;
+  background-color: white;
+  color: #303ab2;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px;
+}
+.cartremove > button:first-child {
+  border-right: 1px solid #ecedeb;
+}
+.qty {
+  cursor: pointer;
+  padding: 4px 8px;
+  background: #ecedeb;
+  border-radius: 2px;
+  border: none;
+}
+/* cart right side */
+
+.delivery {
+  width: 30%;
+  height: 500px;
+}
+.delito {
+  border: 1px solid #ecedeb;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+  padding: 18px 16px;
+  background-color: #fff;
+}
+.delito > p {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+.delito > input {
+  border: 1px solid #d3d3d3;
+  height: 40px;
+  outline: none;
+  font-size: 14px;
+  box-shadow: none;
+  font-family: ProximaNova-Regular, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  border-radius: 6px;
+  box-sizing: border-box;
+  align-items: center;
+  color: #000000;
+  cursor: text;
+  font-weight: 400;
+  line-height: 1.1876em;
+}
+.delito > button {
+  cursor: pointer;
+  opacity: 0.3;
+  color: #303ab2;
+  border: 1px solid #303ab2;
+  background: #ffffff;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: normal;
+  line-height: 1.75;
+}
+.offers {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ecedeb;
+  gap: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+}
+.offers > img {
+  height: 70px;
+}
+.apply {
+  box-sizing: border-box;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+.apply > div {
+  display: flex;
+  height: 28px;
+  line-height: 1.5;
+  justify-content: space-between;
+}
+.apply > div > p:first-child {
+  font-size: 15px;
+  font-weight: 600;
+}
+.apply > div > p:last-child {
+  color: #303ab2;
+  font-size: 14px;
+  font-weight: 600;
+}
+.apply > p {
+  font-size: 13px;
+  font-weight: 400;
+}
+.mrpdiv {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-top: 8px;
+  border: 1px solid #ecedeb;
+  padding-bottom: 15px;
+  background-color: #fff;
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+.to > p:first-child {
+  font-size: 13px;
+  font-weight: 400;
+}
+.to > p:last-child {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pr > p:first-child {
+  font-size: 13px;
+  font-weight: 400;
+}
+.pr > p:last-child {
+  font-size: 14px;
+  font-weight: 600;
+}
+.to,
+.pr {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.pr {
+  border-bottom: 1px solid #ecedeb;
+}
+
+.total {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+}
+.mrpdiv > button {
+  cursor: pointer;
+  margin: auto;
+  border: none;
+  color: #ffffff;
+  padding: 12px 28.8px;
+  font-size: 16px;
+  background: #303ab2;
+  text-align: center;
+  font-weight: 700;
+  /* line-height: 24px; */
+  border-radius: 2px;
+  text-transform: none;
+  width: 90%;
+}
+.ship {
+  margin: auto;
+  width: 90%;
+  border: 1px solid #ecedeb;
+  padding: 2px;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: left;
+  border-radius: 2px;
+  background-color: #efefef;
+  font-weight: 400;
+  line-height: 1.43;
+}
+.landmark {
+  margin-top: 8px;
+  border: 1px solid #ecedeb;
+  padding: 10px 18px;
+}
+.landmark > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.landmark > div > span {
+  width: 20px;
+  height: 21.2px;
+  display: inline-block;
+  background: url(https://www.maxfashion.in/static/icons/sprite-icons-v1.svg)
+    no-repeat -26px -153px;
+}
+.landmark > div > p {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.landmark > div > button {
+  color: #303ab2;
+  border: 1px solid #303ab2;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+  background-color: #ffffff;
+}
+.para {
+  color: #5d5e5c;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.learn {
+  text-decoration: underline;
+  color: #303ab2;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
 }
