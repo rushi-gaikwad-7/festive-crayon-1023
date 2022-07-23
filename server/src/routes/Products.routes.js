@@ -11,7 +11,8 @@ const ProductRouter = Router();
 ProductRouter.get('/', async (req, res) => {
     const { category,sortBy,Color } = req.query;
 
-    let color=Color.split(',')|| [];
+    let color=Color.split(',') || ["Red", "Black", "White", "Yellow", "Green", "Pink"];;
+
     let  sort={};
     if(sortBy=="Relevance"){
         sort[sortBy]=1;
@@ -25,7 +26,7 @@ ProductRouter.get('/', async (req, res) => {
     try {
         const [{_id}] = await Category.find({ name:category })
         let id=_id.toString();
-        const data = await Product.find({$and:[{Category:{$in:[id]}}]}).sort({...sort})
+        const data = await Product.find({$and:[{Category:{$in:[id]}},{Color:{$in:[...color]}}]}).sort({...sort})
         const cats = await Category.find({ Parent_id:_id });
         res.status(201).send({cats,data})
     } catch (err) {
