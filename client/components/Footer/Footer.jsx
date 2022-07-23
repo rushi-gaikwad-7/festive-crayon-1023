@@ -125,9 +125,33 @@ const Footer = () => {
           <div className={styles.callLogo}>
             <img src="https://vectorified.com/image/phone-call-vector-35.png" alt="noor" />
           </div>
+          <div className={styles.tts}>
+            <p>Talk to us</p>
+            <h4>1800-123-1444</h4>
+          </div>
         </div>
-        <div className={styles.helpCentre}></div>
-        <div className={styles.writeToUs}></div>
+        
+        <div className={styles.talkToUs}>
+          <div className={styles.callLogo}>
+            <img src="https://tse1.mm.bing.net/th?id=OIP.0rJsKZqSjyrTYaMJHNREXwHaHa&pid=Api&P=0" alt="noor" />
+          </div>
+          <div className={styles.tts}>
+            <p>Helpcentre</p>
+            <h4>help.maxfashion.com</h4>
+          </div>
+        </div>
+
+        <div className={styles.talkToUs}>
+          <div className={styles.callLogo}>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.uxi9u-9Dey1QUY21qCkslAHaFS&pid=Api&P=0" alt="noor" />
+          </div>
+          <div className={styles.tts}>
+            <p>Write to us</p>
+            <h4>help.in@maxfashion.com</h4>
+          </div>
+        </div>
+
+        
         <div className={styles.socialNetwork}></div>
 
       </div>
