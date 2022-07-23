@@ -8,45 +8,57 @@ import { CategoryS } from "../../components/Products/CategoryS";
 
 let search = "Products";
 
- const ProductsPage = () => {
+const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
-  const [filterS, SetFilter] = useState({});
-  const getCategoryS = async () => {
-  const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
-     setData(res.data.data)
-     setCategory(res.data.cats)
-  }
+  const [currentSort, setSort] = React.useState("");
+  const [Color, setColors] = React.useState([]);
 
-let search = "Products";
-  const handleSort = (e) => {
-    SetFilter({ ...filterS, Sort: e.target.value });
-    getCategoryS()
+  const handleSort = (event) => {
+    setSort(event.target.value);
   };
 
+  const handleColors = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setColors(typeof value === "string" ? value.split(",") : value);
+  };
+
+  const getCategoryS = async () => {
+    const res = await axios.get(
+      `http://localhost:8080/products/?category=products&sortBy=${currentSort}&Color=${Color}`
+    );
+    setData(res.data.data);
+    setCategory(res.data.cats);
+  };
+
+
   useEffect(() => {
-    getCategoryS("products");
-  }, []);
- 
+    getCategoryS();
+  }, [currentSort,Color]);
+
   return (
     <div className={styles.mainDiv}>
       <div>
         <div>
           <h1>You searched for “{search}”</h1>
         </div>
-        <CategoryS category={category}  />
+        <CategoryS category={category} />
       </div>
-      <Filters  />
-      <ProductsContainer data={data} sort={handleSort} />
-        </div>
+      <Filters handleColors={handleColors} Color={Color} />
+      <ProductsContainer
+        data={data}
+        handleChange={handleSort}
+        currentSort={currentSort}
+      />
+    </div>
   );
 };
 
-export default ProductsPage
+export default ProductsPage;
 
 // export async function getServerSideProps(context) {
- 
-
 
 //   const res = await axios.get(`http://localhost:8080/products/?category=products&sortBy=${filterS.Sort}`);
 //   let data=res.data;
