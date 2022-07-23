@@ -45,3 +45,46 @@
 .homecentre .img {
     width: 170px;
 }
+
+.lower {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(223, 214, 214);
+    padding-bottom: 6rem;
+}
+.box {
+    display: flex;
+    margin-left: 1.5vw;
+    margin-top: 3.5vh;
+    width: 34vw;
+    height: 14vh;
+    border: 1px solid rgb(237, 234, 234);
+}
+
+.box:hover {
+    background-color: rgb(237, 234, 234);
+  }
+  
+.icon {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    height: 6vh;
+    width: 3vw;
+}
+.icon > img {
+    width: 100%;
+    height: 100%;   
+}
+.abt {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.abt > p {
+    font-size:medium;
+    font-weight: 400;
+    color: rgb(158, 155, 155);
+}
+.abt > h3 {
+    font-weight: 500;
+}
