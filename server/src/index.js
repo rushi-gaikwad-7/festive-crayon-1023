@@ -3,8 +3,10 @@ const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const {connection} = require('mongoose')
 
 const ProductRouter = require("./routes/Products.routes");
+
 
 
 
@@ -77,5 +79,9 @@ app.use((err, req, res, next) => {
 require("./config/database");
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, async() => {
+    
+    await connection.on('connected',()=>{
+        console.log('connected to mongodb')
+    })
     console.log(`Server connected at http://localhost:${PORT}`);
 });

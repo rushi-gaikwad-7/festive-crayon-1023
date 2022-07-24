@@ -16,8 +16,7 @@ const ProductRouter = Router();
 
     let color=[];
     let size=[]
-    if (Color.length ===0) {
-
+    if (Color =='SelectColor') {
         color = [
             'Blue', 'Green',
             'Grey', 'Multicolour',
@@ -29,7 +28,7 @@ const ProductRouter = Router();
     else{
          color = Color.split(',')
     }
-    if(Size.length===0){
+    if(Size=='SelectSize'){
       size = [
         '28', '30', '32',
         '34', '38', '40',
