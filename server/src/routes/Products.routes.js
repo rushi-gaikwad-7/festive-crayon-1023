@@ -8,7 +8,7 @@ const ProductRouter = Router();
 
 ProductRouter.get('/', async (req, res) => {
     const {
-        category,
+        category,pageNo,limit,
         sortBy,
         Color,
         Size,MinPrice,MaxPrice
@@ -49,6 +49,7 @@ ProductRouter.get('/', async (req, res) => {
             name: category
         })
         let id = _id.toString();
+
         const data = await Product.find({
             $and: [{
                 Category: {
@@ -65,13 +66,13 @@ ProductRouter.get('/', async (req, res) => {
             },{Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}]
         }).sort({
             ...sort
-        })
+        }).limit(pageNo*limit)
         const cats = await Category.find({
             Parent_id: _id
         });
         res.status(201).send({
             cats,
-            data
+            data,
         })
     } catch (err) {
         res.status(401).send(err)

@@ -1,6 +1,7 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useRouter } from 'next/router'
+import LoadingButton from '@mui/lab/LoadingButton';
 import styles from "../../../../styles/products.module.css";
 import { ProductsContainer } from "../../../../components/Products/ProductsContainer";
 import { Filters } from "../../../../components/Products/Filters";
@@ -25,9 +26,9 @@ const ProductsPage = () => {
   const [currentSort, setSort] = React.useState("");
   const [Color, setColors] = React.useState([]);
   const [Size, setSizes] = React.useState([]);
+  const [currentPage,setPage]=useState(1)
 
-
-let url=`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}`
+let url=`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
 
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -46,6 +47,10 @@ let url=`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${
     } = event;
     setSizes(typeof value === "string" ? value.split(",") : value);
   };
+
+  const handlePage=()=>{
+    setPage(currentPage+1);
+  }
 
   useEffect(() => {
     dispatch(GetData(url));
@@ -77,6 +82,16 @@ let url=`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${
               handleChange={handleSort}
               currentSort={currentSort}
             />
+              <div  onMouseOver={()=>handlePage()} className={styles.Loading}>
+              <LoadingButton
+                loading
+                loadingIndicator="Loading…"
+                variant="contained"    
+                size="large"   
+              >
+                Fetch data
+              </LoadingButton>
+              </div>
           </>
         )}
       </>

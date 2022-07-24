@@ -66,4 +66,8 @@
 .btn{
     width: 50%;
 }
-
+.Loading{
+    width: 15%;
+    margin: auto;
+    margin-top: 5%;
+}

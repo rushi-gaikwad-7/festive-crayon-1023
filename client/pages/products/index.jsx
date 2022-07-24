@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/products.module.css";
 import { ProductsContainer } from "../../components/Products/ProductsContainer";
 import { Filters } from "../../components/Products/Filters";
@@ -6,6 +6,7 @@ import { CategoryS } from "../../components/Products/CategoryS";
 import { useDispatch, useSelector } from "react-redux";
 import { GetData } from "../../redux/action/products.actions";
 import Loading from "../../components/alert/Loading";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 let search = "Products";
 
@@ -21,7 +22,7 @@ const ProductsPage = () => {
   const [currentSort, setSort] = React.useState("");
   const [Color, setColors] = React.useState([]);
   const [Size, setSizes] = React.useState([]);
-
+  const [currentPage,setPage]=useState(1)
   const handleSort = (event) => {
     setSort(event.target.value);
   };
@@ -39,14 +40,16 @@ const ProductsPage = () => {
     } = event;
     setSizes(typeof value === "string" ? value.split(",") : value);
   };
+  const handlePage=()=>{
+    setPage(currentPage+1);
+  }
 
-  let url = `http://localhost:8080/products/?category=products&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}`;
+  let url = `http://localhost:8080/products/?category=products&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
 
   useEffect(() => {
     dispatch(GetData(url));
   }, [url]);
 
-  
   return (
     <div className={styles.mainDiv}>
       {isLoading ? (
@@ -74,6 +77,16 @@ const ProductsPage = () => {
                 handleChange={handleSort}
                 currentSort={currentSort}
               />
+              <div  onMouseOver={()=>handlePage()} className={styles.Loading}>
+              <LoadingButton
+                loading
+                loadingIndicator="Loading…"
+                variant="contained"    
+                size="large"   
+              >
+                Fetch data
+              </LoadingButton>
+              </div>
             </>
           )}
         </>
