@@ -1,7 +1,30 @@
 import styles from "../../styles/Cart.module.css";
-import { data } from "./data";
 
-export default function Cart() {
+import axios from "axios"
+import Link from "next/link"
+import { useRouter } from 'next/router'
+// import { data } from "../description/data";
+
+export async function getServerSideProps(){
+  let res = await fetch("http://localhost:8080/home/cart")
+    let cart = await res.json()
+    console.log(cart)
+    return {
+      props : {cart},
+    }
+  }
+
+export default function Cart({cart}) {
+  console.log(cart[0].carts)
+  let data = cart[0].carts
+  let router  = useRouter()
+  let handledelete = async (id)=>{
+    console.log(id)
+    let res = await axios.delete(`http://localhost:8080/home/cart/${id}`)
+    router.push('/Cart')
+    console.log(res)
+  }
+
   return (
     <>
       <div className={styles.shop}>Your Shopping Basket</div>
@@ -46,7 +69,9 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className={styles.cartremove}>
-                  <button>Remove</button>
+
+                  <button onClick={()=>handledelete(el._id)}>Remove</button>
+
                   <button>Move to favourites</button>
                 </div>
               </div>
@@ -84,7 +109,8 @@ export default function Cart() {
               <p>Total</p>
               <p>₹1298</p>
             </div>
-            <button>Checkout now</button>
+            <Link href={"/payment"}><button>Checkout now</button></Link>
+
             <div className={styles.ship}>
               Shipping charges might vary based on pincode delivery location
             </div>
@@ -106,3 +132,4 @@ export default function Cart() {
     </>
   );
 }
+

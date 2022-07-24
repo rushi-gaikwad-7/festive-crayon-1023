@@ -7,35 +7,34 @@ import { useSelector } from "react-redux";
 const Menu = () => {
   const { auth } = useSelector((state) => state);
 
-  //   let loggedInUser = JSON.parse(localStorage.getItem("user"));
-  //   console.log("loggedInUser: ", loggedInUser);
 
-  return (
-    <div className={styles.navbarRegister}>
-      <Link href={"#"}>
-        <a className={styles.link}>More</a>
-      </Link>
-      {!auth.access_token ? (
-        <Link href={"/login"}>
-          <a className={styles.link}>Sign Up/ Sign In</a>
-        </Link>
-      ) : (
-        <Link href={"/account"}>
-          <a className={styles.link}>{auth.user.firstName}</a>
-        </Link>
-      )}
-      {/* <Link href={"#"}>
+    return (
+        <div className={styles.navbarRegister}>
+            <Link href={"#"}>
+                <a className={styles.link}>More</a>
+            </Link>
+            {!auth.access_token ? (
+                <Link href={"/login"}>
+                    <a className={styles.link}>Sign Up/ Sign In</a>
+                </Link>
+            ) : (
+                <Link href={"/account"}>
+                    <a className={styles.link}>{auth.user.firstName}</a>
+                </Link>
+            )}
+            <Link href={"#"}>
                 <a className={styles.link}>
                     <FiHeart />
                 </a>
-            </Link> */}
-      <Link href={"/Cart"}>
-        <a className={styles.link}>
-          <BsHandbag />
-        </a>
-      </Link>
-    </div>
-  );
+            </Link>
+            <Link href={"/Cart"}>
+                <a className={styles.link}>
+                    <BsHandbag />
+                </a>
+            </Link>
+        </div>
+    );
+
 };
 
 export default Menu;
