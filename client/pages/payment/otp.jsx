@@ -4,15 +4,15 @@ import React from 'react';
 
 import { IoMdLock } from 'react-icons/io';
 import { MdOutlineSendToMobile } from 'react-icons/md';
-import styles from '../styles/otp.module.css';
-import { Link } from 'react-router-dom';
+import styles from '../../styles/otp.module.css';
+import  Link  from 'next/link';
 
 
 const Otp = () => {
   return (
     <div className={styles.containerOtp}>
       <div>
-        <h2>Welcome, AnupamKumar@45 </h2>
+        <h2>Welcome, Mayur@742 </h2>
         <h2>
           <IoMdLock />
           Let's keep your account secure
@@ -30,15 +30,15 @@ const Otp = () => {
         </div>
         <div className={styles.errorDiv}>
           <p>Didn't get a code ? </p>
-          <Link to="/">Send Again</Link>
+          <Link href="/payment/otp" >Send Again</Link>
         </div>
         <div className={styles.errorDiv}>
           <p>Wrong number ? </p>
 
-          <Link to="/">Update here</Link>
+          <Link href="/payment/otp">Update here</Link>
         </div>
         <div className={styles.verifybtn}>
-          <Link to="/payment/successful">
+          <Link href="/payment/successful">
           <button className={styles.verify}>Verify</button>
           </Link>
         
