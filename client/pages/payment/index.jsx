@@ -1,7 +1,5 @@
 import styles from "../../styles/Payment.module.css";
-
-
-
+import Link from 'next/link'
 export default function Payment({cart,total}) {
   console.log(cart[0].carts)
   let data = cart[0].carts
@@ -287,7 +285,9 @@ export default function Payment({cart,total}) {
                 </p>
               </div>
               <div>
-                <button id={styles.btnform}>Pay Now</button>
+                <Link href='/payment/otp'>
+                <button  id={styles.btnform}>Pay Now</button>
+                </Link>
               </div>
             </div>
 
