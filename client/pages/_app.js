@@ -10,7 +10,7 @@ import { refreshToken } from "../redux/action/auth.action";
 import "bootstrap/dist/css/bootstrap.css";
 import Alert from "../components/alert/Alert";
 import "../interceptors/axios";
-
+import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   const dispatch = useDispatch();
 
@@ -20,6 +20,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+     <Head>
+      <link rel="shortcut icon" href="https://image3.mouthshut.com/images/imagesp/925949557s.jpg" />
+     </Head>
       <Provider store={store}>
         <Alert />
         <Navbar />
