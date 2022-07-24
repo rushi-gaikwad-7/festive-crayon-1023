@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "../../styles/success.module.css";
 
+
 const success = () => {
   return (
     <div className={`${styles.mainSuccess}`}>

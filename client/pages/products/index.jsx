@@ -46,6 +46,7 @@ const ProductsPage = () => {
     dispatch(GetData(url));
   }, [url]);
 
+  
   return (
     <div className={styles.mainDiv}>
       {isLoading ? (
