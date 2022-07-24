@@ -3,6 +3,7 @@ import React from "react";
 import { BsHandbag } from "react-icons/bs";
 import styles from "../../styles/navbar.module.css";
 import { useSelector } from "react-redux";
+import { FiHeart } from "react-icons/fi";
 
 const Menu = () => {
   const { auth } = useSelector((state) => state);
@@ -22,9 +23,9 @@ const Menu = () => {
                     <a className={`${styles.link} ${styles.navLink}`}>{auth.user.firstName}</a>
                 </Link>
             )}
-            <Link href={"#"}>
+            <Link href='/wishlist'>
                 <a className={styles.link}>
-                    {/* <FiHeart /> */}
+                    <FiHeart />
                 </a>
             </Link>
 

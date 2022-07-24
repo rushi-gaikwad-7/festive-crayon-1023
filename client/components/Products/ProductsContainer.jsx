@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 
-export const ProductsContainer = ({ data,currentSort,handleChange }) => {
+export const ProductsContainer = ({ data,currentSort,handleChange ,wishList}) => {
 
  
   return (
@@ -16,7 +16,7 @@ export const ProductsContainer = ({ data,currentSort,handleChange }) => {
       <div className={styles.productsDiv}>
         <div>
           <h2>Total Products: {data.length}</h2>
-          <Box sx={{ minWidth: 220 }}>
+          {!wishList?<Box sx={{ minWidth: 220 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Sort</InputLabel>
               <Select
@@ -31,13 +31,13 @@ export const ProductsContainer = ({ data,currentSort,handleChange }) => {
                 <MenuItem value="Price -High To Low">Price -High To Low</MenuItem>
               </Select>
             </FormControl>
-          </Box>
+          </Box>:<></>}
         </div>
         <div className={styles.ProductContainer}>
           {data.map((el, i) => {
             return (
               <div key={i}>
-                <Product {...el} />
+                <Product  wishList={wishList}{...el} />
               </div>
             );
           })}

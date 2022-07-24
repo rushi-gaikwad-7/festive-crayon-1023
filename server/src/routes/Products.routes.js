@@ -3,6 +3,7 @@ const {
 } = require("express");
 const Category = require("../model/category");
 const Product = require("../model/products");
+const User = require("../model/user.model");
 const ProductRouter = Router();
 
 ProductRouter.get('/', async (req, res) => {
@@ -137,6 +138,23 @@ ProductRouter.post('/new', async (req, res) => {
 
     })
 })
+
+
+ProductRouter.post('/wishlist/:id',async (req,res)=>{
+    let {id} = req.params
+    console.log(id)
+    let pos = await User.findOneAndUpdate({firstName:"mayur"},{$push:{wishlist:id}})
+    res.send("ok")
+    })
+
+    ProductRouter.get("/wishlist",async (req,res)=>{
+        try{
+           let wishList = await User.aggregate([{$lookup:{from:"products",localField:"wishlist",foreignField:"_id",as:"wishlists"}}]).match({firstName:"mayur"})
+           res.send(wishList)
+        }catch(error){
+           res.send(error)
+        }
+     })
 
 
 module.exports = ProductRouter

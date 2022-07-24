@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios"
 
-export const Product = ({ Title, Price, Images, _id }) => {
+export const Product = ({ Title, Price, Images, _id ,wishList}) => {
 
   const addToCart=async(_id)=>{
     const res= await axios.post(`http://localhost:8080/home/post/${_id}`)
@@ -16,7 +16,7 @@ export const Product = ({ Title, Price, Images, _id }) => {
   }
 
   const addToWishList=async(_id)=>{
-    const res=await axios.post('/')
+    const res=await axios.post(`http://localhost:8080/products/wishlist/${_id}`)
   }
 
   const { asPath } = useRouter();
@@ -34,13 +34,13 @@ export const Product = ({ Title, Price, Images, _id }) => {
       <div className={styles.hiddenDiv}>
         <div>
           <Button onClick={()=>addToCart(_id)} variant="contained">ADD TO BASKET</Button>
-          <IconButton onClick={()=>addToWishList(_id)}
+         {!wishList? <IconButton onClick={()=>addToWishList(_id)}
             color="primary"
             size="large"
             aria-label="add to shopping cart"
           >
             <FavoriteIcon />
-          </IconButton>
+          </IconButton>:<></>}
         </div>
       </div>
     </div>

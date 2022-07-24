@@ -29,6 +29,8 @@ let pos = await User.findOneAndUpdate({firstName:"mayur"},{$push:{cart:id}})
 res.send("ok")
 })
 
+
+
 homeRouter.get("/cart",async (req,res)=>{
    try{
       let cart = await User.aggregate([{$lookup:{from:"products",localField:"cart",foreignField:"_id",as:"carts"}}]).match({firstName:"mayur"})
