@@ -6,8 +6,18 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import IconButton from "@mui/material/IconButton";
+import axios from "axios"
 
 export const Product = ({ Title, Price, Images, _id }) => {
+
+  const addToCart=async(_id)=>{
+    const res= await axios.post('/')
+  }
+  
+  const addToWishList=async(_id)=>{
+    const res=await axios.post('/')
+  }
+
   const { asPath } = useRouter();
   return (
     <div className={styles.mainDiv}>
@@ -22,8 +32,8 @@ export const Product = ({ Title, Price, Images, _id }) => {
       </Link>
       <div className={styles.hiddenDiv}>
         <div>
-          <Button variant="contained">ADD TO BASKET</Button>
-          <IconButton
+          <Button onClick={()=>addToCart(_id)} variant="contained">ADD TO BASKET</Button>
+          <IconButton onClick={()=>addToWishList(_id)}
             color="primary"
             size="large"
             aria-label="add to shopping cart"
