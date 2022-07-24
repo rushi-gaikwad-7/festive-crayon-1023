@@ -22,11 +22,11 @@ const Menu = () => {
                     <a className={styles.link}>{auth.user.firstName}</a>
                 </Link>
             )}
-            <Link href={"#"}>
+            {/* <Link href={"#"}>
                 <a className={styles.link}>
                     <FiHeart />
                 </a>
-            </Link>
+            </Link> */}
             <Link href={"/Cart"}>
                 <a className={styles.link}>
                     <BsHandbag />
