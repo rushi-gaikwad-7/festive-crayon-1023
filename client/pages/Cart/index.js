@@ -3,18 +3,20 @@ import styles from "../../styles/Cart.module.css";
 import axios from "axios"
 import Link from "next/link"
 import { useRouter } from 'next/router'
-// import { data } from "../description/data";
+
 
 export async function getServerSideProps(){
   let res = await fetch("http://localhost:8080/home/cart")
     let cart = await res.json()
-    console.log(cart)
+    let total = cart[0].carts.reduce((acc,el)=>{
+      return acc+el.Price
+    },0)
     return {
-      props : {cart},
+      props : {cart,total},
     }
   }
 
-export default function Cart({cart}) {
+export default function Cart({cart,total}) {
   console.log(cart[0].carts)
   let data = cart[0].carts
   let router  = useRouter()
@@ -99,7 +101,7 @@ export default function Cart({cart}) {
           <div className={styles.mrpdiv}>
             <div className={styles.to}>
               <p>Total MRP</p>
-              <p>₹1298</p>
+              <p>₹{total}</p>
             </div>
             <div className={styles.pr}>
               <p>Shipping charge</p>
@@ -107,7 +109,7 @@ export default function Cart({cart}) {
             </div>
             <div className={styles.total}>
               <p>Total</p>
-              <p>₹1298</p>
+              <p>₹{total}</p>
             </div>
             <Link href={"/payment"}><button>Checkout now</button></Link>
 

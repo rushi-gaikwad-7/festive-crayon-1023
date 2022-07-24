@@ -11,15 +11,15 @@ const Menu = () => {
     return (
         <div className={styles.navbarRegister}>
             <Link href={"#"}>
-                <a className={styles.link}>More</a>
+                <a className={`${styles.link} ${styles.navLink}`}>More</a>
             </Link>
             {!auth.access_token ? (
                 <Link href={"/login"}>
-                    <a className={styles.link}>Sign Up/ Sign In</a>
+                    <a className={`${styles.link} ${styles.navLink}`}>Sign Up/ Sign In</a>
                 </Link>
             ) : (
                 <Link href={"/account"}>
-                    <a className={styles.link}>{auth.user.firstName}</a>
+                    <a className={`${styles.link} ${styles.navLink}`}>{auth.user.firstName}</a>
                 </Link>
             )}
             <Link href={"#"}>
@@ -27,8 +27,10 @@ const Menu = () => {
                     {/* <FiHeart /> */}
                 </a>
             </Link>
+
+
             <Link href={"/Cart"}>
-                <a className={styles.link}>
+                <a className={`${styles.link} ${styles.navLink}`}>
                     <BsHandbag />
                 </a>
             </Link>
