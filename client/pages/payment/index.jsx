@@ -2,7 +2,7 @@ import styles from "../../styles/Payment.module.css";
 
 
 
-export default function Payment({cart}) {
+export default function Payment({cart,total}) {
   console.log(cart[0].carts)
   let data = cart[0].carts
 
@@ -340,7 +340,7 @@ export default function Payment({cart}) {
             </div>
             <div className={styles.pricy}>
               <p>Subtotal:</p>
-              <p id={styles.price}> ₹</p>
+              <p id={styles.price}> ₹{total}</p>
             </div>
             <div className={styles.pricy}>
               <p>Standard Ground Shipping:</p>
@@ -348,7 +348,7 @@ export default function Payment({cart}) {
             </div>
             <div className={styles.pricy}>
               <p>Total</p>
-              <p id={styles.total}> ₹</p>
+              <p id={styles.total}> ₹{total}</p>
             </div>
           </div>
           <div>
@@ -398,9 +398,11 @@ export default function Payment({cart}) {
 export async function getServerSideProps(){
   let res = await fetch("http://localhost:8080/home/cart")
     let cart = await res.json()
-    console.log(cart)
+    let total = cart[0].carts.reduce((acc,el)=>{
+      return acc+el.Price
+    },0)
     return {
-      props : {cart},
+      props : {cart,total},
     }
   }
 
