@@ -1,12 +1,17 @@
 import styles from "../../styles/Des.module.css";
 import Image from "next/image";
 import Youlike from "../../components/descom/Youlike";
-
+import axios from 'axios';
 export default function Description({data}) {
 
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
+
+  const addToCart=async(_id)=>{
+    const res= await axios.post(`http://localhost:8080/home/post/${_id}`)
+    
+  }
 
   return (
     <>
@@ -70,7 +75,7 @@ export default function Description({data}) {
               })}
             </div>
             <div className={styles.addbasket}>
-              <button>ADD TO BASKET</button>
+              <button onClick={()=>addToCart(data._id)}>ADD TO BASKET</button>
             </div>
 
             <div className={styles.favshare}>
