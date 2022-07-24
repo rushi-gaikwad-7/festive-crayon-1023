@@ -23,7 +23,7 @@ const Otp = () => {
           <MdOutlineSendToMobile style={{ fontSize: '60px' }} />
         </div>
         <div>
-          <h5>Enter the code we sent to (XXXXX9655)</h5>
+          <h5>Enter the Otp we sent to (XXXXX9655)</h5>
         </div>
         <div className={styles.inputotp}>
           <input type="password" placeholder="Enter four digit OTP" />
