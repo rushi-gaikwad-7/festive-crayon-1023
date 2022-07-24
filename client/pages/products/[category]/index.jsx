@@ -1,34 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import axios from "axios";
 import { useRouter } from 'next/router'
 import styles from "../../../styles/products.module.css";
 import { ProductsContainer } from "../../../components/Products/ProductsContainer";
 import { Filters } from "../../../components/Products/Filters";
 import { CategoryS } from "../../../components/Products/CategoryS";
-import {useSelector} from "react-redux"
+import {useSelector,useDispatch} from "react-redux"
+import { GetData } from "../../../redux/action/products.actions";
+import Loading from "../../../components/alert/Loading";
 
 
 
 const ProductsPage = () => {
 
   const {query} = useRouter()
-
+const dispatch=useDispatch();
   let search = query.category;
 
-  const {Range}=useSelector((state)=>state.ProductReducer)
+  const Range = useSelector((state) => state.ProductReducer.Range);
+
+  const { data, category, isLoading, isError } = useSelector(
+    (state) => state.ProductReducer.Data
+  );
   
-  const [data, setData] = useState([]);
-  const [category, setCategory] = useState([]);
+
   const [currentSort, setSort] = React.useState("");
   const [Color, setColors] = React.useState([]);
   const [Size, setSizes] = React.useState([]);
 
-  const getCategoryS = async () => {
-    const res = await axios.get(`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}`);
-    setCategory(res.data.cats);
-    setData(res.data.data);
-  };
+
+  let url=`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}`
 
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -49,21 +50,39 @@ const ProductsPage = () => {
   };
 
   useEffect(() => {
-    getCategoryS();
-  }, [query,currentSort,Color,Size,Range]);
-
+    dispatch(GetData(url));
+  }, [url]);
   return (
     <div className={styles.mainDiv}>
-    <div>
-      <div>
-        <h1>You searched for “{search}”</h1>
-      </div>
-      <CategoryS category={category} />
-    </div>
-    <Filters handleColors={handleColors} Color={Color} Size={Size} handleSizes={handleSizes} />
-    <ProductsContainer data={data}
-        handleChange={handleSort}
-        currentSort={currentSort} />
+    {isLoading ? (
+      <Loading />
+    ) : (
+      <>
+        {isError ? (
+          <div></div>
+        ) : (
+          <>
+            <div>
+              <div>
+                <h1>You searched for “{search}”</h1>
+              </div>
+              <CategoryS category={category} />
+            </div>
+            <Filters
+              handleColors={handleColors}
+              Color={Color}
+              Size={Size}
+              handleSizes={handleSizes}
+            />
+            <ProductsContainer
+              data={data}
+              handleChange={handleSort}
+              currentSort={currentSort}
+            />
+          </>
+        )}
+      </>
+    )}
   </div>       
   )
 };

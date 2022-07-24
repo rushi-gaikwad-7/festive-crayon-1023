@@ -16,7 +16,9 @@ export const CategoryS = ({category}) => {
 
   return (
     <div className={styles.categoryDiv}>
-    <p>Shop For</p>
+      { category.length>1 ?
+    <p>Shop For</p>:<></>
+      }
     {category.map((el, i) => {
       return (
      <Link key={i} href={`${asPath}/${el.name}`}>
