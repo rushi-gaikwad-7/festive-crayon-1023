@@ -20,8 +20,8 @@ const ProductsPage = () => {
   );
 
   const [currentSort, setSort] = React.useState("");
-  const [Color, setColors] = React.useState([]);
-  const [Size, setSizes] = React.useState([]);
+  const [Color, setColors] = React.useState(["all"]);
+  const [Size, setSizes] = React.useState(["all"]);
   const [currentPage,setPage]=useState(1)
   const handleSort = (event) => {
     setSort(event.target.value);
