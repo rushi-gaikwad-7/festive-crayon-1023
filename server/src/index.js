@@ -76,6 +76,6 @@ app.use((err, req, res, next) => {
 
 require("./config/database");
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+app.listen(PORT, async() => {
     console.log(`Server connected at http://localhost:${PORT}`);
 });

@@ -1,7 +1,8 @@
-const { default: mongoose } = require("mongoose");
+const {
+    default: mongoose
+} = require("mongoose");
 
-mongoose
-    .connect(process.env.MONGODB_URL, {
+mongoose.connect(process.env.MONGODB_URL, {
         dbName: process.env.DB_NAME,
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -11,7 +12,7 @@ mongoose
     })
     .catch((err) => console.log(err));
 
-mongoose.connection.on("connected", () => {
+ mongoose.connection.on("connected", () => {
     console.log("Mongoose connected to db");
 });
 
