@@ -48,9 +48,10 @@ export const register = (userRegister) => async (dispatch) => {
 
     const res = await axios.post("/auth/register", userRegister, {
       withCredentials: true,
-      
     });
-let data = res.data;
+
+    let data = res.data;
+
     localStorage.setItem("logged", "true");
 
     dispatch({
