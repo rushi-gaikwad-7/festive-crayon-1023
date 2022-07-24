@@ -16,7 +16,7 @@ export default function Description({data}) {
           <div className={styles.desimgs}>
 
             {data.Images.map((el,i) => {
-
+                if(i<4){
               return (
                 <div key={i} className={styles.zoomeffectcontainer}>
                   <div className={styles.desout}>
@@ -29,7 +29,7 @@ export default function Description({data}) {
                     />
                   </div>
                 </div>
-              );
+              );}
             })}
           </div>
 

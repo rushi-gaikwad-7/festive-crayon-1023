@@ -88,14 +88,15 @@ ProductRouter.get('/product/:_id',async(req,res)=>{
     }
 })
 
-ProductRouter.get('/products/Slider/:Type',async(req,res)=>{
+ProductRouter.get('/Slider/:Type',async(req,res)=>{
     const {Type}  = req.params;
+   
     try{
-     const data = await Product.find()
+     const data = await Product.find({Type})
      res.status(201).send(data)
     }
     catch(e){
-        res.status(401).send(e)
+        res.status(401).send("not found")
     }
 })
 
