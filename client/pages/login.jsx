@@ -8,23 +8,25 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import LoginForm from "../components/auth/LoginForm";
 import ImgLoader from "../utils/ImageLoader";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Router, { useRouter } from "next/router";
+import { refreshToken } from "../redux/action/auth.action";
 
 const theme = createTheme();
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const { auth, alert } = useSelector((state) => state);
-  // console.log("auth: ", auth);
-  console.log("alert: ", alert);
 
   const router = useRouter();
 
   React.useEffect(() => {
+    dispatch(refreshToken());
     if (auth.access_token) {
       router.push("/");
     }
-  }, [auth, router]);
+  }, [auth, router, dispatch]);
 
   return (
     <ThemeProvider theme={theme}>

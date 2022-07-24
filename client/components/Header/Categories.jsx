@@ -53,7 +53,7 @@ const Category = () => {
               <a className={`${styles.link} ${styles.navLink}`}>{item.title}</a>
             </Link>
             {/* <div>Hello</div> */}
-            <Box className={`${styles.dropdown}`}>
+            {/* <Box className={`${styles.dropdown}`}>
               {item.cate &&
                 item.cate.map((sub) => (
                   <div key={`${Math.random()}-${sub}`}>
@@ -66,7 +66,7 @@ const Category = () => {
                     </Link>
                   </div>
                 ))}
-            </Box>
+            </Box> */}
           </div>
           //   </>
         );
