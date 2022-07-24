@@ -7,7 +7,8 @@ let initState={
         category:[],
         isLoading:true,
         isError:false,
-    }
+    },
+    Search:{input:""},
 }
 
 const ProductReducer = (state = initState, {payload,type}) => {

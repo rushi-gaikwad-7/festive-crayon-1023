@@ -90,6 +90,19 @@ ProductRouter.get('/product/:_id',async(req,res)=>{
     }
 })
 
+ProductRouter.get('/search/:input',async(req,res)=>{
+   
+    const {input}  = req.params;
+    try{
+    const data = await Product.find();
+    console.log(data)
+    res.status(201).send(data)
+    }
+    catch(e){
+        res.status(401).send()
+    }
+})
+
 ProductRouter.get('/Slider/:Type',async(req,res)=>{
     const {Type}  = req.params;
    
@@ -143,7 +156,7 @@ ProductRouter.post('/new', async (req, res) => {
 
 ProductRouter.post('/wishlist/:id',async (req,res)=>{
     let {id} = req.params
-    console.log(id)
+ 
     let pos = await User.findOneAndUpdate({firstName:"mayur"},{$push:{wishlist:id}})
     res.send("ok")
     })
