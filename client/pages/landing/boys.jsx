@@ -1,7 +1,7 @@
 import styles from "../../styles/landing.module.css";
 import Image from "next/image";
 import Slider from "react-slick";
-
+import Link from "next/link";
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
@@ -51,6 +51,7 @@ export default function Landing({ data }) {
           {data.sliderimages.map((el) => {
             return (
               <div className={styles.slider}>
+                 <Link href='/products'>
                 <Image
                   className={styles.slimg}
                   loader={myLoader}
@@ -59,6 +60,7 @@ export default function Landing({ data }) {
                   width={1220}
                   height={460}
                 />
+                </Link>
               </div>
             );
           })}

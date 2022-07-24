@@ -9,59 +9,58 @@ import ImgLoader from "../utils/ImageLoader";
 import Image from "next/image";
 import RegisterForm from "../components/auth/RegisterForm";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { refreshToken } from "../redux/action/auth.action";
 
 const theme = createTheme();
 
 export default function Register() {
-    const { auth } = useSelector((state) => state);
-    // console.log("auth: ", auth);
+  const dispatch = useDispatch();
 
-    const router = useRouter();
+  const { auth } = useSelector((state) => state);
 
-    React.useEffect(() => {
-        if (auth.access_token) {
-            router.push("/");
-        }
-    }, [auth, router]);
+  const router = useRouter();
 
-    return (
-        <ThemeProvider theme={theme}>
-            <Container
-                component="main"
-                maxWidth="xs"
-                sx={{ minHeight: "100vh" }}
-            >
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 4,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <Avatar
-                        sx={{
-                            background: "#fff",
-                            width: "200px",
-                            height: "100px",
-                        }}
-                    >
-                        <Image
-                            src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png"
-                            loader={ImgLoader}
-                            alt="logo"
-                            layout="fill"
-                        />
-                    </Avatar>
-                    <Typography component="h1" variant="h4">
-                        Sign Up
-                    </Typography>
+  React.useEffect(() => {
+    dispatch(refreshToken());
+    if (auth.access_token) {
+      router.push("/");
+    }
+  }, [auth, router, dispatch]);
 
-                    <RegisterForm />
-                </Box>
-            </Container>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs" sx={{ minHeight: "100vh" }}>
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            sx={{
+              background: "#fff",
+              width: "200px",
+              height: "100px",
+            }}
+          >
+            <Image
+              src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png"
+              loader={ImgLoader}
+              alt="logo"
+              layout="fill"
+            />
+          </Avatar>
+          <Typography component="h1" variant="h4">
+            Sign Up
+          </Typography>
+
+          <RegisterForm />
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
 }

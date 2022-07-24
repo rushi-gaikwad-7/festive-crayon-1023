@@ -1,4 +1,5 @@
 import styles from "../../styles/Cart.module.css";
+
 import axios from "axios"
 import Link from "next/link"
 import { useRouter } from 'next/router'
@@ -23,6 +24,7 @@ export default function Cart({cart}) {
     router.push('/Cart')
     console.log(res)
   }
+
   return (
     <>
       <div className={styles.shop}>Your Shopping Basket</div>
@@ -67,7 +69,9 @@ export default function Cart({cart}) {
                   </div>
                 </div>
                 <div className={styles.cartremove}>
+
                   <button onClick={()=>handledelete(el._id)}>Remove</button>
+
                   <button>Move to favourites</button>
                 </div>
               </div>
@@ -106,6 +110,7 @@ export default function Cart({cart}) {
               <p>₹1298</p>
             </div>
             <Link href={"/payment"}><button>Checkout now</button></Link>
+
             <div className={styles.ship}>
               Shipping charges might vary based on pincode delivery location
             </div>

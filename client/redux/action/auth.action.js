@@ -50,6 +50,8 @@ export const register = (userRegister) => async (dispatch) => {
       withCredentials: true,
     });
 
+    let data = res.data;
+
     localStorage.setItem("logged", "true");
 
     dispatch({

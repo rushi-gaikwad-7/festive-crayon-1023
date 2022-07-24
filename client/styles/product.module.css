@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 5%;
     background-color: transparent;
-    position:relative;
+  
 }
 .productDiv{
     width: 90%;
@@ -14,11 +14,13 @@
     display: block;
 }
 .mainDiv:hover .hiddenDiv {
-    display:inline-block;
+    display: block;
     background-color: lightgray;
+    margin: auto;
 }
 .hiddenDiv{
-    width: 100%;
+    width: 80%;
+    margin: auto;
     display:none;
     margin-top: 10px;
     box-sizing: border-box;
@@ -33,9 +35,18 @@
 }
 
 #wishList>img{
-    width: 30px;
+    width: 25px;
+    text-align: right;
 }
-#wishList>img:hover{
-    width: 40px;
-    transition: width 100ms;
+#wishList{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 2%;
+}
+#wishList:hover{
+    width: 35px;
+    transition: width 300ms;
+    border-radius: 70px;
 }

@@ -7,6 +7,7 @@ import { store, wrapper } from "../redux/store";
 import { Provider, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { refreshToken } from "../redux/action/auth.action";
+import "bootstrap/dist/css/bootstrap.css";
 import Alert from "../components/alert/Alert";
 import "../interceptors/axios";
 
@@ -28,6 +29,6 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-    
+
 
 export default wrapper.withRedux(MyApp);

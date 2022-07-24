@@ -1,7 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { LinkA } from "./Navbar";
-import { FiSearch, FiHeart } from "react-icons/fi";
 import { BsHandbag } from "react-icons/bs";
 import styles from "../../styles/navbar.module.css";
 import { useSelector } from "react-redux";

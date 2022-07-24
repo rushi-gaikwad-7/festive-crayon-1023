@@ -8,13 +8,15 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 
 export const ProductsContainer = ({ data,currentSort,handleChange }) => {
+
  
   return (
-    <div className={styles.mainDiv}>
+  
+     <div  className={styles.mainDiv}>
       <div className={styles.productsDiv}>
         <div>
-          <p>Total Products: {data.length}</p>
-          <Box sx={{ minWidth: 120 }}>
+          <h2>Total Products: {data.length}</h2>
+          <Box sx={{ minWidth: 220 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Sort</InputLabel>
               <Select
