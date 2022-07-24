@@ -6,7 +6,7 @@ const Product = require("../model/products");
 const User = require("../model/user.model");
 const ProductRouter = Router();
 
-ProductRouter.get('/', async (req, res) => {
+  ProductRouter.get('/', async (req, res) => {
     const {
         category,pageNo,limit,
         sortBy,
@@ -14,9 +14,10 @@ ProductRouter.get('/', async (req, res) => {
         Size,MinPrice,MaxPrice
     } = req.query;
 
-    let color = Color.split(',')
-    let size = Size.split(',')
-    if (color[0] == '') {
+    let color=[];
+    let size=[]
+    if (Color.length ===0) {
+
         color = [
             'Blue', 'Green',
             'Grey', 'Multicolour',
@@ -25,13 +26,19 @@ ProductRouter.get('/', async (req, res) => {
             'Yellow'
         ]
     }
-    if(size[0]==''){
-     size = [
+    else{
+         color = Color.split(',')
+    }
+    if(Size.length===0){
+      size = [
         '28', '30', '32',
         '34', '38', '40',
         'L',  'M',  'S',
         'XL', 'XS', 'XXL'
       ];
+    }
+    else{
+         size = Size.split(',')
     }
     let sort = {};
     if (sortBy == "Relevance") {
@@ -55,7 +62,7 @@ ProductRouter.get('/', async (req, res) => {
                 Category: {
                     $in: [id]
                 }
-            }, {
+            },{
                 Color: {
                     $in: [...color]
                 }
@@ -78,6 +85,7 @@ ProductRouter.get('/', async (req, res) => {
         res.status(401).send(err)
     }
 })
+
 
 ProductRouter.get('/product/:_id',async(req,res)=>{
     const {_id}  = req.params;
