@@ -4,12 +4,14 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import Description from '../../../components/Products/SingleProduct';
 import axios from "axios";
+import Loading from '../../../components/alert/Loading';
 
  const ProductPage = ({data}) => {
   
   return (
      <div>
-   <Description data={data} />
+      {data?<Description data={data} />:<Loading/>
+      }
      </div>
   )
 }

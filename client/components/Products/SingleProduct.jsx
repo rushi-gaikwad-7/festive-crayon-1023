@@ -7,7 +7,6 @@ export default function Description({data}) {
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
-console.log(data)
 
   return (
     <>
@@ -16,10 +15,10 @@ console.log(data)
         <div className={styles.desmain}>
           <div className={styles.desimgs}>
 
-            {data.Images.map((el) => {
+            {data.Images.map((el,i) => {
 
               return (
-                <div className={styles.zoomeffectcontainer}>
+                <div key={i} className={styles.zoomeffectcontainer}>
                   <div className={styles.desout}>
                     <Image
                       className={styles.deselem}
