@@ -11,9 +11,10 @@ import axios from "axios"
 export const Product = ({ Title, Price, Images, _id }) => {
 
   const addToCart=async(_id)=>{
-    const res= await axios.post('/')
+    const res= await axios.post(`http://localhost:8080/home/post/${_id}`)
+    
   }
-  
+
   const addToWishList=async(_id)=>{
     const res=await axios.post('/')
   }

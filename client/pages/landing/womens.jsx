@@ -1,7 +1,7 @@
 import styles from "../../styles/landing.module.css";
 import Image from "next/image";
 import Slider from "react-slick";
-
+import Link from "next/link"
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
@@ -46,10 +46,12 @@ export default function Landing({ data }) {
           Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200 </h2> <span></span>
       </div>
       <div className={styles.mainland}>
+       
         <Slider {...settings} className={styles.slimain}>
           {data.sliderimages.map((el) => {
             return (
               <div className={styles.slider}>
+                 <Link href='/products'>
                 <Image
                   className={styles.slimg}
                   loader={myLoader}
@@ -58,11 +60,12 @@ export default function Landing({ data }) {
                   width={1220}
                   height={460}
                 />
+                </Link>
               </div>
             );
           })}
         </Slider>
-
+       
         <div className={styles.off}>
           <Image
             className={styles.imageoff}
