@@ -1,5 +1,6 @@
 import styles from "../../styles/Cart.module.css";
 import axios from "axios"
+import Link from "next/link"
 import { useRouter } from 'next/router'
 // import { data } from "../description/data";
 
@@ -104,7 +105,7 @@ export default function Cart({cart}) {
               <p>Total</p>
               <p>₹1298</p>
             </div>
-            <button>Checkout now</button>
+            <Link href={"/payment"}><button>Checkout now</button></Link>
             <div className={styles.ship}>
               Shipping charges might vary based on pincode delivery location
             </div>

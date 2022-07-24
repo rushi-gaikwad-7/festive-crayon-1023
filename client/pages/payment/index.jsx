@@ -1,7 +1,9 @@
 import styles from "../../styles/Payment.module.css";
-import {data} from "../description/data"
 
-export default function Payment() {
+
+export default function Payment({cart}) {
+  console.log(cart[0].carts)
+  let data = cart[0].carts
   return (
     <>
       <div id={styles.head}>
@@ -389,3 +391,12 @@ export default function Payment() {
     </>
   );
 }
+
+export async function getServerSideProps(){
+  let res = await fetch("http://localhost:8080/home/cart")
+    let cart = await res.json()
+    console.log(cart)
+    return {
+      props : {cart},
+    }
+  }
