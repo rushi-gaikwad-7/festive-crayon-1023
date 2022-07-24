@@ -10,7 +10,7 @@ A Collaborative project built by a team of 6 executed in 7 days.
 
 ## Demo  🎥
 
-- Deployed Link:- [Enjoy the Experience](https://verdant-kitten-680f9d.netlify.app/)
+- Deployed Link:- [Enjoy the Experience](https80f9d.netlify.app/)
 
 
 
