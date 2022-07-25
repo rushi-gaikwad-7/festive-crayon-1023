@@ -81,6 +81,8 @@ export const refreshToken = () => async (dispatch) => {
     const res = await getAPI("refresh_token");
     // console.log("res: ", res);
 
+    const data = res.data;
+
     dispatch({ type: AUTH, payload: res.data });
 
     dispatch({ type: ALERT, payload: {} });

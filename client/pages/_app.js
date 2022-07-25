@@ -20,9 +20,14 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-     <Head>
-      <link rel="shortcut icon" href="https://image3.mouthshut.com/images/imagesp/925949557s.jpg" />
-     </Head>
+      <Head>
+        <title>Online shopping at max</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          rel="shortcut icon"
+          href="https://image3.mouthshut.com/images/imagesp/925949557s.jpg"
+        />
+      </Head>
       <Provider store={store}>
         <Alert />
         <Navbar />
@@ -32,6 +37,5 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
 
 export default wrapper.withRedux(MyApp);

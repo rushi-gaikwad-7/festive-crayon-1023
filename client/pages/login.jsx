@@ -11,6 +11,7 @@ import ImgLoader from "../utils/ImageLoader";
 import { useSelector, useDispatch } from "react-redux";
 import Router, { useRouter } from "next/router";
 import { refreshToken } from "../redux/action/auth.action";
+import Head from "next/head";
 
 const theme = createTheme();
 
@@ -30,6 +31,10 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Max fashion- login</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Container component="main" maxWidth="xs" sx={{ minHeight: "100vh" }}>
         <CssBaseline />
         <Box
