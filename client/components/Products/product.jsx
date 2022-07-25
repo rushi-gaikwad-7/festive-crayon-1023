@@ -11,12 +11,12 @@ import axios from "axios"
 export const Product = ({ Title, Price, Images, _id ,wishList}) => {
 
   const addToCart=async(_id)=>{
-    const res= await axios.post(`http://localhost:8080/home/post/${_id}`)
+    const res= await axios.post(`/home/post/${_id}`)
     
   }
 
   const addToWishList=async(_id)=>{
-    const res=await axios.post(`http://localhost:8080/products/wishlist/${_id}`)
+    const res=await axios.post(`/products/wishlist/${_id}`)
   }
 
   const { asPath } = useRouter();

@@ -3,7 +3,7 @@ import {data} from "../description/data"
 
 export default function Prod(){
     let handlecart = async (id)=>{
-        let res = await axios.post(`http://localhost:8080/home/post/${id}`)
+        let res = await axios.post(`/home/post/${id}`)
         console.log(res.data)
     }
     return (

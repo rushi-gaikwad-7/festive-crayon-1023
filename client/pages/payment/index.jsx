@@ -1,8 +1,9 @@
 import styles from "../../styles/Payment.module.css";
-import Link from 'next/link'
-export default function Payment({cart,total}) {
-  console.log(cart[0].carts)
-  let data = cart[0].carts
+import Link from "next/link";
+import axios from "axios";
+export default function Payment({ cart, total }) {
+  console.log(cart[0].carts);
+  let data = cart[0].carts;
 
   return (
     <>
@@ -285,8 +286,8 @@ export default function Payment({cart,total}) {
                 </p>
               </div>
               <div>
-                <Link href='/payment/otp'>
-                <button  id={styles.btnform}>Pay Now</button>
+                <Link href="/payment/otp">
+                  <button id={styles.btnform}>Pay Now</button>
                 </Link>
               </div>
             </div>
@@ -324,19 +325,26 @@ export default function Payment({cart,total}) {
               <p>Your order summary</p>
             </div>
             <div className={styles.ordercon}>
-            {data.map((el)=>{
-                return <div className={styles.orderel}>
+              {data.map((el) => {
+                return (
+                  <div className={styles.orderel}>
                     <div className={styles.orderimg}>
-                    <img src={el.Images[0]}/>
+                      <img src={el.Images[0]} />
                     </div>
                     <div className={styles.orderdes}>
-                        <p>MAX</p>
-                        <p className={styles.ordertitle}>{el.Title}</p>
-                        <div><p>Qty:1</p><p>Price : <span className={styles.ru}> ₹ {el.Price}</span></p></div>
+                      <p>MAX</p>
+                      <p className={styles.ordertitle}>{el.Title}</p>
+                      <div>
+                        <p>Qty:1</p>
+                        <p>
+                          Price :{" "}
+                          <span className={styles.ru}> ₹ {el.Price}</span>
+                        </p>
+                      </div>
                     </div>
-                </div>
-
-            })}
+                  </div>
+                );
+              })}
             </div>
             <div className={styles.pricy}>
               <p>Subtotal:</p>
@@ -387,7 +395,6 @@ export default function Payment({cart,total}) {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -395,14 +402,13 @@ export default function Payment({cart,total}) {
   );
 }
 
-export async function getServerSideProps(){
-  let res = await fetch("http://localhost:8080/home/cart")
-    let cart = await res.json()
-    let total = cart[0].carts.reduce((acc,el)=>{
-      return acc+el.Price
-    },0)
-    return {
-      props : {cart,total},
-    }
-  }
-
+export async function getServerSideProps() {
+  let res = await axios.get("/home/cart");
+  let cart = await res.data;
+  let total = cart[0].carts.reduce((acc, el) => {
+    return acc + el.Price;
+  }, 0);
+  return {
+    props: { cart, total },
+  };
+}

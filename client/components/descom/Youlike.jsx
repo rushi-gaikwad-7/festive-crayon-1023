@@ -11,7 +11,7 @@ export default function Youlike({Type}) {
   
   useEffect(() => {
     let getData = async () => {
-      let res = await axios.get(`http://localhost:8080/products/Slider/${Type}`);
+      let res = await axios.get(`/products/Slider/${Type}`);
       let Data = res.data;
       console.log(Data)
       setData(Data);

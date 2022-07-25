@@ -8,6 +8,7 @@ import { Filters } from "../../../../components/Products/Filters";
 import { CategoryS } from "../../../../components/Products/CategoryS";
 import {useSelector,useDispatch} from "react-redux"
 import { GetData } from "../../../../redux/action/products.actions";
+import axios from "axios";
 
 const ProductsPage = () => {
 
@@ -28,7 +29,7 @@ const ProductsPage = () => {
   const [Size, setSizes] = React.useState([]);
   const [currentPage,setPage]=useState(1)
 
-let url=`http://localhost:8080/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
+let url=`/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
 
   const handleSort = (event) => {
     setSort(event.target.value);

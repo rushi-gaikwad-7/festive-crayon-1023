@@ -91,7 +91,7 @@ export default SearchPage;
 export const getServerSideProps = async (context) => {
   
     try{
-        let res = await axios.get(`http://localhost:8080/products/search/${context.query.input}`);
+        let res = await axios.get(`/products/search/${context.query.input}`);
     let data = res.data;
     return {
         props: {data},

@@ -1,31 +1,39 @@
 import styles from "../../styles/Cart.module.css";
+import * as React from "react";
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
-import axios from "axios"
-import Link from "next/link"
-import { useRouter } from 'next/router'
+export async function getServerSideProps() {
+  let res = await axios.get("/home/cart");
+  let cart = await res.data;
+  let total = cart[0].carts.reduce((acc, el) => {
+    return acc + el.Price;
+  }, 0);
+  return {
+    props: { cart, total },
+  };
+}
 
+export default function Cart({ cart, total }) {
+  const { auth } = useSelector((state) => state);
 
-export async function getServerSideProps(){
-  let res = await fetch("http://localhost:8080/home/cart")
-    let cart = await res.json()
-    let total = cart[0].carts.reduce((acc,el)=>{
-      return acc+el.Price
-    },0)
-    return {
-      props : {cart,total},
+  console.log(cart[0].carts);
+  let data = cart[0].carts;
+  let router = useRouter();
+  let handledelete = async (id) => {
+    console.log(id);
+    let res = await axios.delete(`/home/cart/${id}`);
+    router.push("/Cart");
+    console.log(res);
+  };
+
+  React.useEffect(() => {
+    if (!auth.access_token) {
+      router.push("/login");
     }
-  }
-
-export default function Cart({cart,total}) {
-  console.log(cart[0].carts)
-  let data = cart[0].carts
-  let router  = useRouter()
-  let handledelete = async (id)=>{
-    console.log(id)
-    let res = await axios.delete(`http://localhost:8080/home/cart/${id}`)
-    router.push('/Cart')
-    console.log(res)
-  }
+  }, [router]);
 
   return (
     <>
@@ -71,8 +79,7 @@ export default function Cart({cart,total}) {
                   </div>
                 </div>
                 <div className={styles.cartremove}>
-
-                  <button onClick={()=>handledelete(el._id)}>Remove</button>
+                  <button onClick={() => handledelete(el._id)}>Remove</button>
 
                   <button>Move to favourites</button>
                 </div>
@@ -111,7 +118,9 @@ export default function Cart({cart,total}) {
               <p>Total</p>
               <p>₹{total}</p>
             </div>
-            <Link href={"/payment"}><button>Checkout now</button></Link>
+            <Link href={"/payment"}>
+              <button>Checkout now</button>
+            </Link>
 
             <div className={styles.ship}>
               Shipping charges might vary based on pincode delivery location
@@ -134,4 +143,3 @@ export default function Cart({cart,total}) {
     </>
   );
 }
-

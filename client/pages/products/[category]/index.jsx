@@ -29,7 +29,7 @@ const dispatch=useDispatch();
   const [Size, setSizes] = React.useState([]);
   const [currentPage,setPage]=useState(1)
 
-  let url=`http://localhost:8080/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
+  let url=`/products/?category=${query.category}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
 
   const handleSort = (event) => {
     setSort(event.target.value);

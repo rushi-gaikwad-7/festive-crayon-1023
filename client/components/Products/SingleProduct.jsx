@@ -9,7 +9,7 @@ export default function Description({data}) {
   };
 
   const addToCart=async(_id)=>{
-    const res= await axios.post(`http://localhost:8080/home/post/${_id}`)
+    const res= await axios.post(`/home/post/${_id}`)
     
   }
 

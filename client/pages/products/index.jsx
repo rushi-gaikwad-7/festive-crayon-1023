@@ -44,7 +44,7 @@ const ProductsPage = () => {
     setPage(currentPage+1);
   }
 
-  let url = `http://localhost:8080/products/?category=products&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
+  let url = `/products/?category=products&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
 
   useEffect(() => {
     dispatch(GetData(url));

@@ -1,7 +1,9 @@
 import styles from "../../styles/landing.module.css";
 import Image from "next/image";
 import Slider from "react-slick";
-import Link from "next/link"
+import Link from "next/link";
+import axios from "axios";
+
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
@@ -43,29 +45,30 @@ export default function Landing({ data }) {
     <>
       <div className={styles.blue}>
         <h2 className={styles.bluestrip}>
-          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200 </h2> <span></span>
+          Free shipping on ALL orders + Flat ₹200 off on ₹1999. Code: MAX200{" "}
+        </h2>{" "}
+        <span></span>
       </div>
       <div className={styles.mainland}>
-       
         <Slider {...settings} className={styles.slimain}>
           {data.sliderimages.map((el) => {
             return (
               <div className={styles.slider}>
-                 <Link href='/products'>
-                <Image
-                  className={styles.slimg}
-                  loader={myLoader}
-                  src={el}
-                  alt="Picture of the author"
-                  width={1220}
-                  height={460}
-                />
+                <Link href="/products">
+                  <Image
+                    className={styles.slimg}
+                    loader={myLoader}
+                    src={el}
+                    alt="Picture of the author"
+                    width={1220}
+                    height={460}
+                  />
                 </Link>
               </div>
             );
           })}
         </Slider>
-       
+
         <div className={styles.off}>
           <Image
             className={styles.imageoff}
@@ -217,7 +220,7 @@ export default function Landing({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:8080/home/get/womens`);
-  let data = await res.json();
+  const res = await axios.get(`/home/get/womens`);
+  let data = await res.data;
   return { props: { data } };
 }

@@ -13,7 +13,7 @@ import axios from "axios"
    const [data,setData]=useState([])
 
    const GetData=async()=>{
-    const res= await axios.get(`http://localhost:8080/products/wishlist`) 
+    const res= await axios.get(`/products/wishlist`) 
     setData(res.data[0].wishlists)
   }
     useEffect(() => {

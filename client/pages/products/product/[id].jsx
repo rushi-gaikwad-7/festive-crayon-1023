@@ -20,7 +20,7 @@ export default ProductPage;
 
 export const getServerSideProps = async (context) => {
   
-    let res = await axios.get(`http://localhost:8080/products/product/${context.query.id}`);
+    let res = await axios.get(`/products/product/${context.query.id}`);
     let data = res.data;
     return {
       props: { data },

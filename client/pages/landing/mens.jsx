@@ -2,6 +2,7 @@ import styles from "../../styles/landing.module.css";
 import Image from "next/image";
 import Slider from "react-slick";
 import Link from "next/link"
+import axios from "axios";
 
 
 const myLoader = ({ src, width, quality }) => {
@@ -235,7 +236,7 @@ export default function Landing({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:8080/home/get/mens`);
-  let data = await res.json();
+  const res = await axios.get(`/home/get/mens`);
+  let data = await res.data;
   return { props: { data } };
 }
