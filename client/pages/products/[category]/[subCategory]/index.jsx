@@ -25,8 +25,8 @@ const ProductsPage = () => {
   );
  
   const [currentSort, setSort] = React.useState("");
-  const [Color, setColors] = React.useState([]);
-  const [Size, setSizes] = React.useState([]);
+  const [Color, setColors] = React.useState(["SelectColor"]);
+  const [Size, setSizes] = React.useState(["SelectSize"]);
   const [currentPage,setPage]=useState(1)
 
 let url=`/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`
