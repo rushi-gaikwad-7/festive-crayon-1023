@@ -12,7 +12,7 @@ const Otp = () => {
   return (
     <div className={styles.containerOtp}>
       <div>
-        <h2>Welcome, Mayur@742 </h2>
+        <h2>Welcome,user</h2>
         <h2>
           <IoMdLock />
           Let's keep your account secure
