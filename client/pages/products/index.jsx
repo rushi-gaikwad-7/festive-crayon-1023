@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetData } from "../../redux/action/products.actions";
 import Loading from "../../components/alert/Loading";
 import LoadingButton from '@mui/lab/LoadingButton';
+import axios from 'axios'
 
 let search = "Products";
 
-const ProductsPage = () => {
+const ProductsPage = ({Category}) => {
   const dispatch = useDispatch();
 
   const Range = useSelector((state) => state.ProductReducer.Range);
@@ -64,7 +65,7 @@ const ProductsPage = () => {
                 <div>
                   <h1>You searched for “{search}”</h1>
                 </div>
-                <CategoryS category={category} />
+                <CategoryS path='products' category={Category} />
               </div>
               <Filters
                 handleColors={handleColors}
@@ -96,3 +97,20 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
+
+
+export const getServerSideProps = async (context) => {
+  try{
+    let res = await axios.get(`products/category/products`);
+    let Category=res.data||[]
+    return {
+      props: {Category} 
+    };
+  }catch(e){
+    let Category=[];
+    return {
+      props: {Category}
+    };
+  }
+  };
+  

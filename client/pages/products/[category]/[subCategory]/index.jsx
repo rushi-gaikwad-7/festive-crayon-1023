@@ -5,7 +5,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import styles from "../../../../styles/products.module.css";
 import { ProductsContainer } from "../../../../components/Products/ProductsContainer";
 import { Filters } from "../../../../components/Products/Filters";
-import { CategoryS } from "../../../../components/Products/CategoryS";
 import {useSelector,useDispatch} from "react-redux"
 import { GetData } from "../../../../redux/action/products.actions";
 import axios from "axios";
@@ -70,7 +69,7 @@ let url=`/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${
               <div>
                 <h1>You searched for “{search}”</h1>
               </div>
-              <CategoryS category={category} />
+           
             </div>
             <Filters
               handleColors={handleColors}
@@ -104,4 +103,10 @@ let url=`/products/?category=${query.subCategory}&sortBy=${currentSort}&Color=${
 export default ProductsPage;
 
 
-  
+export const getServerSideProps = async (context) => {
+
+  const {subCategory}=context.query
+    return {
+      props: {subCategory}
+    };
+  };

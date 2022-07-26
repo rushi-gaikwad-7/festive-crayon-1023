@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-
+import axios from 'axios'
 import { useRouter, } from 'next/router'
 import styles from "../../../styles/products.module.css";
 import { ProductsContainer } from "../../../components/Products/ProductsContainer";
@@ -11,7 +11,7 @@ import Loading from "../../../components/alert/Loading";
 import LoadingButton from '@mui/lab/LoadingButton';
 
 
-const ProductsPage = () => {
+const ProductsPage = ({Category}) => {
 
   const {query} = useRouter()
 const dispatch=useDispatch();
@@ -70,7 +70,7 @@ const dispatch=useDispatch();
               <div>
                 <h1>You searched for “{search}”</h1>
               </div>
-              <CategoryS category={category} />
+              <CategoryS path={query.category} category={Category} />
             </div>
             <Filters
               handleColors={handleColors}
@@ -101,4 +101,23 @@ const dispatch=useDispatch();
   )
 };
 
-export default ProductsPage
+export default ProductsPage;
+
+
+export const getServerSideProps = async (context) => {
+  const {category}=context.query
+  try{
+    let res = await axios.get(`products/category/${category}`);
+    let Category=res.data||[]
+    return {
+      props: {Category}
+    };
+  }catch(e){
+    let Category=[];
+    return {
+      props: {Category}
+    };
+  }
+  };
+  
+  

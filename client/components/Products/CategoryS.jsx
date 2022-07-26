@@ -9,7 +9,7 @@ const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
-export const CategoryS = ({category}) => {
+export const CategoryS = ({category,path}) => {
 
   const { asPath } = useRouter()
 
@@ -21,7 +21,7 @@ export const CategoryS = ({category}) => {
       }
     {category.map((el, i) => {
       return (
-     <Link key={i} href={`${asPath}/${el.name}`}>
+     <Link key={i} href={`${path}/${el.name}/?currentCat=${el.name}`} >
         <div  key={i}>
           <Image
             loader={myLoader}
