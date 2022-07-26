@@ -94,6 +94,7 @@ const WhichFilter=(query)=>{
     if(Colors=='SelectColor' && Size=='SelectSize' &&  MinPrice==0 && MaxPrice ==2000 && sortBy!=0){
         return 'SORT';
     }
+    
     return 'ALL'
 
 }

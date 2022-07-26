@@ -1,7 +1,7 @@
 import { GETDATA, SETRANGE } from "../action/products.actions";
 
 let initState={
-    Range:[0,5000],
+    Range:[0,2000],
     Data:{
         data:[],
         category:[],

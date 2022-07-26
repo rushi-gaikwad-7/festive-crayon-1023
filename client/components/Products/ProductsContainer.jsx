@@ -6,10 +6,21 @@ import Box from '@mui/material/Box';
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
+import { useRouter } from "next/router";
 
-export const ProductsContainer = ({ data,currentSort,handleChange ,wishList}) => {
+export const ProductsContainer = ({ data,wishList}) => {
 
- 
+ const router=useRouter()
+
+ const [currentSort, setSort] = React.useState(0);
+
+  const handleChange = (event) => {
+    setSort(event.target.value);
+    router.replace({
+      query: { ...router.query,SortBy:currentSort }});
+  
+  };
+
   return (
   
      <div  className={styles.mainDiv}>
@@ -26,9 +37,9 @@ export const ProductsContainer = ({ data,currentSort,handleChange ,wishList}) =>
                 label="Age"
                 onChange={handleChange}
               >
-                <MenuItem value="Relevance">Relevance</MenuItem>
-                <MenuItem value="Price -Low To High">Price -Low To High</MenuItem>
-                <MenuItem value="Price -High To Low">Price -High To Low</MenuItem>
+                <MenuItem value={0}>Relevance</MenuItem>
+                <MenuItem value={1}>Price -Low To High</MenuItem>
+                <MenuItem value={-1}>Price -High To Low</MenuItem>
               </Select>
             </FormControl>
           </Box>:<></>}

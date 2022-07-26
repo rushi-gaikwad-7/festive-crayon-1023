@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -9,18 +9,10 @@ import Checkbox from "@mui/material/Checkbox";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import styles from "../../styles/products.module.css";
-import { SetRange } from "../../redux/action/products.actions";
-import {useDispatch} from "react-redux"
+import { useRouter } from "next/router";
 
 
-const Prices = [
-  "₹ 0-₹ 499",
-  "₹ 500-₹ 999",
-  "₹ 1000-₹ 1499",
-  "₹ 1500-₹ 1999",
-  "₹ 2000-& Above",
-];
-const Colors = [
+const Colr = [
   "Blue",
   "Green",
   "Grey",
@@ -61,18 +53,48 @@ function valuetext(value) {
   return `${value}$`;
 }
 
-export const Filters = ({ handleColors, handleSizes, Color, Size }) => {
- 
-  const dispatch = useDispatch();
 
-  const [value, setValue] = React.useState([0, 2000]);
+export const Filters = ({category,sort,page}) => {
+
+  const router = useRouter()
+
+
+  const [value, setValue] = useState([0, 2000]);
+  let [Colors, setColors] = useState([]);
+  let [Size, setSizes] = useState([]);
+
+console.log(Colors)
+  const handleColors = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setColors(typeof value === "string" ? value.split(",") : value);
+ 
+     Colors=Colors.join(',')
+     router.replace({
+     query: { ...router.query,Colors }});
+
+     }
+
+  const handleSizes = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSizes(typeof value === "string" ? value.split(",") : value);
+
+   router.replace({
+    query: { ...router.query,Size}})
+  }
   
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    dispatch(SetRange(value));
-  };
-
-
+   
+    router.replace({
+    query: { ...router.query, MinPrice: value[0],MaxPrice:value[1]},
+      });
+  }
+  
   return (
     <div className={styles.filterDiv}>
       <div>
@@ -96,15 +118,15 @@ export const Filters = ({ handleColors, handleSizes, Color, Size }) => {
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
-            value={Color}
+            value={Colors}
             onChange={handleColors}
             input={<OutlinedInput label="Tag" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
           >
-            {Colors.map((name) => (
+            {Colr.map((name) => (
               <MenuItem key={name} value={name}>
-                <Checkbox checked={Color.indexOf(name) > -1} />
+                <Checkbox checked={Colors.indexOf(name) > -1} />
                 <ListItemText primary={name} />
                 
               </MenuItem>
@@ -135,3 +157,6 @@ export const Filters = ({ handleColors, handleSizes, Color, Size }) => {
     </div>
   );
 };
+
+
+

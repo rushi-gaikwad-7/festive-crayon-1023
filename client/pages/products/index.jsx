@@ -20,13 +20,11 @@ const ProductsPage = ({Category}) => {
     (state) => state.ProductReducer.Data
   );
 
-  const [currentSort, setSort] = React.useState("");
+
   const [Color, setColors] = React.useState(["SelectColor"]);
   const [Size, setSizes] = React.useState(["SelectSize"]);
   const [currentPage,setPage]=useState(1)
-  const handleSort = (event) => {
-    setSort(event.target.value);
-  };
+ 
 
   const handleColors = (event) => {
     const {
@@ -45,7 +43,7 @@ const ProductsPage = ({Category}) => {
     setPage(currentPage+1);
   }
 
-  let url = `/products/?category=products&sortBy=${currentSort}&Color=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
+  let url = `/products/?category=products&sortBy=${0}&Colors=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
 
   useEffect(() => {
     dispatch(GetData(url));
@@ -72,11 +70,12 @@ const ProductsPage = ({Category}) => {
                 Color={Color}
                 Size={Size}
                 handleSizes={handleSizes}
+             
+                page={currentPage}
               />
               <ProductsContainer
                 data={data}
-                handleChange={handleSort}
-                currentSort={currentSort}
+             
               />
               <div  onMouseOver={()=>handlePage()} className={styles.Loading}>
               <LoadingButton
