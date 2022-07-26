@@ -1,91 +1,35 @@
 const {
     Router
 } = require("express");
+const GetResponse = require("../controller/Products.controller");
+
 const Category = require("../model/category");
 const Product = require("../model/products");
 const User = require("../model/user.model");
 const ProductRouter = Router();
 
-  ProductRouter.get('/', async (req, res) => {
-    const {
-        category,pageNo,limit,
-        sortBy,
-        Color,
-        Size,MinPrice,MaxPrice
-    } = req.query;
 
-    let color=[];
-    let size=[]
-    if (Color =='SelectColor') {
-        color = [
-            'Blue', 'Green',
-            'Grey', 'Multicolour',
-            'Pink', 'Purple',
-            'Red', 'White',
-            'Yellow'
-        ]
-    }
-    else{
-         color = Color.split(',')
-    }
-    if(Size=='SelectSize'){
-      size = [
-        '28', '30', '32',
-        '34', '38', '40',
-        'L',  'M',  'S',
-        'XL', 'XS', 'XXL'
-      ];
-    }
-    else{
-         size = Size.split(',')
-    }
-    let sort = {};
-    if (sortBy == "Relevance") {
-        sort[sortBy] = 1;
-    }
-    if (sortBy == "Price -High To Low") {
-        sort["Price"] = -1;
-    } else if (sortBy == "Price -Low To High") {
-        sort["Price"] = 1;
-    }
-    try {
-        const [{
-            _id
-        }] = await Category.find({
-            name: category
-        })
-        let id = _id.toString();
-
-        const data = await Product.find({
-            $and: [{
-                Category: {
-                    $in: [id]
-                }
-            },{
-                Color: {
-                    $in: [...color]
-                }
-            },{
-                Sizes: {
-                    $in: [...size]
-                }
-            },{Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}]
-        }).sort({
-            ...sort
-        }).limit(pageNo*limit)
-        const cats = await Category.find({
-            Parent_id: _id
-        });
-        res.status(201).send({
-            cats,
-            data,
-        })
-    } catch (err) {
-        res.status(401).send(err)
+ProductRouter.get('/', async (req, res) => {
+    try{
+        const response =await GetResponse(req.query)
+     
+        res.status(201).send(response);
+    }catch(e){
+        res.status(401).send({e:e,massage:'server error'});  
     }
 })
 
-
+ProductRouter.get('/category/:cat', async (req, res) => {
+    const {cat}=req.params;
+    try{
+        const [{ _id }] = await Category.find({name:cat })
+        const  id = _id.toString();
+        const category = await Category.find({ Parent_id: id });
+        res.status(201).send(category);
+    }catch (err) {
+    res.status(401).send(err)
+    }
+})
 ProductRouter.get('/product/:_id',async(req,res)=>{
     const {_id}  = req.params;
     try{
@@ -102,7 +46,7 @@ ProductRouter.get('/search/:input',async(req,res)=>{
     const {input}  = req.params;
     try{
     const data = await Product.find();
-    console.log(data)
+  
     res.status(201).send(data)
     }
     catch(e){
@@ -122,28 +66,9 @@ ProductRouter.get('/Slider/:Type',async(req,res)=>{
     }
 })
 
-ProductRouter.post('/new', async (req, res) => {
+ ProductRouter.post('/new', async (req, res) => {
 
-    const {
-        Title,
-        Price,
-        Images,
-        Sizes,
-        Country,
-        Category,
-        Color,
-        Type
-    } = req.body
-    const product = new Product({
-        Title,
-        Price,
-        Images,
-        Sizes,
-        Country,
-        Category,
-        Color,
-        Type
-    })
+    const product = new Product(req.body)
     product.save((err, success) => {
         if (success) {
             res.status(201).send({
@@ -176,6 +101,5 @@ ProductRouter.post('/wishlist/:id',async (req,res)=>{
            res.send(error)
         }
      })
-
 
 module.exports = ProductRouter
