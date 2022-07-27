@@ -99,7 +99,6 @@ ProductRouter.get('/Slider/:Type',async(req,res)=>{
     })
 })
 
-
 ProductRouter.post('/wishlist/:id',async (req,res)=>{
     let {id} = req.params
  
@@ -115,5 +114,6 @@ ProductRouter.get("/wishlist",async (req,res)=>{
            res.send(error)
         }
      })
+
 
 module.exports = ProductRouter

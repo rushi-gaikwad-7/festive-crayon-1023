@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URL, {
         useUnifiedTopology: true,
     })
     .then(() => {
-    
+
     })
     .catch((err) => console.log(err));
 
@@ -28,3 +28,5 @@ process.on("SIGINT", async () => {
     await mongoose.connection.close();
     process.exit(0);
 });
+
+

@@ -3,16 +3,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
-const {connection} = require('mongoose')
 
 const ProductRouter = require("./routes/Products.routes");
-
-
-
-
 const homeRouter = require("./routes/home.routes");
-const Category = require('./model/category');
-const Product = require('./model/products');
 const authRouter = require("./routes/auth.route");
 
 
@@ -39,7 +32,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-    res.send("Hello");
+    res.send("Welcome to the max-Fashion Backend Portal");
 });
 
 app.use("/auth", authRouter);
@@ -48,17 +41,6 @@ app.use("/home", homeRouter);
 
 app.use("/products", ProductRouter);
 
-app.post("/category", async (req, res) => {
-    const { name, Parent_id, img } = req.body;
-    const Cat = new Category({ name, Parent_id, img });
-    Cat.save((err, success) => {
-        if (success) {
-            res.status(201).send({ massage: "new category created", Cat });
-        } else {
-            res.status(401).send({ massage: "error occurred", err });
-        }
-    });
-});
 
 app.use(async (req, res, next) => {
     const error = new Error("Not found");
@@ -78,10 +60,8 @@ app.use((err, req, res, next) => {
 
 require("./config/database");
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, async() => {
+app.listen(PORT, () => {
     
-    await connection.on('connected',()=>{
-        console.log('connected to mongodb')
-    })
+   
     console.log(`Server connected at http://localhost:${PORT}`);
 });
