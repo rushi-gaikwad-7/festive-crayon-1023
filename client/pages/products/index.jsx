@@ -13,11 +13,12 @@ import { Box } from "@mui/system";
 
 
 const ProductsPage = ({ Category, Count, Data, isLoading, isError }) => {
-
+  
   const router = useRouter();
   const {query}=useRouter();
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(true);
+
   const handlePage = () => {
     router.replace({ query: { ...router.query, pageNo: page + 1 } });
     setPage(page + 1);
@@ -67,7 +68,8 @@ export const getServerSideProps = async (context) => {
     const { currentCat } = context.query;
     let isLoading=true;
     let response = await axios.get(`products/category/${currentCat}`);
-    let { data } = await axios.get(`${context.resolvedUrl}`);
+    const url=context.resolvedUrl.split('?')
+    let { data } = await axios.get(`products/?${url[1]}`);
     let Data = data.data;
     let Count = 0;
     let Category = response.data;
@@ -83,7 +85,7 @@ export const getServerSideProps = async (context) => {
     let isLoading = false;
     let isError = true;
     return {
-      props: { Category, Data, isLoading, isError },
+      props: { Category,Count, Data, isLoading, isError },
     };
   }
 };
