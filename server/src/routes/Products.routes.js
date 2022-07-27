@@ -30,6 +30,20 @@ ProductRouter.get('/category/:cat', async (req, res) => {
     res.status(401).send(err)
     }
 })
+
+ProductRouter.post("/category", async (req, res) => {
+    const { name, Parent_id, img } = req.body;
+    const Cat = new Category({ name, Parent_id, img });
+    Cat.save((err, success) => {
+        if (success) {
+            res.status(201).send({ massage: "new category created", Cat });
+        } else {
+            res.status(401).send({ massage: "error occurred", err });
+        }
+    });
+});
+
+
 ProductRouter.get('/product/:_id',async(req,res)=>{
     const {_id}  = req.params;
     try{
@@ -93,7 +107,7 @@ ProductRouter.post('/wishlist/:id',async (req,res)=>{
     res.send("ok")
     })
 
-    ProductRouter.get("/wishlist",async (req,res)=>{
+ProductRouter.get("/wishlist",async (req,res)=>{
         try{
            let wishList = await User.aggregate([{$lookup:{from:"products",localField:"wishlist",foreignField:"_id",as:"wishlists"}}]).match({firstName:"mayur"})
            res.send(wishList)
