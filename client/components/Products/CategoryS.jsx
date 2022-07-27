@@ -2,7 +2,6 @@ import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/products.module.css";
-import { useRouter } from 'next/router'
 
 
 const myLoader = ({ src, width, quality}) => {
@@ -11,8 +10,6 @@ const myLoader = ({ src, width, quality}) => {
 
 export const CategoryS = ({category,path}) => {
   
-  
-
   return (
     <div className={styles.categoryDiv}>
       { category.length>1 ?

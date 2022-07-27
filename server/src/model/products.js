@@ -11,6 +11,9 @@ const productSchema= new Schema({
     Category:Array,
     Color:String,
     Type:String
+}, {
+    versionKey: false,
+    timestamps: true,
 })
 
 const Product=model("Product",productSchema)

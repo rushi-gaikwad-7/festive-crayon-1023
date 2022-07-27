@@ -38,7 +38,7 @@ homeRouter.get("/cart",async (req,res)=>{
    }catch(error){
       res.send(error)
    }
-   // aggregate([{$lookup:{from:"products",localField:"cart",foreignField:"_id",as:"carts"}}])
+
 })
 
 homeRouter.delete("/cart/:id",async (req,res)=>{
@@ -50,7 +50,7 @@ homeRouter.delete("/cart/:id",async (req,res)=>{
    }catch(error){
       res.send(error)
    }
-   // aggregate([{$lookup:{from:"products",localField:"cart",foreignField:"_id",as:"carts"}}])
+ 
 })
 
 
