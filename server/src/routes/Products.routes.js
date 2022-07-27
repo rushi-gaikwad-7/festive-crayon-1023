@@ -21,10 +21,12 @@ ProductRouter.get('/', async (req, res) => {
 
 ProductRouter.get('/category/:cat', async (req, res) => {
     const {cat}=req.params;
+
     try{
         const [{ _id }] = await Category.find({name:cat })
         const  id = _id.toString();
         const category = await Category.find({ Parent_id: id });
+       
         res.status(201).send(category);
     }catch (err) {
     res.status(401).send(err)

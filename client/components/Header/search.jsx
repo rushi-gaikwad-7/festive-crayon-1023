@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { useDispatch } from "react-redux";
-import { SetSearch } from "../../redux/action/products.actions";
 import styles from "../../styles/navbar.module.css";
 
 const Search = () => {
@@ -10,12 +8,10 @@ const Search = () => {
     const router = useRouter();
     const [search, setSearch] = useState("");
 
-    // const dispatch=useDispatch();
 
 const handleSearch=(e)=>{
     e.preventDefault();
-    // dispatch(SetSearch(search))
-    router.push(`/products/search/${search}`)
+    router.push(`/products/search/?q=${search}`)
 }
 
     return (

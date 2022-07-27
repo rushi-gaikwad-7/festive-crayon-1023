@@ -62,24 +62,23 @@ export const Filters = () => {
   let   [Size, setSizes] = useState([]);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-    
     router.replace({
       query: { ...router.query, MinPrice: newValue[0],MaxPrice:newValue[1]},
         });
+    setValue(newValue);
+    
+  
  }
 
   const handleColors = (event) => {
-  
     const {
       target: { value },
     } = event;
     let COLORS=typeof value === "string" ? value.split(",") : value;
-     setColors(COLORS);
      Colors=COLORS.join(',')
      router.replace({
      query: { ...router.query,Colors }});
-
+     setColors(COLORS);
      }
 
   const handleSizes = (event) => {
@@ -88,10 +87,9 @@ export const Filters = () => {
     } = event;
     let SIZES=typeof value === "string" ? value.split(",") : value
     let Sizes=SIZES.join(',')
-     setSizes(SIZES);
      router.replace({
       query: { ...router.query,Sizes }});
- 
+      setSizes(SIZES);
       }
   return (
     <div className={styles.filterDiv}>

@@ -1,53 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../styles/products.module.css";
 import { ProductsContainer } from "../../components/Products/ProductsContainer";
 import { Filters } from "../../components/Products/Filters";
 import { CategoryS } from "../../components/Products/CategoryS";
-import { useDispatch, useSelector } from "react-redux";
-import { GetData } from "../../redux/action/products.actions";
 import Loading from "../../components/alert/Loading";
-import LoadingButton from '@mui/lab/LoadingButton';
-import axios from 'axios'
-
-let search = "Products";
-
-const ProductsPage = ({Category}) => {
-  const dispatch = useDispatch();
-
-  const Range = useSelector((state) => state.ProductReducer.Range);
-
-  const { data, category, isLoading, isError } = useSelector(
-    (state) => state.ProductReducer.Data
-  );
+import axios from "axios";
+import { useRouter } from "next/router";
+import { Button } from "@mui/material";
+import Alert from 'react-bootstrap/Alert';
+import { Box } from "@mui/system";
 
 
-  const [Color, setColors] = React.useState(["SelectColor"]);
-  const [Size, setSizes] = React.useState(["SelectSize"]);
-  const [currentPage,setPage]=useState(1)
- 
 
-  const handleColors = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setColors(typeof value === "string" ? value.split(",") : value);
+const ProductsPage = ({ Category, Count, Data, isLoading, isError }) => {
+
+  const router = useRouter();
+  const {query}=useRouter();
+  const [page, setPage] = useState(1);
+  const [show, setShow] = useState(true);
+  const handlePage = () => {
+    router.replace({ query: { ...router.query, pageNo: page + 1 } });
+    setPage(page + 1);
   };
-
-  const handleSizes = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSizes(typeof value === "string" ? value.split(",") : value);
-  };
-  const handlePage=()=>{
-    setPage(currentPage+1);
-  }
-
-  let url = `/products/?category=products&sortBy=${0}&Colors=${Color}&Size=${Size}&MinPrice=${Range[0]}&MaxPrice=${Range[1]}&pageNo=${currentPage}&limit=${12}`;
-
-  useEffect(() => {
-    dispatch(GetData(url));
-  }, [url]);
 
   return (
     <div className={styles.mainDiv}>
@@ -56,37 +30,27 @@ const ProductsPage = ({Category}) => {
       ) : (
         <>
           {isError ? (
-            <div></div>
+              <Alert  variant="danger" onClose={() => setShow(false)} dismissible>
+              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+              <p>
+              503 Service Unavailable
+              </p>
+            </Alert>
           ) : (
             <>
               <div>
                 <div>
-                  <h1>You searched for “{search}”</h1>
+                  <h1>You searched for “{query.currentCat}”</h1>
                 </div>
-                <CategoryS path='products' category={Category} />
+                <CategoryS path="products" category={Category} />
               </div>
-              <Filters
-                handleColors={handleColors}
-                Color={Color}
-                Size={Size}
-                handleSizes={handleSizes}
-             
-                page={currentPage}
-              />
-              <ProductsContainer
-                data={data}
-             
-              />
-              <div  onMouseOver={()=>handlePage()} className={styles.Loading}>
-              <LoadingButton
-                loading
-                loadingIndicator="Loading…"
-                variant="contained"    
-                size="large"   
-              >
-                Fetch data
-              </LoadingButton>
-              </div>
+              <Filters />
+              <ProductsContainer data={Data} wishList={0} count={Count} />
+                {Count&& <Box textAlign='center' onClick={() => handlePage()} className={styles.Loading}>
+                <Button variant="contained" disableElevation>
+                Load More
+                </Button>
+                </Box>}
             </>
           )}
         </>
@@ -95,21 +59,31 @@ const ProductsPage = ({Category}) => {
   );
 };
 
+
 export default ProductsPage;
 
-
 export const getServerSideProps = async (context) => {
-  try{
-    let res = await axios.get(`products/category/products`);
-    let Category=res.data||[]
+  try {
+    const { currentCat } = context.query;
+    let isLoading=true;
+    let response = await axios.get(`products/category/${currentCat}`);
+    let { data } = await axios.get(`${context.resolvedUrl}`);
+    let Data = data.data;
+    let Count = 0;
+    let Category = response.data;
+    isLoading = false;
+    let isError = false;
     return {
-      props: {Category} 
+      props: { Category, Count, Data, isLoading, isError },
     };
-  }catch(e){
-    let Category=[];
+  } catch (e) {
+    let Data = [];
+    let Category = [];
+    let Count = 0;
+    let isLoading = false;
+    let isError = true;
     return {
-      props: {Category}
+      props: { Category, Data, isLoading, isError },
     };
   }
-  };
-  
+};

@@ -54,7 +54,7 @@ export default function Landing({ data }) {
           {data.sliderimages.map((el) => {
             return (
               <div className={styles.slider}>
-                    <Link href='/products'>
+                    <Link href="/products/?currentCat=products">
                 <Image
                   className={styles.slimg}
                   loader={myLoader}

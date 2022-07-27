@@ -8,23 +8,24 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 import { useRouter } from "next/router";
 
-export const ProductsContainer = ({ data, wishList }) => {
+export const ProductsContainer = ({ data, wishList ,count }) => {
   const router = useRouter();
 
 
   const [sortBy, SetSort] = useState('');
 
   const handleChange = (event) => {
-    SetSort(event.target.value);
     router.replace({
       query: { ...router.query, sortBy: event.target.value },
     });
+    SetSort(event.target.value);
+   
   };
   return (
     <div className={styles.mainDiv}>
       <div className={styles.productsDiv}>
         <div>
-          <h2>Total Products: {data.length}</h2>
+          <h2> Products:{' '}{data.length}{' '}Out of{' '}{count || 0} </h2>
           {!wishList ? (
             <Box sx={{ minWidth: 220 }}>
               <FormControl fullWidth>
