@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -53,24 +53,30 @@ function valuetext(value) {
   return `${value}$`;
 }
 
-
-export const Filters = ({category,sort,page}) => {
+export const Filters = () => {
 
   const router = useRouter()
-
-
+ 
   const [value, setValue] = useState([0, 2000]);
-  let [Colors, setColors] = useState([]);
-  let [Size, setSizes] = useState([]);
+  let   [Colors, setColors] = useState([]);
+  let   [Size, setSizes] = useState([]);
 
-console.log(Colors)
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    
+    router.replace({
+      query: { ...router.query, MinPrice: newValue[0],MaxPrice:newValue[1]},
+        });
+ }
+
   const handleColors = (event) => {
+  
     const {
       target: { value },
     } = event;
-    setColors(typeof value === "string" ? value.split(",") : value);
- 
-     Colors=Colors.join(',')
+    let COLORS=typeof value === "string" ? value.split(",") : value;
+     setColors(COLORS);
+     Colors=COLORS.join(',')
      router.replace({
      query: { ...router.query,Colors }});
 
@@ -80,21 +86,13 @@ console.log(Colors)
     const {
       target: { value },
     } = event;
-    setSizes(typeof value === "string" ? value.split(",") : value);
-
-   router.replace({
-    query: { ...router.query,Size}})
-  }
-  
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-   
-    router.replace({
-    query: { ...router.query, MinPrice: value[0],MaxPrice:value[1]},
-      });
-  }
-  
+    let SIZES=typeof value === "string" ? value.split(",") : value
+    let Sizes=SIZES.join(',')
+     setSizes(SIZES);
+     router.replace({
+      query: { ...router.query,Sizes }});
+ 
+      }
   return (
     <div className={styles.filterDiv}>
       <div>
@@ -157,6 +155,4 @@ console.log(Colors)
     </div>
   );
 };
-
-
 

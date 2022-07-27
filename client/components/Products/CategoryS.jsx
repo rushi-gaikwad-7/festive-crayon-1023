@@ -5,14 +5,13 @@ import styles from "../../styles/products.module.css";
 import { useRouter } from 'next/router'
 
 
-const myLoader = ({ src, width, quality }) => {
+const myLoader = ({ src, width, quality}) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
 export const CategoryS = ({category,path}) => {
-
-  const { asPath } = useRouter()
-
+  
+  
 
   return (
     <div className={styles.categoryDiv}>
@@ -21,7 +20,7 @@ export const CategoryS = ({category,path}) => {
       }
     {category.map((el, i) => {
       return (
-     <Link key={i} href={`${path}/${el.name}/?currentCat=${el.name}`} >
+     <Link key={i} href={`${path}/${el.name}/?currentCat=${el.name}`}>
         <div  key={i}>
           <Image
             loader={myLoader}

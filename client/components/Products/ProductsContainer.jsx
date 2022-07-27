@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/products.module.css";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,18 +8,18 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 import { useRouter } from "next/router";
 
-export const ProductsContainer = ({ data,wishList}) => {
+export const ProductsContainer = ({data,wishList,}) => {
 
- const router=useRouter()
+  const router=useRouter();
 
- const [currentSort, setSort] = React.useState(0);
+  const [sortBy,SetSort]=useState(0);
 
-  const handleChange = (event) => {
-    setSort(event.target.value);
-    router.replace({
-      query: { ...router.query,SortBy:currentSort }});
-  
-  };
+const  handleSort=(e)=>{
+  SetSort(e.target.value)
+  router.replace({
+    query: { ...router.query,sortBy:e.target.value},
+      });
+}
 
   return (
   
@@ -33,13 +33,13 @@ export const ProductsContainer = ({ data,wishList}) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={currentSort}
-                label="Age"
-                onChange={handleChange}
+                value={e.target.name}
+                label="Sort"
+                onChange={handleSort}
               >
-                <MenuItem value={0}>Relevance</MenuItem>
-                <MenuItem value={1}>Price -Low To High</MenuItem>
-                <MenuItem value={-1}>Price -High To Low</MenuItem>
+                <MenuItem name='Relevance' value={0}>Relevance</MenuItem>
+                <MenuItem name='Price -High To Low' value={-1}>Price -High To Low</MenuItem>
+                <MenuItem name='Price -Low To High' value={1}>Price -Low To High</MenuItem>
               </Select>
             </FormControl>
           </Box>:<></>}
