@@ -6,6 +6,9 @@ import { ProductsContainer } from "../../../components/Products/ProductsContaine
 import { Filters } from "../../../components/Products/Filters";
 import { CategoryS } from "../../../components/Products/CategoryS";
 import Loading from "../../../components/alert/Loading";
+import { Button } from "@mui/material";
+import Alert from 'react-bootstrap/Alert';
+import { Box } from "@mui/system";
 
 const ProductsPage = ({ Category, Count, Data, isLoading, isError }) => {
 

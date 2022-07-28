@@ -10,6 +10,7 @@ const ProductRouter = Router();
 
 
 ProductRouter.get('/', async (req, res) => {
+    console.log(req.query)
     try{
         const response =await GetResponse(req.query)
      
@@ -61,9 +62,28 @@ ProductRouter.get('/search/:input',async(req,res)=>{
    
     const {input}  = req.params;
     try{
-    const data = await Product.find();
+    const data =  await itemCollection.aggregate([
+        { $search: {
+            index: 'default',
+            text: {
+              query: input,
+              path: ["Title", "Type", "Color"]
+            }
+          }
+        }
+      ]).toArray().limit(16);
+  const count= await itemCollection.aggregate([
+    { $search: {
+        index: 'default',
+        text: {
+          query: input,
+          path: ["Title", "Type", "Color"]
+        }
+      }
+    }
+  ]).count();
   
-    res.status(201).send(data)
+    res.status(201).send({data,count})
     }
     catch(e){
         res.status(401).send()

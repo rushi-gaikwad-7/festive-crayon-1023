@@ -11,7 +11,9 @@ const Search = () => {
 
 const handleSearch=(e)=>{
     e.preventDefault();
-    router.push(`/products/search/?q=${search}`)
+    
+    
+    router.push("products/search")
 }
 
     return (
