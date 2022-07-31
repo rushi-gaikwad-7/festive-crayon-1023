@@ -6,16 +6,19 @@ const Product = require("../model/products");
 
   const { currentCat,pageNo,sortBy,Colors,Size,MinPrice,MaxPrice } = query;
  
+ 
+
+  
    
  
     const [{_id}] = await Category.find({name:currentCat })
-    const  id = _id.toString();
+    // const  id = _id.toString();
  
-    const count = await Product.find({ Category: { $in: [id] }}).count();
-    const data = await Product.find({ Category: { $in: [id] }}).limit(pageNo*limit)
+    // const count = await Product.find({ Category: { $in: [id] }}).count();
+    // const data = await Product.find({ Category: { $in: [id] }}).limit(pageNo*limit)
 
-     const res={count,data};
-     return res;
+    //  const res={count,data};
+    //  return res;
   
         if(isFilter(query)){ 
 
