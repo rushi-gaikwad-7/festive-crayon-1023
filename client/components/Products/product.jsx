@@ -7,11 +7,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios"
+import { useSelector } from "react-redux";
 
 export const Product = ({ Title, Price, Images, _id ,wishList}) => {
+  const { auth } = useSelector((state) => state);
 
   const addToCart=async(_id)=>{
-    const res= await axios.post(`/home/post/${_id}`)
+    const res= await axios.post(`/home/post/cart?proid=${_id}&userid=${auth.user._id}`)
     
   }
 

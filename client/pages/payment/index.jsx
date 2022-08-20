@@ -1,9 +1,26 @@
 import styles from "../../styles/Payment.module.css";
 import Link from "next/link";
 import axios from "axios";
-export default function Payment({ cart, total }) {
-  console.log(cart[0].carts);
-  let data = cart[0].carts;
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+export default function Payment() {
+  const { auth } = useSelector((state) => state);
+  let [data, setdata] = useState([]);
+  let [total, settotal] = useState(0);
+  useEffect(() => {
+    getcart();
+  }, [auth]);
+
+  let getcart = async () => {
+    let res = await axios.get(`/home/cart/${auth.user._id}`);
+    let cart = await res.data;
+    console.log(cart);
+    let total = cart[0].carts.reduce((acc, el) => {
+      return acc + el.Price;
+    }, 0);
+    setdata(cart[0].carts);
+    settotal(total);
+  };
 
   return (
     <>
@@ -400,15 +417,4 @@ export default function Payment({ cart, total }) {
       </div>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  let res = await axios.get("/home/cart");
-  let cart = await res.data;
-  let total = cart[0].carts.reduce((acc, el) => {
-    return acc + el.Price;
-  }, 0);
-  return {
-    props: { cart, total },
-  };
 }
