@@ -5,51 +5,36 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
-// export async function getServerSideProps() {
-//   let res = await axios.get("/home/cart");
-//   let cart = await res.data;
-//   let total = cart[0].carts.reduce((acc, el) => {
-//     return acc + el.Price;
-//   }, 0);
-//   return {
-//     props: { cart, total },
-//   };
-// }
-
 export default function Cart() {
   const { auth } = useSelector((state) => state);
-  let [data,setdata] = useState([])
-  let [total, settotal] = useState(0)
-  let router = useRouter();
+  let [data, setdata] = useState([]);
+  let [total, settotal] = useState(0);
 
-  console.log(auth)
+  let router = useRouter();
   React.useEffect(() => {
     if (!auth.access_token) {
       router.push("/login");
-    }else{
-      getcart()
+    } else {
+      getcart();
     }
-    
-  }, [router,auth]);
-  let getcart = async ()=>{
+  }, [router, auth]);
+  let getcart = async () => {
     let res = await axios.get(`/home/cart/${auth.user._id}`);
     let cart = await res.data;
     console.log(cart);
     let total = cart[0].carts.reduce((acc, el) => {
       return acc + el.Price;
     }, 0);
-  setdata(cart[0].carts)
-  settotal(total)
-  }
+    setdata(cart[0].carts);
+    settotal(total);
+  };
 
   let handledelete = async (id) => {
     console.log(id);
     let res = await axios.delete(`/home/cart/delete/${id}/${auth.user._id}`);
     console.log(res);
-    getcart()
+    getcart();
   };
-
-  
 
   return (
     <>
