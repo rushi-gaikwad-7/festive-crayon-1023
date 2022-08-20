@@ -18,6 +18,8 @@ export async function getServerSideProps() {
 
 export default function Cart({ cart, total }) {
   const { auth } = useSelector((state) => state);
+  
+console.log(auth)
 
   console.log(cart[0].carts);
   let data = cart[0].carts;
