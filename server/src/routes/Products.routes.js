@@ -10,10 +10,9 @@ const ProductRouter = Router();
 
 
 ProductRouter.get('/', async (req, res) => {
-    console.log(req.query)
+   
     try{
         const response =await GetResponse(req.query)
-     
         res.status(201).send(response);
     }catch(e){
         res.status(401).send({e:e,massage:'server error'});  

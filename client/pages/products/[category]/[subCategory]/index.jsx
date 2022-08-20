@@ -62,9 +62,9 @@ export const getServerSideProps = async (context) => {
   try {
     let isLoading=true;
     const url=context.resolvedUrl.split('?')
-    let { data } = await axios.get(`products/?${url[1]}`);
-    let Data = data.data;
-    let Count = 0;
+    let res = await axios.get(`products/?${url[1]}`);
+    let Data = res.data.data ;
+    let Count = res.data.count ;
     isLoading = false;
     let isError = false;
     return {

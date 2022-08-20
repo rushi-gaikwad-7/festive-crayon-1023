@@ -69,9 +69,9 @@ export const getServerSideProps = async (context) => {
     let isLoading=true;
     let response = await axios.get(`products/category/${currentCat}`);
     const url=context.resolvedUrl.split('?')
-    let { data } = await axios.get(`products/?${url[1]}`);
-    let Data = data.data;
-    let Count = 0;
+    let res = await axios.get(`products/?${url[1]}`);
+    let Data = res.data.data ;
+    let Count = res.data.count ;
     let Category = response.data;
     isLoading = false;
     let isError = false;

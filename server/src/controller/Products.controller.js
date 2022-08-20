@@ -1,121 +1,202 @@
 const Category = require("../model/category");
 const Product = require("../model/products");
 
+const GetResponse = async (query) => {
+  const {
+    currentCat = "products",
+    pageNo = 1,
+    sortBy = 0,
+    Colors = [],
+    Size = [],
+    MinPrice = 0,
+    MaxPrice = 3000,
+  } = query;
 
- const GetResponse=async(query)=>{
 
-  const { currentCat,pageNo,sortBy,Colors,Size,MinPrice,MaxPrice } = query;
- 
-  let color=Colors.split(',')
-  console.log(color)
- 
-    const [{_id}] = await Category.find({name:currentCat })
-    const  id = _id.toString();
- 
-    const count = await Product.find().count();
-    const data = await Product.find()
+  let filterStatus=isFilter(query);
 
-     const res={count,data};
-     return res;
   
-        if(isFilter(query)){ 
 
-        const filter=WhichFilter(query);
+  const [{ _id }] = await Category.find({ name: currentCat });
+  const id = _id.toString();
+  
 
-        console.log(filter);
+if(!filterStatus){
+  const data = await Product.find({ Category: { $in: [id] }}).limit(pageNo*20);
 
-        if(filter=='COLOR'){
-           let ColorArr=Colors.split(',');
-            const data = await Product.find({ $and: [{Category: { $in: [id] } },{ Color: { $in: [...ColorArr]} }] }).limit(pageNo*limit)
-          
-            const count = await Product.find({ $and: [{Category: { $in: [id] } },{ Color: { $in: [...ColorArr]} }] }).count();
-                  const res={count,data};
-                  return res;
-        }
-        if(filter=='PRICE'){
+  const count = await Product.find({ Category: { $in: [id] } }).count();
 
-        const data = await Product.find({ $and: [{Category: { $in: [id] } },{Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}] }).limit(pageNo*limit)
-          
-    const count = await Product.find({ $and: [{Category: { $in: [id] } },{Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}] }).count();
-          
-                  const res={count,data};
-                  return res;
-        }
-        if(filter=='SIZE'){
-           let SizeArr=Size.split(',');
-      const data = await Product.find({ $and: [{Category: { $in: [id] } },{ Sizes: { $in: [...SizeArr]} }] }).limit(pageNo*limit)
-          
-      const count = await Product.find({ $and: [{Category: { $in: [id] } },{ Sizes: { $in: [...SizeArr]} }] }).count();
-          
-                  const res={count,data};
-                  return res;
-        }
+  const res = { count,data };
 
-        if(filter=='SORT'){
-
-            const data = await Product.find({ Category: { $in: [id] } }).limit(pageNo*limit).sort({Price:sortBy})
-          
-            const count = await Product.find({Category: { $in: [id] }}).count();
-          
-                  const res={count,data};
-                  return res;
-        }
- 
-        if(filter='ALL'){
-            let SizeArr=Size.split(',');
-            let ColorArr=Colors.split(',');
-      const data = await Product.find({ $and: [{Category: { $in: [id] } },{Color: {$in: [...ColorArr] } },{ Sizes: { $in: [...SizeArr]} },
-      {Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}] }).limit(pageNo*limit).sort({Price:sortBy})
-
-      const count = await Product.find({ $and: [{Category: { $in: [id] } },{Color: {$in: [...ColorArr] } },{ Sizes: { $in: [...SizeArr]} },
-        {Price:{$gt:MinPrice},Price:{$lt:MaxPrice}}] }).count();
-
-        const res={count,data};
-        return res;
-            }
-        }
-
-    else{
-        const count = await Product.find({ Category: { $in: [id] }}).count();
-        const data = await Product.find({ Category: { $in: [id] }}).limit(pageNo*limit)
-
-         const res={count,data};
-        return res;
-
-    }
- }
-
-
-const WhichFilter=(query)=>{
-
-    const { Colors,Size,MinPrice,MaxPrice,sortBy } = query;
-
-    if(Colors!='SelectColor' && Size=='SelectSize' && MinPrice==0 && MaxPrice==2000 && sortBy==0){
-        return 'COLOR';
-    }
-    if(Colors=='SelectColor' && Size!='SelectSize' && MinPrice==0 && MaxPrice==2000 && sortBy==0){
-        return 'SIZE';
-    }
-    if(Colors=='SelectColor' && Size=='SelectSize' &&  MinPrice!=0 || MaxPrice !=2000 && sortBy==0){
-        return 'PRICE';
-    }
-    if(Colors=='SelectColor' && Size=='SelectSize' &&  MinPrice==0 && MaxPrice ==2000 && sortBy!=0){
-        return 'SORT';
-    }
-    
-    return 'ALL'
-
+  return res;
 }
+  
 
-const isFilter=(query)=>{
+ else if (filterStatus) {
 
-    const { Colors,Size,MinPrice,MaxPrice,sortBy } = query;
+    const filter = WhichFilter(query);
 
-    if(Colors=='SelectColor' && Size=='SelectSize' && MinPrice==0 && MaxPrice==2000 && sortBy==0){
-        return false;
+
+    if (filter == "COLOR") {
+      let ColorArr = Colors.split(",");
+      const data = await Product.find({
+        $and: [{ Category: { $in: [id] } }, { Color: { $in: [...ColorArr] } }],
+      }).limit(pageNo * 20);
+
+      const count = await Product.find({
+        $and: [{ Category: { $in: [id] } }, { Color: { $in: [...ColorArr] } }],
+      }).count();
+      const res = { count, data };
+      return res;
     }
-    
+    if (filter == "PRICE") {
+      const data = await Product.find({
+        $and: [
+          { Category: { $in: [id] } },
+          { Price: { $gt: MinPrice }, Price: { $lt: MaxPrice } },
+        ],
+      }).limit(pageNo * 20);
+
+      const count = await Product.find({
+        $and: [
+          { Category: { $in: [id] } },
+          { Price: { $gt: MinPrice }, Price: { $lt: MaxPrice } },
+        ],
+      }).count();
+
+      const res = { count, data };
+      return res;
+    }
+    if (filter == "SIZE") {
+      let SizeArr = Size.split(",");
+      const data = await Product.find({
+        $and: [{ Category: { $in: [id] } }, { Sizes: { $in: [...SizeArr] } }],
+      }).limit(pageNo * 20);
+
+      const count = await Product.find({
+        $and: [{ Category: { $in: [id] } }, { Sizes: { $in: [...SizeArr] } }],
+      }).count();
+
+      const res = { count, data };
+      return res;
+    }
+
+    if (filter == "SORT") {
+      const data = await Product.find({ Category: { $in: [id] } })
+        .limit(pageNo * 20)
+        .sort({ Price: sortBy });
+
+      const count = await Product.find({ Category: { $in: [id] } }).count();
+
+      const res = { count, data };
+      return res;
+    }
+
+    if ((filter = "ALL")) {
+      let SizeArr = Size.split(",");
+      let ColorArr = Colors.split(",");
+      const data = await Product.find({
+        $and: [
+          { Category: { $in: [id] } },
+          { Color: { $in: [...ColorArr] } },
+          { Sizes: { $in: [...SizeArr] } },
+          { Price: { $gt: MinPrice }, Price: { $lt: MaxPrice } },
+        ],
+      })
+        .limit(pageNo * 20)
+        .sort({ Price: sortBy });
+
+      const count = await Product.find({
+        $and: [
+          { Category: { $in: [id] } },
+          { Color: { $in: [...ColorArr] } },
+          { Sizes: { $in: [...SizeArr] } },
+          { Price: { $gt: MinPrice }, Price: { $lt: MaxPrice } },
+        ],
+      }).count();
+
+      const res = { count, data };
+      return res;
+    }
+  } else {
+    const count = await Product.find({ Category: { $in: [id] } }).count();
+    const data = await Product.find({ Category: { $in: [id] } }).limit(
+      pageNo * 20
+    );
+
+    const res = { count, data };
+    return res;
+  }
+
+
+};
+
+const WhichFilter = (query) => {
+    const {
+        sortBy = 0,
+        Colors = [],
+        Size = [],
+        MinPrice = 0,
+        MaxPrice = 3000,
+      } = query;
+
+
+  if (
+    Colors.length!=0&&
+    Size.length==0 &&
+    MinPrice == 0 &&
+    MaxPrice == 3000 &&
+    sortBy == 0
+  ) {
+    return "COLOR";
+  }
+  if (
+    Colors.length==0 &&
+    Size.length!=0 &&
+    MinPrice == 0 &&
+    MaxPrice == 3000 &&
+    sortBy == 0
+  ) {
+    return "SIZE";
+  }
+  if (
+    ( Colors.length==0 &&  Size.length==0 && MinPrice != 0) ||
+    (MaxPrice != 3000 && sortBy == 0)
+  ) {
+    return "PRICE";
+  }
+  if (
+    Colors.length==0 &&
+    Size.length==0 &&
+    MinPrice == 0 &&
+    MaxPrice == 3000 &&
+    sortBy != 0
+  ) {
+    return "SORT";
+  }
+
+  return "ALL";
+};
+
+const isFilter = (query) => {
+    const {
+        sortBy = 0,
+        Colors = [],
+        Size = [],
+        MinPrice = 0,
+        MaxPrice = 3000,
+      } = query;
+
+  if (
+    Colors.length==0 &&
+    Size.length==0 &&
+    MinPrice == 0 &&
+    MaxPrice == 3000 &&
+    sortBy == 0
+  ) {
+    return false;
+  }
   return true;
-}
+};
 
-module.exports =GetResponse;
+module.exports = GetResponse;
