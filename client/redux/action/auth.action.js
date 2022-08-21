@@ -15,7 +15,7 @@ export const login = (userLogin) => async (dispatch) => {
 
     const data = res.data;
 
-    // console.log("res: ", res);
+    
 
     localStorage.setItem("logged", "true");
 
@@ -29,7 +29,7 @@ export const login = (userLogin) => async (dispatch) => {
 
     dispatch({ type: ALERT, payload: { success: res.data.msg } });
   } catch (error) {
-    console.log("error: ", error);
+ 
     dispatch({
       type: ALERT,
       payload: { error: error.response.data.msg },
@@ -79,7 +79,7 @@ export const refreshToken = () => async (dispatch) => {
     dispatch({ type: ALERT, payload: { loading: true } });
 
     const res = await getAPI("refresh_token");
-    // console.log("res: ", res);
+    
 
     const data = res.data;
 
@@ -99,7 +99,7 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: ALERT, payload: { loading: true } });
 
     const res = await getAPI("logout");
-    console.log("res: ", res);
+   
 
     dispatch({ type: AUTH, payload: res.data });
 

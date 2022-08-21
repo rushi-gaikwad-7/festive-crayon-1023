@@ -8,7 +8,7 @@ import Select from "@mui/material/Select";
 import { Product } from "../../components/Products/product";
 import { useRouter } from "next/router";
 
-export const ProductsContainer = ({ data, wishList ,count }) => {
+export const ProductsContainer = ({ data, wishList ,count,path }) => {
   const router = useRouter();
 
 
@@ -51,7 +51,7 @@ export const ProductsContainer = ({ data, wishList ,count }) => {
           {data.map((el, i) => {
             return (
               <div key={i}>
-                <Product wishList={wishList} {...el} />
+                <Product wishList={wishList}path={path} {...el} />
               </div>
             );
           })}

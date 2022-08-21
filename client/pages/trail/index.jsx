@@ -4,7 +4,7 @@ import {data} from "../description/data"
 export default function Prod(){
     let handlecart = async (id)=>{
         let res = await axios.post(`/home/post/${id}`)
-        console.log(res.data)
+       
     }
     return (
         <div>

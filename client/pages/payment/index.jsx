@@ -14,7 +14,7 @@ export default function Payment() {
   let getcart = async () => {
     let res = await axios.get(`/home/cart/${auth.user._id}`);
     let cart = await res.data;
-    console.log(cart);
+   
     let total = cart[0].carts.reduce((acc, el) => {
       return acc + el.Price;
     }, 0);

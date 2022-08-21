@@ -36,7 +36,7 @@ const RegisterForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(register(userRegister));
-        // console.log("userRegister: ", userRegister);
+       
     };
 
     return (

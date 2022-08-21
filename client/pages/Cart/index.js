@@ -21,7 +21,7 @@ export default function Cart() {
   let getcart = async () => {
     let res = await axios.get(`/home/cart/${auth.user._id}`);
     let cart = await res.data;
-    console.log(cart);
+   
     let total = cart[0].carts.reduce((acc, el) => {
       return acc + el.Price;
     }, 0);
@@ -30,9 +30,9 @@ export default function Cart() {
   };
 
   let handledelete = async (id) => {
-    console.log(id);
+
     let res = await axios.delete(`/home/cart/delete/${id}/${auth.user._id}`);
-    console.log(res);
+    
     getcart();
   };
 

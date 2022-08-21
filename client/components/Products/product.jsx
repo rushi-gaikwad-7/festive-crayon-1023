@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios"
 import { useSelector } from "react-redux";
 
-export const Product = ({ Title, Price, Images, _id ,wishList}) => {
+export const Product = ({ Title, Price, Images, _id ,wishList,path}) => {
   const { auth } = useSelector((state) => state);
 
   const addToCart=async(_id)=>{
@@ -24,7 +24,7 @@ export const Product = ({ Title, Price, Images, _id ,wishList}) => {
   const { asPath } = useRouter();
   return (
     <div className={styles.mainDiv}>
-      <Link href={`${asPath}/product/${_id}`}>
+      <Link href={`${path}/product/${_id}`}>
         <div className={styles.productDiv}>
           <SimpleSlider data={Images} />
           <div className={styles.infoDiv}>

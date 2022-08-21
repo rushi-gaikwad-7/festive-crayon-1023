@@ -46,7 +46,7 @@ const ProductsPage = ({ Category, Count, Data, isLoading, isError }) => {
                 <CategoryS path="products" category={Category} />
               </div>
               <Filters />
-              <ProductsContainer data={Data} wishList={0} count={Count} />
+              <ProductsContainer data={Data} wishList={0} count={Count} path="products" />
                 {Count&& <Box textAlign='center' onClick={() => handlePage()} className={styles.Loading}>
                 <Button variant="contained" disableElevation>
                 Load More

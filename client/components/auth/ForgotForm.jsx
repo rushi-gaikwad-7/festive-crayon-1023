@@ -31,7 +31,7 @@ const ForgotForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(initState);
+       
     };
 
     return (

@@ -13,7 +13,6 @@ export default function Youlike({Type}) {
     let getData = async () => {
       let res = await axios.get(`/products/Slider/${Type}`);
       let Data = res.data;
-      console.log(Data)
       setData(Data);
     };
     getData();
