@@ -70,8 +70,8 @@ export default function Description({data}) {
               <p>Size Guide</p>
             </div>
             <div className={styles.sizelist}>
-              {data.Sizes.map((el) => {
-                return <button>{el}</button>;
+              {data.Sizes.map((el,i) => {
+                return <button key={i}>{el}</button>;
               })}
             </div>
             <div className={styles.addbasket}>

@@ -13,6 +13,7 @@ const ProductsPage = ({ Count, Data, isLoading, isError }) => {
 
   const router = useRouter();
   const {query}=useRouter();
+  console.log(query)
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(true);
   
@@ -42,7 +43,7 @@ const ProductsPage = ({ Count, Data, isLoading, isError }) => {
                 </div>
               </div>
               <Filters />
-              <ProductsContainer data={Data} wishList={0} count={Count} path="products" />
+              <ProductsContainer data={Data} wishList={0} count={Count} Path={`${query.subCategory}`} />
                 {Count&& <Box textAlign='center' onClick={() => handlePage()} className={styles.Loading}>
                 <Button variant="contained" disableElevation>
                 Load More

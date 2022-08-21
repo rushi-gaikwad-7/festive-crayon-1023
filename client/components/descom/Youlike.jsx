@@ -50,9 +50,9 @@ export default function Youlike({Type}) {
   return (
     <div className={styles.you}>
       <Slider {...settings} className={styles.slimain}>
-        {data.map((el) => {
+        {data.map((el,i) => {
           return (
-            <div className={styles.slider}>
+            <div key={i} className={styles.slider}>
               <Image
                 className={styles.slimg}
                 loader={myLoader}

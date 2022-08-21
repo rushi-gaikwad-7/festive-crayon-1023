@@ -41,10 +41,10 @@ const ProductsPage = ({ Category, Count, Data, isLoading, isError }) => {
                 <div>
                   <h1>You searched for “{query.currentCat}”</h1>
                 </div>
-                <CategoryS path="products" category={Category} />
+                <CategoryS path={query.currentCat} category={Category} />
               </div>
               <Filters />
-              <ProductsContainer data={Data} wishList={0} count={Count} path="products" />
+              <ProductsContainer data={Data} wishList={0} count={Count} Path={query.currentCat}  />
                 {Count&& <Box textAlign='center' onClick={() => handlePage()} className={styles.Loading}>
                 <Button variant="contained" disableElevation>
                 Load More
