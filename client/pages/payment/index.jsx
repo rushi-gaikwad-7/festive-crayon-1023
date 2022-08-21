@@ -27,7 +27,7 @@ export default function Payment() {
       <div id={styles.head}>
         <div>
           <img
-            class="img"
+            className="img"
             src="https://i1.lmsin.net/website_images/in/logos/header/logo-max.svg"
           />
         </div>
@@ -57,83 +57,83 @@ export default function Payment() {
             <h3>Add your shipping address</h3>
             <form id={styles.form}>
               <div>
-                <label for="Name">Full Name</label>
+                <label htmlFor="Name">Full Name</label>
                 <br />
                 <input
                   id="addingFunctionality"
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="text"
                   placeholder="Enter your full name"
                 />
               </div>
               <div>
-                <label for="Name">Mobile Number</label>
+                <label htmlFor="Name">Mobile Number</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="number"
                   placeholder="Enter your Mobile Number"
                 />
               </div>
               <div>
-                <label for="pincode">Pincode</label>
+                <label htmlFor="pincode">Pincode</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="number"
                   placeholder="Enter your pincode"
                 />
               </div>
               <div>
-                <label for="city">City</label>
+                <label htmlFor="city">City</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="text"
                   placeholder="Enter your City Or Town"
                 />
               </div>
               <div>
-                <label for="">Building name or number</label>
+                <label htmlFor="">Building name or number</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="text"
                   placeholder=" Enter Building Name"
                 />
               </div>
               <div>
-                <label for="">Street name or number</label>
+                <label htmlFor="">Street name or number</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="text"
                   placeholder="Flat/house number,Floor,Building"
                 />
               </div>
               <div>
-                <label for="">Landmark</label>
+                <label htmlFor="">Landmark</label>
                 <br />
                 <input
-                  class="checkoutinput"
+                  className="checkoutinput"
                   type="text"
                   placeholder="Landmark"
                 />
               </div>
               <div>
-                <label for="">Address</label>
+                <label htmlFor="">Address</label>
                 <div>
                   <input type="radio" />
-                  <label for="">Home</label>
+                  <label htmlFor="">Home</label>
                   <input type="radio" />
-                  <label for=""></label>Office
+                  <label htmlFor=""></label>Office
                 </div>
               </div>
             </form>
           </div>
           <div>
             <h2 style={{ marginTop: "30px" }}>Select a payment method</h2>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <input type="radio" />
                 <img
@@ -201,7 +201,7 @@ export default function Payment() {
               </div>
             </div>
 
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <input type="radio" />
                 <img
@@ -214,7 +214,7 @@ export default function Payment() {
                 <p>Available on orders above Rs3,000</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <div>
                   <input type="radio" />
@@ -229,7 +229,7 @@ export default function Payment() {
                 <p>Pay now with your PayPal account</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <div>
                   <input type="radio" />
@@ -244,7 +244,7 @@ export default function Payment() {
                 <p>+ Rs49</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <input type="radio" />
                 <img
@@ -257,7 +257,7 @@ export default function Payment() {
                 <p>Pay by your preferred bank account.</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <input type="radio" />
                 <img
@@ -271,7 +271,7 @@ export default function Payment() {
                 <p>Pay with your preferred wallet.</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <div>
                 <input type="radio" />
                 <img src="https://i1.lmsin.net/website_images/payment/upi.png" />
@@ -281,14 +281,14 @@ export default function Payment() {
                 <p>Pay with your preferred UPI Id.</p>
               </div>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <img
                 height="20px"
                 src="https://i1.lmsin.net/website_images/common/images/basket/ico-gift.png"
               />
               <p>Got a Promo Code?</p>
             </div>
-            <div class={styles.paymentmethod}>
+            <div className={styles.paymentmethod}>
               <img
                 height="20px"
                 src="https://i1.lmsin.net/website_images/in/giftcards/gift-card-icon.svg"

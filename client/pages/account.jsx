@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../redux/action/auth.action";
 import Head from "next/head";
 
-const account = () => {
+const Account = () => {
   const router = useRouter();
 
   const dispatch = useDispatch();
