@@ -321,7 +321,7 @@ export default function Payment() {
                   <p>
                     Your credit card details are securely encrypted and passed
                     directly to our PCI DSS compliant Payment Gateway for
-                    processing. We only store your credit card's last 4 digits
+                    processing. We only store your credit card&apos;s last 4 digits
                     and the expiration date. Your traffic to this page is
                     secured using either a 256-bit or 128-bit SSL certificate
                     depending on your browser version.

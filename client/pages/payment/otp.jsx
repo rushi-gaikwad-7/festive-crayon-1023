@@ -15,7 +15,7 @@ const Otp = () => {
         <h2>Welcome,user</h2>
         <h2>
           <IoMdLock />
-          Let's keep your account secure
+          Let&apos;s keep your account secure
         </h2>
       </div>
       <div className={styles.innerpart}>
@@ -29,7 +29,7 @@ const Otp = () => {
           <input type="password" placeholder="Enter four digit OTP" />
         </div>
         <div className={styles.errorDiv}>
-          <p>Didn't get a code ? </p>
+          <p>Didn&apos;t get a code ? </p>
           <Link href="/payment/otp" >Send Again</Link>
         </div>
         <div className={styles.errorDiv}>

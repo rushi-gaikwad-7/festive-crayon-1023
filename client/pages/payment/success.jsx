@@ -22,7 +22,7 @@ const success = () => {
         <h1>Success</h1>
         <p>
           We received your purchase request
-          <br /> we'll be in touch shortly!
+          <br /> we&apos;ll be in touch shortly!
           <br />{" "}
           <Button>
             <Link href="/">

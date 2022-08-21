@@ -138,7 +138,7 @@ export default function Description({data}) {
                 <li>Fabric : Cotton</li>
                 <li>Fit : Regular Fit</li>
                 <li>Care Instructions : Machine Wash</li>
-                <li>Model Wears : Size M,has Height 6'0" and Chest 38"</li>
+                <li>Model Wears : Size M,has Height 6&apos;0&apos;&apos; and Chest 38&apos;&apos;</li>
                 <li>
                   Return Policy : This product is returnable within 30 days of
                   delivery
