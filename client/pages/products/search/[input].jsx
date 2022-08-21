@@ -70,7 +70,7 @@ export const getServerSideProps = async (context) => {
     let isError = false;
     return {
       props: { Count, Data, isLoading, isError },
-    };!
+    };
   } catch (e) {
     let Data = [];
     let Count = 0;
