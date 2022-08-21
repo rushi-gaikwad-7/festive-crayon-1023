@@ -344,7 +344,7 @@ export default function Payment() {
             <div className={styles.ordercon}>
               {data.map((el) => {
                 return (
-                  <div className={styles.orderel}>
+                  <div key={el._id} className={styles.orderel}>
                     <div className={styles.orderimg}>
                       <img src={el.Images[0]} />
                     </div>

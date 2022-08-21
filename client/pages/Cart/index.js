@@ -46,7 +46,7 @@ export default function Cart() {
         <div className={styles.cartitem}>
           {data.map((el) => {
             return (
-              <div className={styles.cartcontain}>
+              <div key={el._id} className={styles.cartcontain}>
                 <div className={styles.cartup}>
                   <div className={styles.cartimg}>
                     <img src={el.Images[0]} />

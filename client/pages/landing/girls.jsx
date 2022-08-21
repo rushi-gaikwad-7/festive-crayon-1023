@@ -51,9 +51,9 @@ export default function Landing({ data }) {
       </div>
       <div className={styles.mainland}>
         <Slider {...settings} className={styles.slimain}>
-          {data.sliderimages.map((el) => {
+          {data.sliderimages.map((el,i) => {
             return (
-              <div className={styles.slider}>
+              <div key={i} className={styles.slider}>
                 <Link href="/products/?currentCat=products">
                   <Image
                     className={styles.slimg}
@@ -82,9 +82,9 @@ export default function Landing({ data }) {
           <div className={styles.bgspotlight}>
             <h2 className={styles.landtitles}>{data.stylespot.title}</h2>
             <div className={styles.bgspot}>
-              {data.stylespot.spot.map((el) => {
+              {data.stylespot.spot.map((el,i) => {
                 return (
-                  <Image
+                  <Image key={i}
                     className={styles.imagespot}
                     loader={myLoader}
                     src={el}
@@ -98,9 +98,9 @@ export default function Landing({ data }) {
           <div className={styles.budget}>
             <h2 className={styles.landtitles}>{data.shopage.title}</h2>
             <div className={styles.buds}>
-              {data.shopage.imgs.map((el) => {
+              {data.shopage.imgs.map((el,i) => {
                 return (
-                  <Image
+                  <Image key={i}
                     className={styles.budimgs}
                     loader={myLoader}
                     src={el}
@@ -127,9 +127,9 @@ export default function Landing({ data }) {
           <div className={styles.bycats}>
             <h2 className={styles.landtitles}>{data.shopbycat.title}</h2>
             <div className={styles.catcontain}>
-              {data.shopbycat.catarr.map((el) => {
+              {data.shopbycat.catarr.map((el,i) => {
                 return (
-                  <div className={styles.catelem}>
+                  <div key={i} className={styles.catelem}>
                     <Image
                       className={styles.catimgs}
                       loader={myLoader}
@@ -146,9 +146,9 @@ export default function Landing({ data }) {
           <div className={styles.budget}>
             <h2 className={styles.landtitles}>{data.budget.title}</h2>
             <div className={styles.buds}>
-              {data.budget.budgt.map((el) => {
+              {data.budget.budgt.map((el,i) => {
                 return (
-                  <Image
+                  <Image key={i}
                     className={styles.budimgs}
                     loader={myLoader}
                     src={el}
@@ -163,9 +163,9 @@ export default function Landing({ data }) {
           <div className={styles.bgtrends}>
             <h2 className={styles.landtitles}>{data.trends.title}</h2>
             <div className={styles.bgtrendgrid}>
-              {data.trends.trendimgs.map((el) => {
+              {data.trends.trendimgs.map((el,i) => {
                 return (
-                  <Image
+                  <Image key={i}
                     className={styles.trendimg}
                     loader={myLoader}
                     src={el}
