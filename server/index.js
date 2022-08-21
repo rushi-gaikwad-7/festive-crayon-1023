@@ -4,13 +4,13 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 
-const ProductRouter = require("./routes/Products.routes");
-const homeRouter = require("./routes/home.routes");
-const authRouter = require("./routes/auth.route");
+const ProductRouter = require("./src/routes/Products.routes");
+const homeRouter = require("./src/routes/home.routes");
+const authRouter = require("./src/routes/auth.route");
 
 
 require("dotenv").config();
-require("./config/database");
+require("./src/config/database");
 
 
 const app = express();
@@ -58,7 +58,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-require("./config/database");
+require("./src/config/database");
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     
