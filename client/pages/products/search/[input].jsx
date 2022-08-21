@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
 import { useRouter } from 'next/router'
-import styles from "../../../../styles/products.module.css";
-import { ProductsContainer } from "../../../../components/Products/ProductsContainer";
-import { Filters } from "../../../../components/Products/Filters";
-import Loading from "../../components/alert/Loading";
+import styles from "../../../styles/products.module.css";
+import { ProductsContainer } from "../../../components/Products/ProductsContainer";
+import { Filters } from "../../../components/Products/Filters";
+import Loading from "../../../components/alert/Loading";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Alert from 'react-bootstrap/Alert';
