@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getAPI } from "../../utils/FetchData";
-import { validRegister } from "../../utils/Valid";
+import { getAPI } from "../../utils/fetchData";
+import { validRegister } from "../../utils/valid";
 
 export const AUTH = "AUTH";
 export const ALERT = "ALERT";
