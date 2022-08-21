@@ -20,7 +20,6 @@ const GetResponse = async (query) => {
 
     if (filterStatus) {
     const filter = WhichFilter(query);
-    console.log(filter);
 
     if (filter == "COLOR") {
       let ColorArr = Colors.split(",");
@@ -66,16 +65,25 @@ const GetResponse = async (query) => {
       return res;
     }
 
-    if ((filter == "ALL")) {
+    if ((filter == "ALLexpSize")) {
 
-      let SizeArr = Sizes.split(",");
+       const {
+    currentCat = "products",
+    pageNo = 1,
+    sortBy = 0,
+    Colors = [],
+    Sizes = [],
+    MinPrice = 0,
+    MaxPrice = 3000,
+  } = query;
+
+      
       let ColorArr = Colors.split(",");
-
+  
       const data = await Product.find({
         $and: [
           { Category: { $in: [id] } },
           { Color: { $in: [...ColorArr] } },
-          { Sizes: { $in: [...SizeArr] } },
           { Price: { $gte: MinPrice, $lt: MaxPrice } },
         ],
       }).limit(pageNo * 20).sort({ Price: sortBy });
@@ -84,14 +92,85 @@ const GetResponse = async (query) => {
         $and: [
           { Category: { $in: [id] } },
           { Color: { $in: [...ColorArr] } },
-          { Sizes: { $in: [...SizeArr] } },
           { Price: { $gte: MinPrice, $lt: MaxPrice }},
         ],
       }).count();
 
-      const res = { count, data };
+      const res = await { count, data };
       return res;
     }
+    
+    if ((filter == "ALLexpColor")) {
+
+      const {
+   currentCat = "products",
+   pageNo = 1,
+   sortBy = 0,
+   Colors = [],
+   Sizes = [],
+   MinPrice = 0,
+   MaxPrice = 3000,
+ } = query;
+
+     
+    let SizeArr = Sizes.split(",");
+     const data = await Product.find({
+       $and: [
+         { Category: { $in: [id] } },
+         { Sizes: { $in: [...SizeArr] } },
+         { Price: { $gte: MinPrice, $lt: MaxPrice } },
+       ],
+     }).limit(pageNo * 20).sort({ Price: sortBy });
+
+     const count = await Product.find({
+       $and: [
+         { Category: { $in: [id] } },
+         { Sizes: { $in: [...SizeArr] } },
+         { Price: { $gte: MinPrice, $lt: MaxPrice }},
+       ],
+     }).count();
+
+     const res = await { count, data };
+     return res;
+   }
+
+    if ((filter == "ALL")) {
+
+      const {
+   currentCat = "products",
+   pageNo = 1,
+   sortBy = 0,
+   Colors = [],
+   Sizes = [],
+   MinPrice = 0,
+   MaxPrice = 3000,
+ } = query;
+
+     
+     let SizeArr = Sizes.split(",");
+     let ColorArr = Colors.split(",");
+ 
+     const data = await Product.find({
+       $and: [
+         { Category: { $in: [id] } },
+         { Color: { $in: [...ColorArr] } },
+         { Sizes: { $in: [...SizeArr] } },
+         { Price: { $gte: MinPrice, $lt: MaxPrice } },
+       ],
+     }).limit(pageNo * 20).sort({ Price: sortBy });
+
+     const count = await Product.find({
+       $and: [
+         { Category: { $in: [id] } },
+         { Color: { $in: [...ColorArr] } },
+         { Sizes: { $in: [...SizeArr] } },
+         { Price: { $gte: MinPrice, $lt: MaxPrice }},
+       ],
+     }).count();
+
+     const res = await { count, data };
+     return res;
+   }
   }
   
   else {
@@ -114,7 +193,7 @@ const WhichFilter = (query) => {
     MaxPrice = 3000,
   } = query;
 
-  console.log(Colors.length,Sizes.length)
+ 
 
   if (
     Sizes.length == 0 &&
@@ -134,6 +213,17 @@ const WhichFilter = (query) => {
     Colors.length == 0 && Sizes.length == 0 && (MinPrice != 0 || MaxPrice != 3000)
   ) {
     return "PRICE";
+  }
+
+  if (
+    Colors.length != 0 && Sizes.length == 0 && (MinPrice != 0 || MaxPrice != 3000)
+  ) {
+    return "ALLexpSize";
+  }
+  if (
+     Sizes.length != 0 && Colors.length == 0 && (MinPrice != 0 || MaxPrice != 3000)
+  ) {
+    return "ALLexpColor";
   }
   return "ALL";
 };
