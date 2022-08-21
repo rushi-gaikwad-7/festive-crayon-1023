@@ -129,7 +129,7 @@ export default function Landing({ data }) {
             <div className={styles.catcontain}>
               {data.shopbycat.catarr.map((el,i) => {
                 return (
-                  <div className={styles.catelem}>
+                  <div key={i} className={styles.catelem}>
                     <Image key={i}
                       className={styles.catimgs}
                       loader={myLoader}
