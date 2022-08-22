@@ -1,17 +1,72 @@
 
-# Max-Fashion - (Clone)
+# Max-fashion - (Clone)
 
+Max Fashion is an Indian fashion brand under the banner of the Mumbai based Landmark Group. That was opened by an Indian foreigner in the UAE, Micky Jagtiani The brand was first launched in May 2004, in the Middle East in UAE.
 
 A Collaborative project built by a team of 6 executed in 7 days.
 
 
-![Logo](https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png)
+![Logo](https://camo.githubusercontent.com/2b20035ee109365616acb3876e329ef4a7a0ca5bb1fa565a7f2c1180c96bf832/68747470733a2f2f7777772e6c616e646d61726b67726f75702e636f6d2f696e742f73697465732f64656661756c742f66696c65732f4272616e642d6c6f676f2f4e65772532304d61782532304c6f676f2d253230456e67253230576974682532304f75746c696e655f312e706e67)
 
 
 ## Demo  🎥
 
-- Deployed Link:- [Enjoy the Experience](https://max-fashion-clone-git-main-rushig777.vercel.app/)
+- Deployed Link:- [Enjoy the Experience](https://clone-of-maxfashion-rushig777.vercel.app/)
 
+In the project directory, you can run:
+
+npm run dev
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+Run server folder by npm run build with port 8080
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+npm run build
+Builds the app for production to the build folder.
+It correctly bundles Next in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+
+See the section about deployment for more information.
+
+## Tech Stack 💻
+
+- CSS3
+- JAVASCRIPT
+- 
+
+## FrameWork ##
+- Next.js
+- React.js
+- Redux
+
+## Features ✨
+
+- Authentication process undercover with JWT.
+
+- Dynamic Products, Wishlist page using MongoDB  database.
+- All the product description, prices, discounts, are updated in real time.
+
+## Responsibilities 💪
+
+- Built Product page where mapped all the relevant products data.
+- Added sorts and filters on the product page.
+- Made the description page dynamic.
+- Linked all the pages using routes and protected routes
+
+## Snap Shots 📷
+
+
+![Logo](https://i.ibb.co/zSRmxFZ/bbd1.png)
+
+
+## Contributors  😇
+
+
+- 👤 [Anupam kumar](https://github.com/hlv-kakashi)
 
 
 
