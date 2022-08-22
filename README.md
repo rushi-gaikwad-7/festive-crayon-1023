@@ -36,19 +36,23 @@ See the section about deployment for more information.
 
 - CSS3
 - JAVASCRIPT
-- 
-
-## FrameWork ##
 - Next.js
 - React.js
 - Redux
+- Express.js
+- MongoDB
+- Bootstrap
+- styled components
+- MUI
+- JWT
 
 ## Features ✨
 
 - Authentication process undercover with JWT.
-
-- Dynamic Products, Wishlist page using MongoDB  database.
-- All the product description, prices, discounts, are updated in real time.
+- Product page With filter by color,price,size
+- Add to cart / Add to wishlist.
+- Product description
+- All the product description, prices, discounts, are updated in real time in cart.
 
 ## Responsibilities 💪
 
@@ -60,13 +64,16 @@ See the section about deployment for more information.
 ## Snap Shots 📷
 
 
-![Logo](https://i.ibb.co/zSRmxFZ/bbd1.png)
+![Logo](https://i.ibb.co/MhHwrx1/max-fashion-one.png)
 
 
 ## Contributors  😇
 
-
-- 👤 [Anupam kumar](https://github.com/hlv-kakashi)
+- 👤 [Rushikesh Gaikwad](https://github.com/rushig777)
+- 👤 [Akshay Patil](https://github.com/AkshayPatil96)
+- 👤 [Mayur Shinde](https://github.com/mayur-ms-2310)
+- 👤 [Surya Yadav](https://github.com/Surya737673)
+- 👤 [Ahmad  Noor](https://github.com/Ahmad-ft-215)
 
 
 
