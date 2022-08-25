@@ -8,7 +8,6 @@ A Collaborative project built by a team of 6 executed in 7 days.
 
 ![Logo](https://camo.githubusercontent.com/2b20035ee109365616acb3876e329ef4a7a0ca5bb1fa565a7f2c1180c96bf832/68747470733a2f2f7777772e6c616e646d61726b67726f75702e636f6d2f696e742f73697465732f64656661756c742f66696c65732f4272616e642d6c6f676f2f4e65772532304d61782532304c6f676f2d253230456e67253230576974682532304f75746c696e655f312e706e67)
 
-
 ## Demo  🎥
 
 - Deployed Link:- [Enjoy the Experience](https://clone-of-maxfashion-rushig777.vercel.app/)
