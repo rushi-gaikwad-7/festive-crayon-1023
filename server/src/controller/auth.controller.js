@@ -5,6 +5,7 @@ const { signAccessToken, signRefreshToken } = require("../utils/jwt");
 
 
 const authController = {
+  
   register: async (req, res) => {
     try {
       const { firstName, lastName, number, email, password } = req.body;
